@@ -1,0 +1,24 @@
+{
+  "name": "lago",
+  "version": "0.0.1",
+  "description": "Data structures and algorithms library for JavaScript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yangshun/lago.git"
+  },
+  "keywords": [
+    "algorithms",
+    "data",
+    "structures"
+  ],
+  "author": "Tay Yang Shun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yangshun/lago/issues"
+  },
+  "homepage": "https://github.com/yangshun/lago#readme"
+}
