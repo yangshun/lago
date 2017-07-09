@@ -1,11 +1,6 @@
 import Deque from '../lib/Deque';
 
 describe('Deque', () => {
-  test('Deque.constructor()', () => {
-    const q = new Deque();
-    expect(q.length).toBe(0);
-  });
-
   test('Deque.enqueue()', () => {
     const q = new Deque();
     q.enqueue(100);
@@ -58,57 +53,6 @@ describe('Deque', () => {
     expect(q.dequeueBack()).toBe(100);
     expect(q.length).toBe(0);
     expect(q.dequeueBack()).toBe(null);
-  });
-
-  test('Deque.isEmpty()', () => {
-    const q = new Deque();
-    expect(q.isEmpty()).toBeTruthy();
-    q.enqueue(100);
-    expect(q.isEmpty()).toBeFalsy();
-    q.dequeue();
-    expect(q.isEmpty()).toBeTruthy();
-  });
-
-  test('Deque.length', () => {
-    const q = new Deque();
-    q.enqueue(100);
-    expect(q.length).toBe(1);
-    q.enqueue(200);
-    expect(q.length).toBe(2);
-    q.dequeue();
-    expect(q.length).toBe(1);
-    q.enqueue(300);
-    expect(q.length).toBe(2);
-  });
-
-  test('Deque.front()', () => {
-    const q = new Deque();
-    q.enqueue(100);
-    expect(q.front()).toBe(100);
-    q.enqueue(200);
-    expect(q.front()).toBe(100);
-    q.dequeue();
-    expect(q.front()).toBe(200);
-    q.enqueue(300);
-    expect(q.front()).toBe(200);
-    q.dequeue();
-    q.dequeue();
-    expect(q.front()).toBe(null);
-  });
-
-  test('Deque.back()', () => {
-    const q = new Deque();
-    q.enqueue(100);
-    expect(q.back()).toBe(100);
-    q.enqueue(200);
-    expect(q.back()).toBe(200);
-    q.dequeue();
-    expect(q.back()).toBe(200);
-    q.enqueue(300);
-    expect(q.back()).toBe(300);
-    q.dequeue();
-    q.dequeue();
-    expect(q.back()).toBe(null);
   });
 
   test('sequential operations', () => {
