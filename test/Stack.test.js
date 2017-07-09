@@ -3,23 +3,23 @@ import Stack from '../lib/Stack';
 describe('Stack', () => {
   test('constructor', () => {
     const s = new Stack();
-    expect(s.size()).toBe(0);
+    expect(s.length).toBe(0);
   });
 
   test('push', () => {
     const s = new Stack();
     s.push(100);
-    expect(s.size()).toBe(1);
+    expect(s.length).toBe(1);
     s.push(200);
-    expect(s.size()).toBe(2);
+    expect(s.length).toBe(2);
   });
 
   test('pop', () => {
     const s = new Stack();
     s.push(100);
-    expect(s.size()).toBe(1);
+    expect(s.length).toBe(1);
     expect(s.pop()).toBe(100);
-    expect(s.size()).toBe(0);
+    expect(s.length).toBe(0);
     expect(s.pop()).toBe(null);
   });
 
@@ -34,15 +34,15 @@ describe('Stack', () => {
 
   test('size', () => {
     const s = new Stack();
-    expect(s.size()).toBe(0);
+    expect(s.length).toBe(0);
     s.push(100);
-    expect(s.size()).toBe(1);
+    expect(s.length).toBe(1);
     s.push(200);
-    expect(s.size()).toBe(2);
+    expect(s.length).toBe(2);
     s.pop();
-    expect(s.size()).toBe(1);
+    expect(s.length).toBe(1);
     s.push(300);
-    expect(s.size()).toBe(2);
+    expect(s.length).toBe(2);
   });
 
   test('peek', () => {
