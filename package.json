@@ -4,7 +4,7 @@
   "description": "Data structures and algorithms library for JavaScript.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --coverage"
   },
   "repository": "git+https://github.com/yangshun/lago.git",
   "keywords": [
@@ -17,5 +17,12 @@
   "bugs": {
     "url": "https://github.com/yangshun/lago/issues"
   },
-  "homepage": "https://github.com/yangshun/lago#readme"
+  "homepage": "https://github.com/yangshun/lago#readme",
+  "devDependencies": {
+    "jest": "^20.0.4"
+  },
+  "dependencies": {
+    "babel-jest": "^20.0.3",
+    "babel-preset-env": "^1.6.0"
+  }
 }
