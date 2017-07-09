@@ -20,6 +20,7 @@ describe('Stack', () => {
     expect(s.size()).toBe(1);
     expect(s.pop()).toBe(100);
     expect(s.size()).toBe(0);
+    expect(s.pop()).toBe(null);
   });
 
   test('isEmpty', () => {
@@ -33,6 +34,7 @@ describe('Stack', () => {
 
   test('size', () => {
     const s = new Stack();
+    expect(s.size()).toBe(0);
     s.push(100);
     expect(s.size()).toBe(1);
     s.push(200);
@@ -45,6 +47,7 @@ describe('Stack', () => {
 
   test('peek', () => {
     const s = new Stack();
+    expect(s.peek()).toBe(null);
     s.push(100);
     expect(s.peek()).toBe(100);
     s.push(200);
@@ -53,5 +56,8 @@ describe('Stack', () => {
     expect(s.peek()).toBe(100);
     s.push(300);
     expect(s.peek()).toBe(300);
+    s.pop();
+    s.pop();
+    expect(s.peek()).toBe(null);
   });
 });
