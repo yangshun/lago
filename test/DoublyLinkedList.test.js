@@ -111,6 +111,24 @@ describe('DoublyLinkedList', () => {
     expect(dll.back()).toBe(null);
   });
 
+  test('DoublyLinkedList.toArray()', () => {
+    const dll = new DoublyLinkedList();
+    expect(dll.toArray()).toEqual([]);
+    dll.push(100);
+    dll.push(200);
+    expect(dll.toArray()).toEqual([100, 200]);
+    dll.shift();
+    expect(dll.toArray()).toEqual([200]);
+    dll.unshift(300);
+    expect(dll.toArray()).toEqual([300, 200]);
+    dll.unshift(400);
+    expect(dll.toArray()).toEqual([400, 300, 200]);
+    dll.pop();
+    expect(dll.toArray()).toEqual([400, 300]);
+    dll.pop();
+    expect(dll.toArray()).toEqual([400]);
+  });
+
   test('sequential operations', () => {
     const dll = new DoublyLinkedList();
     dll.push(100);
