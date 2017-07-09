@@ -1,12 +1,12 @@
 import Stack from '../lib/Stack';
 
 describe('Stack', () => {
-  test('constructor', () => {
+  test('Stack.constructor', () => {
     const s = new Stack();
     expect(s.length).toBe(0);
   });
 
-  test('push', () => {
+  test('Stack.push()', () => {
     const s = new Stack();
     s.push(100);
     expect(s.length).toBe(1);
@@ -14,7 +14,7 @@ describe('Stack', () => {
     expect(s.length).toBe(2);
   });
 
-  test('pop', () => {
+  test('Stack.pop()', () => {
     const s = new Stack();
     s.push(100);
     expect(s.length).toBe(1);
@@ -23,7 +23,7 @@ describe('Stack', () => {
     expect(s.pop()).toBe(null);
   });
 
-  test('isEmpty', () => {
+  test('Stack.isEmpty()', () => {
     const s = new Stack();
     expect(s.isEmpty()).toBeTruthy();
     s.push(100);
@@ -32,7 +32,7 @@ describe('Stack', () => {
     expect(s.isEmpty()).toBeTruthy();
   });
 
-  test('size', () => {
+  test('Stack.length', () => {
     const s = new Stack();
     expect(s.length).toBe(0);
     s.push(100);
@@ -45,7 +45,7 @@ describe('Stack', () => {
     expect(s.length).toBe(2);
   });
 
-  test('peek', () => {
+  test('Stack.peek()', () => {
     const s = new Stack();
     expect(s.peek()).toBe(null);
     s.push(100);
