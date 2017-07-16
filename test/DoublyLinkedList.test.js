@@ -3,6 +3,7 @@ import DoublyLinkedList from '../lib/DoublyLinkedList';
 describe('DoublyLinkedList', () => {
   test('DoublyLinkedList.constructor()', () => {
     const dll = new DoublyLinkedList();
+    expect(dll).toBeTruthy();
     expect(dll.length).toBe(0);
   });
 

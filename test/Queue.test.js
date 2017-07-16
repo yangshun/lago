@@ -3,6 +3,7 @@ import Queue from '../lib/Queue';
 describe('Queue', () => {
   test('Queue.constructor', () => {
     const q = new Queue();
+    expect(q).toBeTruthy();
     expect(q.length).toBe(0);
   });
 

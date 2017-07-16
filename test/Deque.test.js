@@ -3,6 +3,7 @@ import Deque from '../lib/Deque';
 describe('Deque', () => {
   test('Deque.enqueue()', () => {
     const dq = new Deque();
+    expect(dq).toBeTruthy();
     dq.enqueue(100);
     expect(dq.length).toBe(1);
     dq.enqueue(200);

@@ -3,6 +3,7 @@ import Stack from '../lib/Stack';
 describe('Stack', () => {
   test('Stack.constructor', () => {
     const s = new Stack();
+    expect(s).toBeTruthy();
     expect(s.length).toBe(0);
   });
 

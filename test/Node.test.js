@@ -3,6 +3,7 @@ import Node from '../lib/Node';
 describe('Node', () => {
   test('Node.constructor()', () => {
     const n = new Node(100);
+    expect(n).toBeTruthy();
     expect(n.val).toBe(100);
     expect(n.next).toBe(null);
     expect(n.prev).toBe(null);
