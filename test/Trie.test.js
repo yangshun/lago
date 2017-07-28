@@ -116,4 +116,18 @@ describe('Trie', () => {
     expect(t.differentStringsStartingWith('bcd')).toBe(0);
     expect(t.differentStringsStartingWith('')).toBe(0);
   });
+
+  test('Trie.shortestPrefix()', () => {
+    const t = trieFactory();
+    expect(t.shortestPrefix('a')).toBe('a');
+    expect(t.shortestPrefix('ab')).toBe('a');
+    expect(t.shortestPrefix('abc')).toBe('a');
+
+    t.insert('dictionary');
+    expect(t.shortestPrefix('pict')).toBe(null);
+    expect(t.shortestPrefix('dict')).toBe(null);
+    expect(t.shortestPrefix('dictionary')).toBe('dictionary');
+    t.insert('diction');
+    expect(t.shortestPrefix('dictionary')).toBe('diction');
+  });
 });
