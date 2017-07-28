@@ -64,6 +64,46 @@ describe('Trie', () => {
     });
   });
 
+  describe('Trie.increment()', () => {
+    test('single characters', () => {
+      const t = trieFactory();
+      expect(t.count('abc')).toBe(2);
+      expect(t.increment('abc')).toBe(3);
+      expect(t.increment('ab')).toBe(8);
+    });
+  });
+
+  describe('Trie.delete()', () => {
+    describe('deletion with valid strings', () => {
+      test('invalid parameters', () => {
+        const t = trieFactory();
+        expect(t.delete('')).toBeFalsy();
+      });
+
+      test('single characters', () => {
+        const t = new Trie();
+        expect(t.insert('a')).toBe(1);
+        expect(t.insert('b')).toBe(1);
+        expect(t.size).toBe(2);
+        expect(t.delete('a')).toBeTruthy();
+        expect(t.delete('c')).toBeFalsy();
+        expect(t.size).toBe(1);
+      });
+
+      test('multiple characters', () => {
+        const t = trieFactory();
+        expect(t.delete('abcd')).toBeFalsy();
+        expect(t.delete('abc')).toBeTruthy();
+        expect(t.delete('abc')).toBeFalsy();
+        expect(t.size).toBe(2);
+        expect(t.delete('a')).toBeTruthy();
+        expect(t.size).toBe(1);
+        t.insert('dictionary');
+        expect(t.delete('diction')).toBeFalsy();
+      });
+    });
+  });
+
   test('Trie.count()', () => {
     const t = trieFactory();
     expect(t.count('a')).toBe(3);
