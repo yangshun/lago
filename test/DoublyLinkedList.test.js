@@ -1,13 +1,14 @@
 import DoublyLinkedList from '../lib/DoublyLinkedList';
+import Node from '../lib/Node';
 
 describe('DoublyLinkedList', () => {
-  test('DoublyLinkedList.constructor()', () => {
+  test('constructor()', () => {
     const dll = new DoublyLinkedList();
     expect(dll).toBeTruthy();
     expect(dll.length).toBe(0);
   });
 
-  test('DoublyLinkedList.push()', () => {
+  test('push()', () => {
     const dll = new DoublyLinkedList();
     dll.push(100);
     expect(dll.length).toBe(1);
@@ -15,7 +16,7 @@ describe('DoublyLinkedList', () => {
     expect(dll.length).toBe(2);
   });
 
-  test('DoublyLinkedList.unshift()', () => {
+  test('unshift()', () => {
     const dll = new DoublyLinkedList();
     dll.push(100);
     expect(dll.length).toBe(1);
@@ -31,7 +32,7 @@ describe('DoublyLinkedList', () => {
     expect(dll.front()).toBe(400);
   });
 
-  test('DoublyLinkedList.shift()', () => {
+  test('shift()', () => {
     const dll = new DoublyLinkedList();
     dll.push(100);
     expect(dll.length).toBe(1);
@@ -44,7 +45,7 @@ describe('DoublyLinkedList', () => {
     expect(dll.shift()).toBe(null);
   });
 
-  test('DoublyLinkedList.pop()', () => {
+  test('pop()', () => {
     const dll = new DoublyLinkedList();
     dll.push(100);
     expect(dll.length).toBe(1);
@@ -61,7 +62,7 @@ describe('DoublyLinkedList', () => {
     expect(dll.pop()).toBe(null);
   });
 
-  test('DoublyLinkedList.isEmpty()', () => {
+  test('isEmpty()', () => {
     const dll = new DoublyLinkedList();
     expect(dll.isEmpty()).toBeTruthy();
     dll.push(100);
@@ -70,7 +71,7 @@ describe('DoublyLinkedList', () => {
     expect(dll.isEmpty()).toBeTruthy();
   });
 
-  test('DoublyLinkedList.length', () => {
+  test('length', () => {
     const dll = new DoublyLinkedList();
     dll.push(100);
     expect(dll.length).toBe(1);
@@ -82,7 +83,7 @@ describe('DoublyLinkedList', () => {
     expect(dll.length).toBe(2);
   });
 
-  test('DoublyLinkedList.front()', () => {
+  test('front()', () => {
     const dll = new DoublyLinkedList();
     dll.push(100);
     expect(dll.front()).toBe(100);
@@ -97,7 +98,7 @@ describe('DoublyLinkedList', () => {
     expect(dll.front()).toBe(null);
   });
 
-  test('DoublyLinkedList.back()', () => {
+  test('back()', () => {
     const dll = new DoublyLinkedList();
     dll.push(100);
     expect(dll.back()).toBe(100);
@@ -112,7 +113,7 @@ describe('DoublyLinkedList', () => {
     expect(dll.back()).toBe(null);
   });
 
-  test('DoublyLinkedList.toArray()', () => {
+  test('toArray()', () => {
     const dll = new DoublyLinkedList();
     expect(dll.toArray()).toEqual([]);
     dll.push(100);
@@ -130,7 +131,7 @@ describe('DoublyLinkedList', () => {
     expect(dll.toArray()).toEqual([400]);
   });
 
-  test('DoublyLinkedList.fromArray()', () => {
+  test('fromArray()', () => {
     const arr = [1, 2, 3, 4, 5, 6];
     const dll = DoublyLinkedList.fromArray(arr);
     expect(dll.length).toBe(arr.length);
