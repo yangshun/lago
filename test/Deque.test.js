@@ -36,7 +36,7 @@ describe('Deque', () => {
     expect(dq.length).toBe(1);
     expect(dq.dequeue()).toBe(200);
     expect(dq.length).toBe(0);
-    expect(dq.dequeue()).toBe(null);
+    expect(dq.dequeue()).toBe(undefined);
   });
 
   test('Deque.dequeueBack()', () => {
@@ -53,7 +53,7 @@ describe('Deque', () => {
     expect(dq.length).toBe(1);
     expect(dq.dequeueBack()).toBe(100);
     expect(dq.length).toBe(0);
-    expect(dq.dequeueBack()).toBe(null);
+    expect(dq.dequeueBack()).toBe(undefined);
   });
 
   test('sequential operations', () => {
@@ -78,7 +78,7 @@ describe('Deque', () => {
     expect(dq.dequeueBack()).toBe(500);
     expect(dq.dequeueBack()).toBe(600);
     expect(dq.length).toBe(0);
-    expect(dq.dequeueBack()).toBe(null);
+    expect(dq.dequeueBack()).toBe(undefined);
     expect(dq.length).toBe(0);
   });
 });

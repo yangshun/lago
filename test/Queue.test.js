@@ -25,7 +25,7 @@ describe('Queue', () => {
     expect(q.length).toBe(1);
     expect(q.dequeue()).toBe(200);
     expect(q.length).toBe(0);
-    expect(q.dequeue()).toBe(null);
+    expect(q.dequeue()).toBe(undefined);
   });
 
   test('Queue.isEmpty()', () => {
@@ -61,7 +61,7 @@ describe('Queue', () => {
     expect(q.front()).toBe(200);
     q.dequeue();
     q.dequeue();
-    expect(q.front()).toBe(null);
+    expect(q.front()).toBe(undefined);
   });
 
   test('Queue.back()', () => {
@@ -76,6 +76,6 @@ describe('Queue', () => {
     expect(q.back()).toBe(300);
     q.dequeue();
     q.dequeue();
-    expect(q.back()).toBe(null);
+    expect(q.back()).toBe(undefined);
   });
 });

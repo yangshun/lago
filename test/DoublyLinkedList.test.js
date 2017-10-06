@@ -42,7 +42,7 @@ describe('DoublyLinkedList', () => {
     expect(dll.length).toBe(1);
     expect(dll.shift()).toBe(200);
     expect(dll.length).toBe(0);
-    expect(dll.shift()).toBe(null);
+    expect(dll.shift()).toBe(undefined);
   });
 
   test('pop()', () => {
@@ -59,7 +59,7 @@ describe('DoublyLinkedList', () => {
     expect(dll.length).toBe(1);
     expect(dll.pop()).toBe(100);
     expect(dll.length).toBe(0);
-    expect(dll.pop()).toBe(null);
+    expect(dll.pop()).toBe(undefined);
   });
 
   test('isEmpty()', () => {
@@ -95,7 +95,7 @@ describe('DoublyLinkedList', () => {
     expect(dll.front()).toBe(200);
     dll.shift();
     dll.shift();
-    expect(dll.front()).toBe(null);
+    expect(dll.front()).toBe(undefined);
   });
 
   test('back()', () => {
@@ -110,7 +110,7 @@ describe('DoublyLinkedList', () => {
     expect(dll.back()).toBe(300);
     dll.shift();
     dll.shift();
-    expect(dll.back()).toBe(null);
+    expect(dll.back()).toBe(undefined);
   });
 
   test('toArray()', () => {
@@ -182,7 +182,7 @@ describe('DoublyLinkedList', () => {
     expect(dll.pop()).toBe(500);
     expect(dll.pop()).toBe(600);
     expect(dll.length).toBe(0);
-    expect(dll.pop()).toBe(null);
+    expect(dll.pop()).toBe(undefined);
     expect(dll.length).toBe(0);
   });
 });

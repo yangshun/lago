@@ -25,23 +25,23 @@ describe('List', () => {
         for (let i = -LENGTH; i < LENGTH; i++) {
           expect(traverseNodes(l, i)).toBeTruthy();
         }
-        expect(traverseNodes(l, -100)).toBe(null);
-        expect(traverseNodes(l, -12)).toBe(null);
-        expect(traverseNodes(l, -11)).toBe(null);
-        expect(traverseNodes(l, 10)).toBe(null);
-        expect(traverseNodes(l, 11)).toBe(null);
-        expect(traverseNodes(l, 100)).toBe(null);
+        expect(traverseNodes(l, -100)).toBe(undefined);
+        expect(traverseNodes(l, -12)).toBe(undefined);
+        expect(traverseNodes(l, -11)).toBe(undefined);
+        expect(traverseNodes(l, 10)).toBe(undefined);
+        expect(traverseNodes(l, 11)).toBe(undefined);
+        expect(traverseNodes(l, 100)).toBe(undefined);
 
         const l2 = listFactory(0);
-        expect(traverseNodes(l2, 0)).toBe(null);
-        expect(traverseNodes(l2, -1)).toBe(null);
-        expect(traverseNodes(l2, 1)).toBe(null);
+        expect(traverseNodes(l2, 0)).toBe(undefined);
+        expect(traverseNodes(l2, -1)).toBe(undefined);
+        expect(traverseNodes(l2, 1)).toBe(undefined);
 
         const l3 = listFactory(1);
         expect(traverseNodes(l3, 0).val).toBe(100);
         expect(traverseNodes(l3, -1).val).toBe(100);
-        expect(traverseNodes(l3, 1)).toBe(null);
-        expect(traverseNodes(l3, -2)).toBe(null);
+        expect(traverseNodes(l3, 1)).toBe(undefined);
+        expect(traverseNodes(l3, -2)).toBe(undefined);
       });
     });
 
@@ -140,15 +140,15 @@ describe('List', () => {
     // TODO: Test extreme indices on empty list
     const l = listFactory(10);
     expect(l.toArray()).toEqual([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]);
-    expect(l.get(-100)).toBe(null);
-    expect(l.get(-11)).toBe(null);
+    expect(l.get(-100)).toBe(undefined);
+    expect(l.get(-11)).toBe(undefined);
     expect(l.get(-10)).toBe(100);
     expect(l.get(-1)).toBe(1000);
     expect(l.get(0)).toBe(100);
     expect(l.get(1)).toBe(200);
     expect(l.get(9)).toBe(1000);
-    expect(l.get(10)).toBe(null);
-    expect(l.get(100)).toBe(null);
+    expect(l.get(10)).toBe(undefined);
+    expect(l.get(100)).toBe(undefined);
   });
 
   test('List.count()', () => {
