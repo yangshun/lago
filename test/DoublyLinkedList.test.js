@@ -141,6 +141,24 @@ describe('DoublyLinkedList', () => {
     expect(dll.length).toBe(arr.length - 1);
   });
 
+  describe('headNode()', () => {
+    test('non-empty array', () => {
+      const dll = DoublyLinkedList.fromArray([1, 2, 3, 4, 5, 6]);
+      const head = dll.headNode();
+      expect(head).toBeTruthy();
+      expect(head instanceof Node).toBeTruthy();
+      expect(head.val).toBe(1);
+      expect(head.next.val).toBe(2);
+    });
+
+    test('empty array', () => {
+      const dll = DoublyLinkedList.fromArray([]);
+      const head = dll.headNode();
+      expect(head).toBeFalsy();
+      expect(head instanceof Node).toBeFalsy();
+    });
+  });
+
   test('sequential operations', () => {
     const dll = new DoublyLinkedList();
     dll.push(100);
