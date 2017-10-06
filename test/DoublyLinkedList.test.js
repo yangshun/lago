@@ -130,6 +130,13 @@ describe('DoublyLinkedList', () => {
     expect(dll.toArray()).toEqual([400]);
   });
 
+  test('DoublyLinkedList.toArray()', () => {
+    const arr = [1, 2, 3, 4, 5, 6];
+    const dll = DoublyLinkedList.fromArray(arr);
+    expect(dll.length).toBe(arr.length);
+    expect(dll.toArray()).toEqual(arr);
+  });
+
   test('sequential operations', () => {
     const dll = new DoublyLinkedList();
     dll.push(100);
