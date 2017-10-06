@@ -1,7 +1,7 @@
 import Deque from '../lib/Deque';
 
 describe('Deque', () => {
-  test('Deque.enqueue()', () => {
+  test('enqueue()', () => {
     const dq = new Deque();
     expect(dq).toBeTruthy();
     dq.enqueue(100);
@@ -10,7 +10,7 @@ describe('Deque', () => {
     expect(dq.length).toBe(2);
   });
 
-  test('Deque.enqueueFront()', () => {
+  test('enqueueFront()', () => {
     const dq = new Deque();
     dq.enqueue(100);
     expect(dq.length).toBe(1);
@@ -26,7 +26,7 @@ describe('Deque', () => {
     expect(dq.front()).toBe(400);
   });
 
-  test('Deque.dequeue()', () => {
+  test('dequeue()', () => {
     const dq = new Deque();
     dq.enqueue(100);
     expect(dq.length).toBe(1);
@@ -39,7 +39,7 @@ describe('Deque', () => {
     expect(dq.dequeue()).toBe(undefined);
   });
 
-  test('Deque.dequeueBack()', () => {
+  test('dequeueBack()', () => {
     const dq = new Deque();
     dq.enqueue(100);
     expect(dq.length).toBe(1);

@@ -12,13 +12,13 @@ function trieFactory() {
 }
 
 describe('Trie', () => {
-  test('Trie.constructor()', () => {
+  test('constructor()', () => {
     const t = new Trie();
     expect(t).toBeTruthy();
     expect(t.size).toBe(0);
   });
 
-  describe('Trie.insert()', () => {
+  describe('insert()', () => {
     test('insertion with invalid parameters', () => {
       const t = new Trie();
       expect(t.insert()).toBe(0);
@@ -64,7 +64,7 @@ describe('Trie', () => {
     });
   });
 
-  describe('Trie.increment()', () => {
+  describe('increment()', () => {
     test('single characters', () => {
       const t = trieFactory();
       expect(t.count('abc')).toBe(2);
@@ -73,7 +73,7 @@ describe('Trie', () => {
     });
   });
 
-  describe('Trie.delete()', () => {
+  describe('delete()', () => {
     describe('deletion with valid strings', () => {
       test('invalid parameters', () => {
         const t = trieFactory();
@@ -104,7 +104,7 @@ describe('Trie', () => {
     });
   });
 
-  test('Trie.count()', () => {
+  test('count()', () => {
     const t = trieFactory();
     expect(t.count('a')).toBe(3);
     expect(t.count('ab')).toBe(7);
@@ -114,7 +114,7 @@ describe('Trie', () => {
     expect(t.count('')).toBe(0);
   });
 
-  test('Trie.contains()', () => {
+  test('contains()', () => {
     const t = trieFactory();
     expect(t.size).toBe(3);
     expect(t.contains('a')).toBeTruthy();
@@ -124,7 +124,7 @@ describe('Trie', () => {
     expect(t.contains('ba')).toBeFalsy();
   });
 
-  test('Trie.stringsStartingWith()', () => {
+  test('stringsStartingWith()', () => {
     const t = trieFactory();
     expect(t.stringsStartingWith('a')).toEqual({ a: 3, ab: 7, abc: 2 });
     expect(t.stringsStartingWith('ab')).toEqual({ ab: 7, abc: 2 });
@@ -135,7 +135,7 @@ describe('Trie', () => {
     expect(t.stringsStartingWith('')).toEqual({});
   });
 
-  test('Trie.countStringsStartingWith()', () => {
+  test('countStringsStartingWith()', () => {
     const t = trieFactory();
     expect(t.countStringsStartingWith('a')).toBe(12);
     expect(t.countStringsStartingWith('ab')).toBe(9);
@@ -146,7 +146,7 @@ describe('Trie', () => {
     expect(t.countStringsStartingWith('')).toBe(0);
   });
 
-  test('Trie.differentStringsStartingWith()', () => {
+  test('differentStringsStartingWith()', () => {
     const t = trieFactory();
     expect(t.differentStringsStartingWith('a')).toBe(3);
     expect(t.differentStringsStartingWith('ab')).toBe(2);
@@ -157,7 +157,7 @@ describe('Trie', () => {
     expect(t.differentStringsStartingWith('')).toBe(0);
   });
 
-  test('Trie.shortestPrefix()', () => {
+  test('shortestPrefix()', () => {
     const t = trieFactory();
     expect(t.shortestPrefix('a')).toBe('a');
     expect(t.shortestPrefix('ab')).toBe('a');

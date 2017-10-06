@@ -74,7 +74,7 @@ describe('List', () => {
     });
   });
 
-  describe('List.insert()', () => {
+  describe('insert()', () => {
     test('sequential', () => {
       const l = new List();
       l.insert(100, 0);
@@ -118,7 +118,7 @@ describe('List', () => {
     });
   });
 
-  test('List.remove()', () => {
+  test('remove()', () => {
     // TODO: Test extreme indices on empty list
     const l = listFactory(7);
     expect(l.remove(-1)).toBeTruthy();
@@ -136,7 +136,7 @@ describe('List', () => {
     expect(l.toArray()).toEqual([200, 500]);
   });
 
-  test('List.get()', () => {
+  test('get()', () => {
     // TODO: Test extreme indices on empty list
     const l = listFactory(10);
     expect(l.toArray()).toEqual([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]);
@@ -151,7 +151,7 @@ describe('List', () => {
     expect(l.get(100)).toBe(undefined);
   });
 
-  test('List.count()', () => {
+  test('count()', () => {
     const l = new List();
     l.push(100);
     l.push(200);

@@ -1,13 +1,13 @@
 import Queue from '../lib/Queue';
 
 describe('Queue', () => {
-  test('Queue.constructor', () => {
+  test('constructor', () => {
     const q = new Queue();
     expect(q).toBeTruthy();
     expect(q.length).toBe(0);
   });
 
-  test('Queue.enqueue()', () => {
+  test('enqueue()', () => {
     const q = new Queue();
     q.enqueue(100);
     expect(q.length).toBe(1);
@@ -15,7 +15,7 @@ describe('Queue', () => {
     expect(q.length).toBe(2);
   });
 
-  test('Queue.dequeue()', () => {
+  test('dequeue()', () => {
     const q = new Queue();
     q.enqueue(100);
     expect(q.length).toBe(1);
@@ -28,7 +28,7 @@ describe('Queue', () => {
     expect(q.dequeue()).toBe(undefined);
   });
 
-  test('Queue.isEmpty()', () => {
+  test('isEmpty()', () => {
     const q = new Queue();
     expect(q.isEmpty()).toBeTruthy();
     q.enqueue(100);
@@ -37,7 +37,7 @@ describe('Queue', () => {
     expect(q.isEmpty()).toBeTruthy();
   });
 
-  test('Queue.length', () => {
+  test('length', () => {
     const q = new Queue();
     q.enqueue(100);
     expect(q.length).toBe(1);
@@ -49,7 +49,7 @@ describe('Queue', () => {
     expect(q.length).toBe(2);
   });
 
-  test('Queue.front()', () => {
+  test('front()', () => {
     const q = new Queue();
     q.enqueue(100);
     expect(q.front()).toBe(100);
@@ -64,7 +64,7 @@ describe('Queue', () => {
     expect(q.front()).toBe(undefined);
   });
 
-  test('Queue.back()', () => {
+  test('back()', () => {
     const q = new Queue();
     q.enqueue(100);
     expect(q.back()).toBe(100);
