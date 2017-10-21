@@ -17,7 +17,7 @@ Data Structures and Algorithms library for JavaScript. Pretty much still WIP but
 - Suffix Tree (TODO)
 - Graphs (TODO)
 - N-D arrays (TODO)
-- Bloom Filter (TODO)
+- [Bloom Filter](lib/data-structures/BloomFilter.js)
 
 #### Algorithms
 
