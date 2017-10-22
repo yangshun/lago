@@ -4,6 +4,7 @@
   "description": "Data structures and algorithms library for JavaScript.",
   "main": "lib/index.js",
   "scripts": {
+    "lint": "eslint .",
     "test": "jest --coverage"
   },
   "repository": "git+https://github.com/yangshun/lago.git",
@@ -19,6 +20,9 @@
   },
   "homepage": "https://github.com/yangshun/lago#readme",
   "devDependencies": {
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
     "jest": "^20.0.4"
   },
   "dependencies": {
