@@ -38,5 +38,11 @@ Data Structures and Algorithms library for JavaScript. Pretty much still WIP but
 
 ```sh
 $ yarn install
-$ yarn run test --watch
+$ yarn test --watch
+```
+
+Before pushing/submitting PR
+
+```sh
+$ yarn check-all
 ```
