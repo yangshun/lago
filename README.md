@@ -23,6 +23,7 @@ Data Structures and Algorithms library for JavaScript. Pretty much still WIP but
 #### Algorithms
 
 - [Binary Search](lib/algorithms/binarySearch.js)
+- [Quickselect](lib/algorithms/quickSelect.js)
 - [Merge Sort](lib/algorithms/mergeSort.js)
 - [Quicksort](lib/algorithms/quickSort.js)
 - [Heap Sort](lib/algorithms/heapSort.js)
