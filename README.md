@@ -12,7 +12,7 @@ Data Structures and Algorithms library for JavaScript. Pretty much still WIP but
 - [Double-ended Queue](lib/data-structures/Deque.js)
 - [Trie](lib/data-structures/Trie.js)
 - Binary Tree (TODO)
-- Binary Search Tree (TODO)
+- [Binary Search Tree](lib/data-structures/BinarySearchTree.js)
 - AVL Tree (TODO)
 - Suffix Tree (TODO)
 - Segment Tree (TODO)
