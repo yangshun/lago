@@ -8,6 +8,7 @@
     "lint": "eslint .",
     "prettier": "prettier --write 'lib/**/*.js'",
     "test": "jest --coverage",
+    "test:ci": "jest --coverage --runInBand",
     "start": "jest --coverage --watch"
   },
   "repository": "git+https://github.com/yangshun/lago.git",
