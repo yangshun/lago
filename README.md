@@ -19,7 +19,7 @@ Data Structures and Algorithms library for JavaScript. Pretty much still WIP but
 - Graphs (TODO)
 - N-D arrays (TODO)
 - [Bloom Filter](lib/data-structures/BloomFilter.js)
-- [Union Find Disjoint Set (UFDS)](lib/data-structures/UFDS.js)
+- [Disjoint-set](lib/data-structures/DisjointSet.js)
 
 #### Algorithms
 
