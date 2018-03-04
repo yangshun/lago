@@ -22,6 +22,7 @@ Data Structures and Algorithms library for JavaScript. Pretty much still WIP but
 - N-D arrays (TODO)
 - [Bloom Filter](lib/data-structures/BloomFilter.js)
 - [Disjoint-set](lib/data-structures/DisjointSet.js)
+- [Counter](lib/data-structures/Counter.js)
 
 #### Algorithms
 
