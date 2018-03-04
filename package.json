@@ -12,7 +12,11 @@
     "start": "jest --coverage --watch"
   },
   "repository": "git+https://github.com/yangshun/lago.git",
-  "keywords": ["algorithms", "data", "structures"],
+  "keywords": [
+    "algorithms",
+    "data",
+    "structures"
+  ],
   "author": "Yangshun Tay",
   "license": "MIT",
   "bugs": {
@@ -20,6 +24,7 @@
   },
   "homepage": "https://github.com/yangshun/lago#readme",
   "devDependencies": {
+    "babel-plugin-transform-builtin-extend": "^1.1.2",
     "eslint": "^4.9.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.6.0",
