@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "check-all": "yarn prettier && yarn lint && yarn test",
+    "check-all:ci": "yarn prettier && yarn lint && yarn run test:ci",
     "lint": "eslint .",
     "prettier": "prettier --write 'lib/**/*.js'",
     "test": "jest --coverage",
@@ -12,11 +13,7 @@
     "start": "jest --coverage --watch"
   },
   "repository": "git+https://github.com/yangshun/lago.git",
-  "keywords": [
-    "algorithms",
-    "data",
-    "structures"
-  ],
+  "keywords": ["algorithms", "data", "structures"],
   "author": "Yangshun Tay",
   "license": "MIT",
   "bugs": {

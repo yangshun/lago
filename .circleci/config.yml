@@ -15,7 +15,7 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run: yarn run test:ci
+      - run: yarn run check-all:ci
       - store_artifacts:
           path: coverage
           prefix: coverage
