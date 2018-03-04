@@ -32,7 +32,7 @@ Data Structures and Algorithms library for JavaScript. Pretty much still WIP but
 - [Heap Sort](lib/algorithms/heapSort.js)
 - Timsort (TODO)
 - Topological Sort (TODO)
-- Breadth First Search (TODO)
+- [Breadth-first Search](lib/algorithms/breadthFirstSearch.js)
 - Depth First Search (TODO)
 - Djikstra's Algorithm (TODO)
 - Bellman-Ford Algorithm (TODO)
