@@ -19,7 +19,7 @@ Data Structures and Algorithms library for JavaScript. Pretty much still WIP but
 - Suffix Tree (TODO)
 - Segment Tree (TODO)
 - Graphs (TODO)
-- N-D arrays (TODO)
+- [N-D array](lib/data-structures/NDArray.js)
 - [Bloom Filter](lib/data-structures/BloomFilter.js)
 - [Disjoint-set](lib/data-structures/DisjointSet.js)
 - [Counter](lib/data-structures/Counter.js)
