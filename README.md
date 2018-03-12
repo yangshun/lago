@@ -31,7 +31,7 @@ Data Structures and Algorithms library for JavaScript. Pretty much still WIP but
 - [Merge Sort](lib/algorithms/mergeSort.js)
 - [Quicksort](lib/algorithms/quickSort.js)
 - [Heap Sort](lib/algorithms/heapSort.js)
-- Topological Sort (TODO)
+- [Topological Sort](lib/algorithms/topologicalSort.js)
 - [Breadth-first Search](lib/algorithms/breadthFirstSearch.js)
 - [Depth-first Search](lib/algorithms/depthFirstSearch.js)
 - Djikstra's Algorithm (TODO)
