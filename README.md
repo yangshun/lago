@@ -13,16 +13,16 @@ Data Structures and Algorithms library for JavaScript. Pretty much still WIP but
 - [Queue](lib/data-structures/Queue.js)
 - [Double-ended Queue](lib/data-structures/Deque.js)
 - [Trie](lib/data-structures/Trie.js)
-- Binary Tree (TODO)
 - [Binary Search Tree](lib/data-structures/BinarySearchTree.js)
-- AVL Tree (TODO)
-- Suffix Tree (TODO)
-- Segment Tree (TODO)
-- Graphs (TODO)
 - [N-D array](lib/data-structures/NDArray.js)
 - [Bloom Filter](lib/data-structures/BloomFilter.js)
 - [Disjoint-set](lib/data-structures/DisjointSet.js)
 - [Counter](lib/data-structures/Counter.js)
+- Binary Tree (TODO)
+- AVL Tree (TODO)
+- Suffix Tree (TODO)
+- Segment Tree (TODO)
+- Graphs (TODO)
 
 #### Algorithms
 
