@@ -1,4 +1,12 @@
-# Lago
+<h1 align="center">Lago</h1>
+
+<div align="center">
+  <img src="https://cdn.rawgit.com/yangshun/lago/master/assets/logo.svg" alt="Lago logo" width="400"/>
+  <br>
+  <p>
+    <em>Credits: Illustration by <a href="https://undraw.co/">Undraw</a></em>
+  </p>
+</div>
 
 ![Build Status Badge](https://circleci.com/gh/yangshun/lago/tree/master.svg?style=shield&circle-token=e360bef41a5f3f6a9c914241f388c93aa7ae6bf8)
 
