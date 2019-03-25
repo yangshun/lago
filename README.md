@@ -4,7 +4,7 @@
   <img src="assets/logo.svg" alt="Lago logo" width="400"/>
   <br>
   <p>
-    <em>Credits: Illustration by <a href="https://undraw.co/">Undraw</a></em>
+    <em>Credits: Illustration by <a href="https://undraw.co/">unDraw</a></em>
   </p>
 </div>
 
