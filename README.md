@@ -1,7 +1,7 @@
 <h1 align="center">Lago</h1>
 
 <div align="center">
-  <img src="https://cdn.rawgit.com/yangshun/lago/master/assets/logo.svg" alt="Lago logo" width="400"/>
+  <img src="assets/logo.svg" alt="Lago logo" width="400"/>
   <br>
   <p>
     <em>Credits: Illustration by <a href="https://undraw.co/">Undraw</a></em>
