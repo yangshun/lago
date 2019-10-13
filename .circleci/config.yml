@@ -1,21 +1,64 @@
+aliases:
+  - &root-yarn |
+    yarn install --non-interactive --cache-folder ~/.cache/yarn
+
+  - &root-restore-yarn-cache
+    keys:
+      - root-yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      # Fallback in case checksum fails
+      - root-yarn-{{ .Branch }}-
+
+  - &root-save-yarn-cache
+    paths:
+      - node_modules
+      - ~/.cache/yarn
+    key: root-yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}
+
+defaults: &defaults
+  docker:
+    - image: circleci/node:10.15.1
+
 version: 2
 jobs:
-  build:
-    docker:
-      - image: circleci/node:10.15.1
-    working_directory: ~/repo
+  lint:
+    <<: *defaults
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
-      - run: yarn install
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-      - run: yarn run check-all:ci
-      - store_artifacts:
-          path: coverage
-          prefix: coverage
+      - restore-cache: *root-restore-yarn-cache
+      - run: *root-yarn
+      - save-cache: *root-save-yarn-cache
+      - run:
+          name: Lint
+          command: yarn lint
+  format:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore-cache: *root-restore-yarn-cache
+      - run: *root-yarn
+      - save-cache: *root-save-yarn-cache
+      - run:
+          name: Format
+          command: yarn prettier:diff
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore-cache: *root-restore-yarn-cache
+      - run: *root-yarn
+      - save-cache: *root-save-yarn-cache
+      - run:
+          name: Test
+          command: yarn test:ci
+
+workflows:
+  version: 2
+  lint:
+    jobs:
+      - lint
+  format:
+    jobs:
+      - format
+  test:
+    jobs:
+      - test
