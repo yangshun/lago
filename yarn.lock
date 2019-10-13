@@ -1003,7 +1003,7 @@ babel-plugin-transform-unicode-property-regex@^2.0.5:
     babel-helper-regex "^6.26.0"
     regexpu-core "^4.1.3"
 
-babel-preset-env@^7.6.3:
+babel-preset-env@^7.0.0-beta.3:
   version "7.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/babel-preset-env/-/babel-preset-env-7.0.0-beta.3.tgz#3811da21ede73107223940bcea91a0325027026c"
   integrity sha512-i7XlRdAxUyPeeaGzf2RxkHODE/N646ydnZ7sQe54rTlUjIdg7wEE/5t40Gf/by3er8fg3kEr8YBJo0f+A3v9qA==

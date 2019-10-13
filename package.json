@@ -27,7 +27,7 @@
   "homepage": "https://github.com/yangshun/lago#readme",
   "devDependencies": {
     "babel-jest": "^24.9.0",
-    "babel-preset-env": "^7.6.3",
+    "babel-preset-env": "^7.0.0-beta.3",
     "babel-plugin-transform-builtin-extend": "^1.1.2",
     "eslint": "^6.5.1",
     "eslint-config-airbnb-base": "^12.1.0",
