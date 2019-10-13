@@ -13,7 +13,11 @@
     "start": "jest --coverage --watch"
   },
   "repository": "git+https://github.com/yangshun/lago.git",
-  "keywords": ["algorithms", "data", "structures"],
+  "keywords": [
+    "algorithms",
+    "data",
+    "structures"
+  ],
   "author": "Yangshun Tay",
   "license": "MIT",
   "bugs": {
@@ -21,8 +25,10 @@
   },
   "homepage": "https://github.com/yangshun/lago#readme",
   "devDependencies": {
+    "babel-jest": "^20.0.3",
+    "babel-preset-env": "^1.6.0",
     "babel-plugin-transform-builtin-extend": "^1.1.2",
-    "eslint": "^4.9.0",
+    "eslint": "^6.5.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.6.0",
     "eslint-plugin-import": "^2.8.0",
@@ -30,9 +36,5 @@
     "jest": "^20.0.4",
     "lodash": "^4.17.4",
     "prettier": "^1.7.4"
-  },
-  "dependencies": {
-    "babel-jest": "^20.0.3",
-    "babel-preset-env": "^1.6.0"
   }
 }
