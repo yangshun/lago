@@ -2,14 +2,14 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:8.9.3
+      - image: circleci/node:10.15.1
     working_directory: ~/repo
     steps:
       - checkout
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
       - run: yarn install
       - save_cache:
           paths:
