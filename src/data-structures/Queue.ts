@@ -1,12 +1,18 @@
-import Node from './Node';
+import Node, { DummyHeadNode, DummyTailNode } from './Node';
 
-class Queue {
+class Queue<T> {
+  private _dummyHead: DummyHeadNode<T>;
+
+  private _dummyTail: DummyTailNode<T>;
+
+  private _length: number;
+
   constructor() {
-    this._dummyHead = new Node(null);
-    this._dummyTail = new Node(null);
+    this._dummyHead = new DummyHeadNode();
+    this._dummyTail = new DummyTailNode();
     this._dummyHead.next = this._dummyTail;
     this._dummyTail.prev = this._dummyHead;
-    this.length = 0;
+    this._length = 0;
   }
 
   /**
@@ -14,31 +20,33 @@ class Queue {
    * @param {*} element
    * @return {number} The new length of the Queue.
    */
-  enqueue(value) {
+  enqueue(value: T): number {
     const node = new Node(value);
-    const prevLast = this._dummyTail.prev;
+    const prevLast = this._dummyTail.prev as Node<T> | DummyHeadNode<T>;
     prevLast.next = node;
+
     node.prev = prevLast;
     node.next = this._dummyTail;
     this._dummyTail.prev = node;
-    this.length++;
-    return this.length;
+    this._length++;
+    return this._length;
   }
 
   /**
    * Removes the element at the front of the Queue.
    * @return {*} The element at the front of the Queue.
    */
-  dequeue() {
+  dequeue(): T | undefined {
     if (this.isEmpty()) {
       return undefined;
     }
-    const node = this._dummyHead.next;
-    const newFirst = node.next;
+
+    const node = this._dummyHead.next as Node<T>;
+    const newFirst = node?.next as Node<T> | DummyTailNode<T>;
     this._dummyHead.next = newFirst;
     newFirst.prev = this._dummyHead;
     node.next = null;
-    this.length--;
+    this._length--;
     return node.val;
   }
 
@@ -46,30 +54,40 @@ class Queue {
    * Returns true if the Queue has no elements.
    * @return {boolean} Whether the Queue has no elements.
    */
-  isEmpty() {
-    return this.length === 0;
+  isEmpty(): boolean {
+    return this._length === 0;
   }
 
   /**
    * Returns the element at the front of the Queue.
    * @return {*} The element at the front of the Queue.
    */
-  front() {
+  front(): T | undefined {
     if (this.isEmpty()) {
       return undefined;
     }
-    return this._dummyHead.next.val;
+
+    return (this._dummyHead?.next as Node<T>).val;
   }
 
   /**
    * Returns the element at the back of the Queue.
    * @return {*} The element at the back of the Queue.
    */
-  back() {
+  back(): T | undefined {
     if (this.isEmpty()) {
       return undefined;
     }
-    return this._dummyTail.prev.val;
+
+    return (this._dummyTail?.prev as Node<T>).val;
+  }
+
+  /**
+   * Returns the number of elements in the Queue.
+   * @return {number} Number of elements in the Queue.
+   */
+  get length(): number {
+    return this._length;
   }
 }
 
