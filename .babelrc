@@ -1,8 +1,11 @@
 {
-  "presets": ["env"],
+  "presets": ["@babel/preset-env"],
   "plugins": [
-    ["babel-plugin-transform-builtin-extend", {
-      globals: ["Map"]
-    }]
+    [
+      "babel-plugin-transform-builtin-extend",
+      {
+        "globals": ["Map"]
+      }
+    ]
   ]
 }
