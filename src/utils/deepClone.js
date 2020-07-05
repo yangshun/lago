@@ -1,4 +1,4 @@
-import { isArray, isObject } from './langUtils';
+import { isArray, isObject } from './langUtils.ts';
 
 export default function deepClone(val) {
   if (isArray(val)) {

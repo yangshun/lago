@@ -7,8 +7,8 @@
     "check-all": "yarn prettier && yarn lint && yarn test",
     "check-all:ci": "yarn prettier && yarn lint && yarn run test:ci",
     "lint": "eslint .",
-    "prettier": "prettier --config .prettierrc --write 'src/**/*.js'",
-    "prettier:diff": "prettier --config .prettierrc --list-different 'src/**/*.js'",
+    "prettier": "prettier --config .prettierrc --write 'src/**/*.{js,ts}'",
+    "prettier:diff": "prettier --config .prettierrc --list-different 'src/**/*.{js,ts}'",
     "test": "jest --coverage",
     "test:ci": "jest --coverage --runInBand",
     "start": "jest --coverage --watch"
@@ -27,6 +27,9 @@
   "homepage": "https://github.com/yangshun/lago#readme",
   "devDependencies": {
     "@babel/preset-env": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
+    "@typescript-eslint/eslint-plugin": "^3.5.0",
+    "@typescript-eslint/parser": "^3.5.0",
     "babel-jest": "^26.1.0",
     "babel-plugin-transform-builtin-extend": "^1.1.2",
     "eslint": "^7.4.0",
@@ -36,6 +39,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "jest": "^26.1.0",
     "lodash": "^4.17.4",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "typescript": "^3.9.6"
   }
 }

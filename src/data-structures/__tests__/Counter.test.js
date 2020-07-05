@@ -139,7 +139,12 @@ describe('Counter', () => {
     });
 
     test('non-unique frequencies', () => {
-      const c = new Counter({ c: 5, a: 2, b: 4, d: 4 });
+      const c = new Counter({
+        c: 5,
+        a: 2,
+        b: 4,
+        d: 4,
+      });
       expect(c.mostCommon(1)).toEqual([['c', 5]]);
       expect(new Set(c.mostCommon(3).map((item) => item[1])).size).toEqual(2);
       expect(c.mostCommon().length).toEqual(4);
