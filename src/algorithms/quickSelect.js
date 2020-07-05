@@ -1,4 +1,4 @@
-import randomInt from '../utils/randomInt';
+import randomInt from '../utils/randomInt.ts';
 
 /**
  * Returns the kth smallest element in an unsorted array.

@@ -4,7 +4,7 @@
  * @param {number} max Maximum possible number.
  * @return {number} The generated number between min and max inclusive.
  */
-function randomInt(min, max) {
+function randomInt(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 

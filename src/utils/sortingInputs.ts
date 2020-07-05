@@ -1,4 +1,14 @@
-function sortingInputs(algorithm) {
+interface SortingInputsParams<T> {
+  algorithm(input: Array<T>): Array<T>;
+  test(testName: string, fn: any): void;
+  expect: any;
+}
+
+function sortingInputs({
+  algorithm,
+  test,
+  expect,
+}: SortingInputsParams<number>): void {
   test('empty', () => {
     expect(algorithm([])).toEqual([]);
   });
@@ -52,8 +62,6 @@ function sortingInputs(algorithm) {
     expect(algorithm([1, 1, 1, 1, 1, 1])).toEqual([1, 1, 1, 1, 1, 1]);
     expect(algorithm([7, 2, 4, 3, 1, 2])).toEqual([1, 2, 2, 3, 4, 7]);
   });
-
-  return true;
 }
 
 export default sortingInputs;

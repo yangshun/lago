@@ -1,6 +1,6 @@
 import quickSort from '../quickSort';
-import sortingInputs from '../../utils/sortingInputs';
+import sortingInputs from '../../utils/sortingInputs.ts';
 
 describe('quickSort', () => {
-  sortingInputs(quickSort);
+  sortingInputs({ algorithm: quickSort, test, expect });
 });

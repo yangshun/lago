@@ -1,6 +1,6 @@
 import heapSort from '../heapSort';
-import sortingInputs from '../../utils/sortingInputs';
+import sortingInputs from '../../utils/sortingInputs.ts';
 
 describe('heapSort', () => {
-  sortingInputs(heapSort);
+  sortingInputs({ algorithm: heapSort, test, expect });
 });

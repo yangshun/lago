@@ -7,7 +7,7 @@ import {
   isObject,
   isString,
   isUndefined,
-} from '../langUtils.ts';
+} from '../langUtils';
 
 describe('langUtils', () => {
   test('isArray()', () => {
