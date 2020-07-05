@@ -7,8 +7,8 @@
     "check-all": "yarn prettier && yarn lint && yarn test",
     "check-all:ci": "yarn prettier && yarn lint && yarn run test:ci",
     "lint": "eslint .",
-    "prettier": "prettier --config .prettierrc --write 'lib/**/*.js'",
-    "prettier:diff": "prettier --config .prettierrc --list-different 'lib/**/*.js'",
+    "prettier": "prettier --config .prettierrc --write 'src/**/*.js'",
+    "prettier:diff": "prettier --config .prettierrc --list-different 'src/**/*.js'",
     "test": "jest --coverage",
     "test:ci": "jest --coverage --runInBand",
     "start": "jest --coverage --watch"
