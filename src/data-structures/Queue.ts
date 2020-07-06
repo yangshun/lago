@@ -1,9 +1,9 @@
 import Node, { DummyHeadNode, DummyTailNode } from './Node';
 
 class Queue<T> {
-  private _dummyHead: DummyHeadNode<T>;
+  private _dummyHead: DummyHeadNode;
 
-  private _dummyTail: DummyTailNode<T>;
+  private _dummyTail: DummyTailNode;
 
   private _length: number;
 
@@ -22,7 +22,7 @@ class Queue<T> {
    */
   enqueue(value: T): number {
     const node = new Node(value);
-    const prevLast = this._dummyTail.prev as Node<T> | DummyHeadNode<T>;
+    const prevLast = this._dummyTail.prev as Node<T> | DummyHeadNode;
     prevLast.next = node;
 
     node.prev = prevLast;
@@ -42,7 +42,7 @@ class Queue<T> {
     }
 
     const node = this._dummyHead.next as Node<T>;
-    const newFirst = node?.next as Node<T> | DummyTailNode<T>;
+    const newFirst = node?.next as Node<T> | DummyTailNode;
     this._dummyHead.next = newFirst;
     newFirst.prev = this._dummyHead;
     node.next = null;

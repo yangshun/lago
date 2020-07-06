@@ -1,10 +1,15 @@
 /* eslint-disable max-classes-per-file */
-class Node<T> {
+interface AbstractNode {
+  next?: AbstractNode | null;
+  prev?: AbstractNode | null;
+}
+
+class Node<T> implements AbstractNode {
   public val: T;
 
-  public next: Node<T> | DummyTailNode<T> | null;
+  public next: AbstractNode | null;
 
-  public prev: Node<T> | DummyHeadNode<T> | null;
+  public prev: AbstractNode | null;
 
   constructor(value: T) {
     this.val = value;
@@ -13,16 +18,16 @@ class Node<T> {
   }
 }
 
-class DummyHeadNode<T> {
-  public next: Node<T> | DummyTailNode<T> | null;
+class DummyHeadNode implements AbstractNode {
+  public next: AbstractNode | null;
 
   constructor() {
     this.next = null;
   }
 }
 
-class DummyTailNode<T> {
-  public prev: Node<T> | DummyHeadNode<T> | null;
+class DummyTailNode implements AbstractNode {
+  public prev: AbstractNode | null;
 
   constructor() {
     this.prev = null;
