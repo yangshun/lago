@@ -1,9 +1,13 @@
 import Node from './Node';
 
-class Stack {
+class Stack<T> {
+  private _tail: Node<T> | null;
+
+  private _length: number;
+
   constructor() {
     this._tail = null;
-    this.length = 0;
+    this._length = 0;
   }
 
   /**
@@ -11,26 +15,27 @@ class Stack {
    * @param {*} element
    * @return {number} The new length of the Stack.
    */
-  push(value) {
+  push(value: T): number {
     const node = new Node(value);
     node.next = this._tail;
     this._tail = node;
-    this.length++;
-    return this.length;
+    this._length++;
+    return this._length;
   }
 
   /**
    * Removes the element at the top of the Stack.
-   * @return {number} The new length of the Stack.
+   * @return {T} The popped element.
    */
-  pop() {
+  pop(): T | undefined {
     if (this.isEmpty()) {
       return undefined;
     }
-    const node = this._tail;
-    this._tail = this._tail.next;
+
+    const node = this._tail as Node<T>;
+    this._tail = node.next as Node<T>;
     node.next = null;
-    this.length--;
+    this._length--;
     return node.val;
   }
 
@@ -38,19 +43,28 @@ class Stack {
    * Returns true if the Stack has no elements.
    * @return {boolean} Whether the Stack has no elements.
    */
-  isEmpty() {
-    return this.length === 0;
+  isEmpty(): boolean {
+    return this._length === 0;
   }
 
   /**
    * Returns the element at the top of the Stack.
    * @return {*} The element at the top of the Stack.
    */
-  peek() {
+  peek(): T | undefined {
     if (this.isEmpty()) {
       return undefined;
     }
-    return this._tail.val;
+
+    return (this._tail as Node<T>).val;
+  }
+
+  /**
+   * Returns the number of elements in the Stack.
+   * @return {number} Number of elements in the Stack.
+   */
+  get length(): number {
+    return this._length;
   }
 }
 
