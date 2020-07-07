@@ -4,8 +4,8 @@
   "description": "Data structures and algorithms library for JavaScript.",
   "main": "lib/index.js",
   "scripts": {
-    "check-all": "yarn prettier && yarn lint && yarn test",
-    "check-all:ci": "yarn prettier && yarn lint && yarn run test:ci",
+    "check-all": "yarn prettier && yarn lint && yarn tsc && yarn test",
+    "check-all:ci": "yarn prettier && yarn lint && yarn tsc && yarn run test:ci",
     "lint": "eslint .",
     "prettier": "prettier --config .prettierrc --write 'src/**/*.{js,ts}'",
     "prettier:diff": "prettier --config .prettierrc --list-different 'src/**/*.{js,ts}'",

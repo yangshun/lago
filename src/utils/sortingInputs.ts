@@ -1,6 +1,6 @@
 interface SortingInputsParams<T> {
   algorithm(input: Array<T>): Array<T>;
-  test(testName: string, fn: any): void;
+  test(testName: string, fn: unknown): void;
   expect: any;
 }
 
