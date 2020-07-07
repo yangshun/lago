@@ -20,13 +20,13 @@ describe('Node', () => {
     const n1 = new Node(100);
     const n2 = new Node(200);
     n1.next = n2;
-    expect(n1.next.val).toBe(n2.val);
+    expect((n1.next as Node<number>).val).toBe(n2.val);
   });
 
   test('prev', () => {
     const n1 = new Node(100);
     const n2 = new Node(200);
     n2.prev = n1;
-    expect(n2.prev.val).toBe(n1.val);
+    expect((n2.prev as Node<number>).val).toBe(n1.val);
   });
 });

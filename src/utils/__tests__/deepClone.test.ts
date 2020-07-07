@@ -22,7 +22,7 @@ describe('deepClone()', () => {
   });
 
   test('plain objects', () => {
-    const obj = { 1: 2, 3: 4 };
+    const obj: Record<string, number> = { 1: 2, 3: 4 };
     const clonedObj = deepClone(obj);
     expect(obj).toEqual(clonedObj);
     expect(obj).not.toBe(clonedObj);
@@ -33,7 +33,8 @@ describe('deepClone()', () => {
   });
 
   test('mixed objects', () => {
-    const val = [{ 1: 2, 3: 4 }, { 5: 6 }, { 7: ['a', 'b', 'c'] }];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const val: Array<any> = [{ 1: 2, 3: 4 }, { 5: 6 }, { 7: ['a', 'b', 'c'] }];
     const clonedVal = deepClone(val);
     expect(val[2]).toEqual({ 7: ['a', 'b', 'c'] });
     expect(val[2]).not.toBe({ 7: ['a', 'b', 'c'] });
