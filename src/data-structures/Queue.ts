@@ -47,7 +47,7 @@ class Queue<T> {
     newFirst.prev = this._dummyHead;
     node.next = null;
     this._length--;
-    return node.val;
+    return node.value;
   }
 
   /**
@@ -67,7 +67,7 @@ class Queue<T> {
       return undefined;
     }
 
-    return (this._dummyHead?.next as Node<T>).val;
+    return (this._dummyHead?.next as Node<T>).value;
   }
 
   /**
@@ -79,7 +79,7 @@ class Queue<T> {
       return undefined;
     }
 
-    return (this._dummyTail?.prev as Node<T>).val;
+    return (this._dummyTail?.prev as Node<T>).value;
   }
 
   /**

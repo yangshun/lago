@@ -15,7 +15,7 @@ describe('List', () => {
         const l = listFactory(10);
         for (let i = 0; i < 10; i++) {
           const node = traverseNodes(l, i);
-          expect(node.val).toBe((i + 1) * 100);
+          expect(node.value).toBe((i + 1) * 100);
         }
       });
 
@@ -38,8 +38,8 @@ describe('List', () => {
         expect(traverseNodes(l2, 1)).toBe(undefined);
 
         const l3 = listFactory(1);
-        expect(traverseNodes(l3, 0).val).toBe(100);
-        expect(traverseNodes(l3, -1).val).toBe(100);
+        expect(traverseNodes(l3, 0).value).toBe(100);
+        expect(traverseNodes(l3, -1).value).toBe(100);
         expect(traverseNodes(l3, 1)).toBe(undefined);
         expect(traverseNodes(l3, -2)).toBe(undefined);
       });
@@ -50,11 +50,11 @@ describe('List', () => {
         const l = listFactory(10);
         for (let i = 0; i < 10; i++) {
           const node = traverseNodes(l, i, true);
-          expect(node.val).toBe((i + 1) * 100);
+          expect(node.value).toBe((i + 1) * 100);
         }
         for (let i = 1; i < 10; i++) {
           const node = traverseNodes(l, -i, true);
-          expect(node.val).toBe((11 - i) * 100);
+          expect(node.value).toBe((11 - i) * 100);
         }
       });
 
@@ -64,12 +64,12 @@ describe('List', () => {
         for (let i = -LENGTH; i < LENGTH; i++) {
           expect(traverseNodes(l, i, true)).toBeTruthy();
         }
-        expect(traverseNodes(l, -100, true).val).toBe(100);
-        expect(traverseNodes(l, -12, true).val).toBe(100);
-        expect(traverseNodes(l, -11, true).val).toBe(100);
-        expect(traverseNodes(l, 10, true).val).toBe(null);
-        expect(traverseNodes(l, 11, true).val).toBe(null);
-        expect(traverseNodes(l, 100, true).val).toBe(null);
+        expect(traverseNodes(l, -100, true).value).toBe(100);
+        expect(traverseNodes(l, -12, true).value).toBe(100);
+        expect(traverseNodes(l, -11, true).value).toBe(100);
+        expect(traverseNodes(l, 10, true).value).toBe(null);
+        expect(traverseNodes(l, 11, true).value).toBe(null);
+        expect(traverseNodes(l, 100, true).value).toBe(null);
       });
     });
   });

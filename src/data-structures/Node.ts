@@ -5,14 +5,14 @@ interface AbstractNode {
 }
 
 class Node<T> implements AbstractNode {
-  public val: T;
+  public value: T;
 
   public next: AbstractNode | null;
 
   public prev: AbstractNode | null;
 
   constructor(value: T) {
-    this.val = value;
+    this.value = value;
     this.next = null;
     this.prev = null;
   }

@@ -79,7 +79,7 @@ class List extends DoublyLinkedList {
     if (!node) {
       return undefined;
     }
-    return node.val;
+    return node.value;
   }
 
   /**
@@ -92,7 +92,7 @@ class List extends DoublyLinkedList {
     let count = 0;
     let curr = this._dummyHead.next;
     for (let i = 0; i < this.length; i++) {
-      if (curr.val === value) {
+      if (curr.value === value) {
         count++;
       }
       curr = curr.next;

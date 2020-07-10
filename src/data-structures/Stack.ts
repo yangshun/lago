@@ -36,7 +36,7 @@ class Stack<T> {
     this._tail = node.next as Node<T>;
     node.next = null;
     this._length--;
-    return node.val;
+    return node.value;
   }
 
   /**
@@ -56,7 +56,7 @@ class Stack<T> {
       return undefined;
     }
 
-    return (this._tail as Node<T>).val;
+    return (this._tail as Node<T>).value;
   }
 
   /**

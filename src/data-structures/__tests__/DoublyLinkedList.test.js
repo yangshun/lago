@@ -148,8 +148,8 @@ describe('DoublyLinkedList', () => {
       const head = dll.headNode();
       expect(head).toBeTruthy();
       expect(head instanceof Node).toBeTruthy();
-      expect(head.val).toBe(1);
-      expect(head.next.val).toBe(2);
+      expect(head.value).toBe(1);
+      expect(head.next.value).toBe(2);
     });
 
     test('empty array', () => {
