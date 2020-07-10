@@ -7,14 +7,16 @@ class NDArray {
    * @param {*} defaultValue Default value to initialize each position of the array to.
    * @return {undefined}
    */
-  constructor(dimensions, defaultValue = 0) {
+  static create(dimensions: Array<number>, defaultValue: any = 0): any {
     let value = defaultValue;
+
     for (let i = dimensions.length - 1; i >= 0; i--) {
       /* eslint-disable no-loop-func */
       value = Array(dimensions[i])
         .fill(null)
         .map((_) => deepClone(value));
     }
+
     return value;
   }
 }
