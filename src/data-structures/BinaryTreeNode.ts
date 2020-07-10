@@ -1,9 +1,15 @@
-class BinaryTreeNode {
+class BinaryTreeNode<T> {
+  public value: T;
+
+  public left: BinaryTreeNode<T> | null;
+
+  public right: BinaryTreeNode<T> | null;
+
   /**
    * Initialize a binary tree node with a value.
    * @param {*} value The value stored in the binary tree node.
    */
-  constructor(value) {
+  constructor(value: T) {
     this.value = value;
     this.left = null;
     this.right = null;
@@ -13,7 +19,7 @@ class BinaryTreeNode {
    * Get the number of nodes in the tree represented by the node.
    * @return {number} The number of nodes in the tree.
    */
-  size() {
+  size(): number {
     return (
       1 +
       (this.left ? this.left.size() : 0) +
@@ -25,7 +31,7 @@ class BinaryTreeNode {
    * Get the height of the tree represented by the node.
    * @return {number} The height of the tree.
    */
-  height() {
+  height(): number {
     return Math.max(
       this.right ? this.right.height() + 1 : 0,
       this.left ? this.left.height() + 1 : 0,
@@ -36,7 +42,7 @@ class BinaryTreeNode {
    * Determine if the node is a leaf node
    * @return {boolean} True if the node is a leaf node and false otherwise.
    */
-  isLeaf() {
+  isLeaf(): boolean {
     return !(this.left || this.right);
   }
 }
