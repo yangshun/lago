@@ -5,7 +5,7 @@ describe('BinarySearchTree', () => {
     test('if empty tree, value becomes root', () => {
       const tree = new BinarySearchTree();
       tree.insert(5);
-      expect(tree.getRoot().value).toBe(5);
+      expect(tree.root.value).toBe(5);
     });
 
     test('inserts value at correct location in BST', () => {
@@ -14,7 +14,7 @@ describe('BinarySearchTree', () => {
       tree.insert(40);
       tree.insert(35);
 
-      const root = tree.getRoot();
+      const { root } = tree;
       expect(root.left.value).toBe(20);
       expect(root.right.value).toBe(40);
     });

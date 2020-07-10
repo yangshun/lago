@@ -23,15 +23,18 @@ class BinarySearchTree extends BinaryTree {
         node.left = new BinaryTreeNode(value);
         return;
       }
+
       this.insert(value, left);
       return;
     }
 
     const { right } = node;
+
     if (!right) {
       node.right = new BinaryTreeNode(value);
       return;
     }
+
     this.insert(value, right);
   }
 

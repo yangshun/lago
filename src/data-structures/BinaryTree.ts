@@ -1,33 +1,26 @@
 import BinaryTreeNode from './BinaryTreeNode';
 
-class BinaryTree {
+class BinaryTree<T> {
+  public root: BinaryTreeNode<T> | null;
+
   /**
    * Initialize the Binary Tree
    * @param {*} value The value
    * @return {undefined}
    */
-  constructor(value) {
-    if (value) {
-      this.root = new BinaryTreeNode(value);
-    }
-  }
-
-  /**
-   * Return the root node of the tree.
-   * @return {BinaryTreeNode} The root node of the tree.
-   */
-  getRoot() {
-    return this.root;
+  constructor(value?: T) {
+    this.root = value == null ? null : new BinaryTreeNode(value);
   }
 
   /**
    * Get the number of nodes in the tree.
    * @return {number} The number of nodes in the tree.
    */
-  size() {
+  size(): number {
     if (!this.root) {
       return 0;
     }
+
     return this.root.size();
   }
 
@@ -35,10 +28,11 @@ class BinaryTree {
    * Get the height of the tree.
    * @return {number} The height of the tree.
    */
-  height() {
+  height(): number {
     if (!this.root) {
       return 0;
     }
+
     return this.root.height();
   }
 
@@ -46,16 +40,18 @@ class BinaryTree {
    * Traverse the tree in an in-order fashion.
    * @return {*[]} An array of values.
    */
-  inOrder() {
-    const arr = [];
-    function _inOrder(node) {
-      if (!node) {
+  inOrder(): Array<T> {
+    const arr: Array<T> = [];
+    function _inOrder(node: BinaryTreeNode<T> | null) {
+      if (node == null) {
         return;
       }
+
       _inOrder(node.left);
       arr.push(node.value);
       _inOrder(node.right);
     }
+
     _inOrder(this.root);
     return arr;
   }
@@ -64,17 +60,19 @@ class BinaryTree {
    * Traverse the tree in a pre-order fashion.
    * @return {*[]} An array of values.
    */
-  preOrder() {
-    const arr = [];
-    function _preOrder(node) {
+  preOrder(): Array<T> {
+    const arr: Array<T> = [];
+    function preOrderImpl(node: BinaryTreeNode<T> | null) {
       if (!node) {
         return;
       }
+
       arr.push(node.value);
-      _preOrder(node.left);
-      _preOrder(node.right);
+      preOrderImpl(node.left);
+      preOrderImpl(node.right);
     }
-    _preOrder(this.root);
+
+    preOrderImpl(this.root);
     return arr;
   }
 
@@ -82,17 +80,19 @@ class BinaryTree {
    * Traverse the tree in a post-order fashion.
    * @return {*[]} An array of values.
    */
-  postOrder() {
-    const arr = [];
-    function _postOrder(node) {
+  postOrder(): Array<T> {
+    const arr: Array<T> = [];
+    function postOrderImpl(node: BinaryTreeNode<T> | null) {
       if (!node) {
         return;
       }
-      _postOrder(node.left);
-      _postOrder(node.right);
+
+      postOrderImpl(node.left);
+      postOrderImpl(node.right);
       arr.push(node.value);
     }
-    _postOrder(this.root);
+
+    postOrderImpl(this.root);
     return arr;
   }
 
@@ -101,23 +101,31 @@ class BinaryTree {
    * every node never differ by more than 1
    * @return {boolean}
    */
-  isBalanced() {
-    function _isBalanced(node) {
+  isBalanced(): boolean {
+    function isBalancedImpl(node: BinaryTreeNode<T> | null): boolean {
       if (!node) {
         return true;
       }
+
       const leftHeight = node.left ? node.left.height() : -1;
       const rightHeight = node.right ? node.right.height() : -1;
+
       if (Math.abs(leftHeight - rightHeight) > 1) {
         return false;
       }
-      return _isBalanced(node.left) && _isBalanced(node.right);
+
+      return isBalancedImpl(node.left) && isBalancedImpl(node.right);
     }
-    return _isBalanced(this.root);
+
+    return isBalancedImpl(this.root);
   }
 
-  isComplete() {
-    function _isComplete(node, index, numNodes) {
+  isComplete(): boolean {
+    function isCompleteImpl(
+      node: BinaryTreeNode<T> | null,
+      index: number,
+      numNodes: number,
+    ): boolean {
       if (!node) {
         return true;
       }
@@ -127,11 +135,12 @@ class BinaryTree {
       }
 
       return (
-        _isComplete(node.left, 2 * index + 1, numNodes) &&
-        _isComplete(node.right, 2 * index + 2, numNodes)
+        isCompleteImpl(node.left, 2 * index + 1, numNodes) &&
+        isCompleteImpl(node.right, 2 * index + 2, numNodes)
       );
     }
-    return _isComplete(this.root, 0, this.size());
+
+    return isCompleteImpl(this.root, 0, this.size());
   }
 }
 
