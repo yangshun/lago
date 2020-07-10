@@ -4,7 +4,7 @@
  * @param {number[]} arr2
  * @return {number[]} A sorted merged array
  */
-function merge(arr1, arr2) {
+function merge(arr1: Array<number>, arr2: Array<number>): Array<number> {
   const merged = [];
   let i = 0;
   let j = 0;
@@ -28,7 +28,7 @@ function merge(arr1, arr2) {
  * @param {number[]} arr The array to be sorted.
  * @return {number[]} Returns the sorted shallow copy of the original array.
  */
-function mergeSort(arr) {
+function mergeSort(arr: Array<number>): Array<number> {
   if (arr.length < 2) {
     // Arrays of length 0 or 1 are sorted by definition.
     // return copy of arr.

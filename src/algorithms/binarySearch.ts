@@ -5,9 +5,10 @@
  * @param {number} target
  * @return {number} Position
  */
-function bisectLeft(arr, target) {
+function bisectLeft(arr: Array<number>, target: number): number {
   let left = 0;
   let right = arr.length;
+
   while (left < right) {
     const mid = Math.floor((left + right) / 2);
     if (arr[mid] < target) {
@@ -16,6 +17,7 @@ function bisectLeft(arr, target) {
       right = mid;
     }
   }
+
   return left;
 }
 
@@ -26,9 +28,10 @@ function bisectLeft(arr, target) {
  * @param {number} target
  * @return {number} Position
  */
-function bisectRight(arr, target) {
+function bisectRight(arr: Array<number>, target: number): number {
   let left = 0;
   let right = arr.length;
+
   while (left < right) {
     const mid = Math.floor((left + right) / 2);
     if (arr[mid] > target) {
@@ -37,6 +40,7 @@ function bisectRight(arr, target) {
       left = mid + 1;
     }
   }
+
   return left;
 }
 
@@ -47,7 +51,7 @@ function bisectRight(arr, target) {
  * @param {number} target
  * @return {number} The index of the target element within the array.
  */
-function binarySearch(arr, target) {
+function binarySearch(arr: Array<number>, target: number): number {
   const idx = bisectLeft(arr, target);
   return idx < arr.length && arr[idx] === target ? idx : -1;
 }

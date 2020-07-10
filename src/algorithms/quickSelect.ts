@@ -1,4 +1,4 @@
-import randomInt from '../utils/randomInt.ts';
+import randomInt from '../utils/randomInt';
 
 /**
  * Returns the kth smallest element in an unsorted array.
@@ -6,13 +6,15 @@ import randomInt from '../utils/randomInt.ts';
  * @param {number} k
  * @return {number} The kth smallest element in the array.
  */
-function quickSelect(arr, k) {
+function quickSelect(arr: Array<number>, k: number): number | null {
   if (k < 1 || k > arr.length) {
-    return undefined;
+    return null;
   }
+
   const pivot = arr[randomInt(0, arr.length - 1)];
-  const lower = [];
-  const higher = [];
+  const lower: Array<number> = [];
+  const higher: Array<number> = [];
+
   arr.forEach((num) => {
     if (num < pivot) {
       lower.push(num);
@@ -38,7 +40,7 @@ function quickSelect(arr, k) {
  * @param {number} k
  * @param {number} The kth largest element in the array.
  */
-function quickSelectLargest(arr, k) {
+function quickSelectLargest(arr: Array<number>, k: number): number | null {
   return quickSelect(arr, arr.length - k + 1);
 }
 

@@ -3,7 +3,7 @@ import { quickSelect, quickSelectLargest } from '../quickSelect';
 
 describe('quickSelect', () => {
   test('empty', () => {
-    expect(quickSelect([], 1)).toBe(undefined);
+    expect(quickSelect([], 1)).toBe(null);
   });
 
   test('one or two elements', () => {
@@ -24,16 +24,16 @@ describe('quickSelect', () => {
   });
 
   test('out of range', () => {
-    expect(quickSelect([1], 0)).toBe(undefined);
-    expect(quickSelect([1], 2)).toBe(undefined);
-    expect(quickSelect(shuffle([1, 2, 3, 10, 11, 20]), 0)).toBe(undefined);
-    expect(quickSelect(shuffle([1, 2, 3, 10, 11, 20]), 7)).toBe(undefined);
+    expect(quickSelect([1], 0)).toBe(null);
+    expect(quickSelect([1], 2)).toBe(null);
+    expect(quickSelect(shuffle([1, 2, 3, 10, 11, 20]), 0)).toBe(null);
+    expect(quickSelect(shuffle([1, 2, 3, 10, 11, 20]), 7)).toBe(null);
   });
 });
 
 describe('quickSelectLargest', () => {
   test('empty', () => {
-    expect(quickSelectLargest([], 1)).toBe(undefined);
+    expect(quickSelectLargest([], 1)).toBe(null);
   });
 
   test('one or two elements', () => {
@@ -54,13 +54,9 @@ describe('quickSelectLargest', () => {
   });
 
   test('out of range', () => {
-    expect(quickSelectLargest([1], 0)).toBe(undefined);
-    expect(quickSelectLargest([1], 2)).toBe(undefined);
-    expect(quickSelectLargest(shuffle([1, 2, 3, 10, 11, 20]), 0)).toBe(
-      undefined,
-    );
-    expect(quickSelectLargest(shuffle([1, 2, 3, 10, 11, 20]), 7)).toBe(
-      undefined,
-    );
+    expect(quickSelectLargest([1], 0)).toBe(null);
+    expect(quickSelectLargest([1], 2)).toBe(null);
+    expect(quickSelectLargest(shuffle([1, 2, 3, 10, 11, 20]), 0)).toBe(null);
+    expect(quickSelectLargest(shuffle([1, 2, 3, 10, 11, 20]), 7)).toBe(null);
   });
 });

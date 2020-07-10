@@ -1,23 +1,31 @@
 import Stack from '../data-structures/Stack';
+import nullthrows from '../utils/nullthrows';
+
+interface Graph<T> {
+  [key: string]: Array<T>;
+}
 
 /**
  * Performs a depth-first search on a graph given a starting node.
  * @param {Object} graph Node to array of neighboring nodes.
- * @param {number|string} source Source node to start traversal from.
+ * @param {T} source Source node to start traversal from.
  *  It has to exist as a node in the graph.
- * @return {number[]|string[]} A DFS-traversed order of nodes.
+ * @return {Array<T>} A DFS-traversed order of nodes.
  */
-function depthFirstSearch(graph, source) {
+function depthFirstSearch<T>(graph: Graph<T>, source: T): Array<T> {
   if (Object.keys(graph).length === 0) {
     return [];
   }
-  const stack = new Stack();
+
+  const stack = new Stack<T>();
   stack.push(source);
-  const visited = new Set([source]);
+  const visited = new Set<T>([source]);
+
   while (!stack.isEmpty()) {
-    const node = stack.pop();
+    const node = nullthrows(stack.pop());
     visited.add(node);
-    const neighbors = graph[node];
+
+    const neighbors = graph[String(node)];
     for (let i = neighbors.length - 1; i >= 0; i--) {
       const neighbor = neighbors[i];
       if (!visited.has(neighbor)) {
