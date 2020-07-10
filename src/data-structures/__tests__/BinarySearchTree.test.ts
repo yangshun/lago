@@ -1,11 +1,12 @@
 import BinarySearchTree from '../BinarySearchTree';
+import nullthrows from '../../utils/nullthrows';
 
 describe('BinarySearchTree', () => {
   describe('insert()', () => {
     test('if empty tree, value becomes root', () => {
       const tree = new BinarySearchTree();
       tree.insert(5);
-      expect(tree.root.value).toBe(5);
+      expect(nullthrows(tree.root).value).toBe(5);
     });
 
     test('inserts value at correct location in BST', () => {
@@ -14,9 +15,9 @@ describe('BinarySearchTree', () => {
       tree.insert(40);
       tree.insert(35);
 
-      const { root } = tree;
-      expect(root.left.value).toBe(20);
-      expect(root.right.value).toBe(40);
+      const root = nullthrows(tree.root);
+      expect(nullthrows(root.left).value).toBe(20);
+      expect(nullthrows(root.right).value).toBe(40);
     });
   });
 
@@ -28,6 +29,7 @@ describe('BinarySearchTree', () => {
       tree.insert(25);
       tree.insert(50);
       tree.insert(35);
+
       let searchResult = tree.search(35);
       expect(searchResult).toBe(true);
       searchResult = tree.search(555);
