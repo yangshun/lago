@@ -1,18 +1,16 @@
-class Counter extends Map {
+interface ObjectValue {
+  [key: string]: number;
+}
+
+type Items<T> = Array<T> | Array<[T, number]> | ObjectValue;
+
+class Counter<T> extends Map<T | string, number> {
   /**
    * Initialize the Counter
    * @param {*} items Iterable or mapping.
-   * @return {undefined}
+   * @return {Counter}
    */
-  constructor(items) {
-    // String type.
-    if (typeof items === 'string') {
-      super();
-      const seq = items.split('');
-      seq.forEach((item) => this.increment(item));
-      return;
-    }
-
+  constructor(items?: Items<T>) {
     // Array type.
     if (Array.isArray(items)) {
       if (items.length === 0) {
@@ -21,20 +19,24 @@ class Counter extends Map {
       }
 
       // Assume iterable object and fallback to Map's initialization.
-      if (typeof items[0] === 'object') {
-        super(items);
+      if (Array.isArray(items[0])) {
+        super(items as Array<[T, number]>);
         return;
       }
 
       super();
-      items.forEach((item) => this.increment(item));
+      (items as Array<T>).forEach((item) => this.increment(item));
       return;
     }
 
     // Object type.
     // Note that object keys are always strings.
-    if (Object.prototype.toString.call(items) === '[object Object]') {
-      super(Object.entries(items));
+    if (
+      items != null &&
+      Object.prototype.toString.call(items) === '[object Object]'
+    ) {
+      const entries = Object.entries(items);
+      super(entries);
       return;
     }
 
@@ -45,14 +47,15 @@ class Counter extends Map {
   /**
    * Returns the count associated with the key or 0 if it
    * does not exist in the counter.
-   * @param {*} key The key which count we are interested in.
+   * @param {T} key The key which count we are interested in.
    * @return {number} The count associated with the key.
    */
-  get(key) {
+  get(key: T): number {
     let value = super.get(key);
     if (value == null) {
       value = 0;
     }
+
     this.set(key, value);
     return value;
   }
@@ -60,10 +63,10 @@ class Counter extends Map {
   /**
    * Increases the count associated with the key by 1.
    * If the key does not exist, the count is set to 1.
-   * @param {*} key The key which count we want to increment.
+   * @param {T} key The key which count we want to increment.
    * @return {Counter}
    */
-  increment(key) {
+  increment(key: T): this {
     const value = this.get(key);
     this.set(key, value + 1);
     return this;
@@ -72,10 +75,10 @@ class Counter extends Map {
   /**
    * Decreases the count associated with the key by 1.
    * If the key does not exist, the count is set to -1.
-   * @param {*} key The key which count we want to decrement.
+   * @param {T} key The key which count we want to decrement.
    * @return {Counter}
    */
-  decrement(key) {
+  decrement(key: T): this {
     const value = this.get(key);
     this.set(key, value - 1);
     return this;
@@ -83,16 +86,18 @@ class Counter extends Map {
 
   /**
    * Returns the key repeated by their counts.
-   * @return {*[]} An array of keys.
+   * @return {Array<T>} An array of keys.
    */
-  elements() {
-    const elements = [];
+  elements(): Array<T> {
+    const elements: Array<T> = [];
+
     this.forEach((count, key) => {
       if (count <= 0) {
         return;
       }
       elements.push(...Array(count).fill(key));
     });
+
     return elements;
   }
 
@@ -101,24 +106,31 @@ class Counter extends Map {
    * common to the least.
    * If n is omitted, all keys in the counter are returned.
    * Keys with equal counts are ordered arbitrarily.
-   * @return {*[]} An array of [key, count] pairs.
+   * @return {Array<[T, number]>} An array of [key, count] pairs.
    */
-  mostCommon(n) {
+  mostCommon(n?: number): Array<[T | string, number]> {
     const number = n !== undefined ? n : this.size;
     return Array.from(this)
       .sort((a, b) => b[1] - a[1])
       .slice(0, number);
   }
 
-  _merge(items, op) {
+  private _merge(
+    items: Items<T>,
+    op: (value: number, count: number) => number,
+  ): this {
     const other = new Counter(items);
-    other.forEach((count, key) => {
+    other.forEach((count: number, key) => {
       let value = 0;
-      if (this.has(key)) {
-        value = this.get(key);
+      const key_ = key as T;
+
+      if (this.has(key_)) {
+        value = this.get(key_);
       }
-      this.set(key, op(value, count));
+
+      this.set(key_, op(value, count));
     });
+
     return this;
   }
 
@@ -128,7 +140,7 @@ class Counter extends Map {
    * @param {*} items Iterable or mapping.
    * @return {Counter}
    */
-  subtract(items) {
+  subtract(items: Items<T>): this {
     return this._merge(items, (value, count) => value - count);
   }
 
@@ -138,7 +150,7 @@ class Counter extends Map {
    * @param {*} items Iterable or mapping.
    * @return {Counter}
    */
-  update(items) {
+  update(items: Items<T>): this {
     return this._merge(items, (value, count) => value + count);
   }
 }

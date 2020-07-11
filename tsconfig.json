@@ -2,7 +2,7 @@
   "compilerOptions": {
     "outDir": "./lib",
     "allowJs": true,
-    "target": "es5",
+    "target": "es6",
 
     /* Strict Type-Checking Options */
     "strict": true,

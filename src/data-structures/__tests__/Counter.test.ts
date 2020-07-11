@@ -10,12 +10,12 @@ describe('Counter', () => {
 
     describe('string input', () => {
       test('empty string', () => {
-        const c = new Counter('');
+        const c = new Counter(''.split(''));
         expect(c.size).toBe(0);
       });
 
       test('non-empty string', () => {
-        const c = new Counter('foobar');
+        const c = new Counter('foobar'.split(''));
         expect(c.size).toBe(5);
         expect(c.get('a')).toBe(1);
         expect(c.get('o')).toBe(2);
