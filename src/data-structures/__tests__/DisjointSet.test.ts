@@ -79,6 +79,19 @@ describe('DisjointSet', () => {
       expect(ds.sizeOf(2)).toBe(3);
       expect(ds.sizeOf(3)).toBe(3);
     });
+
+    test('union on same-size sets', () => {
+      const n = 5;
+      const ds = new DisjointSet(n);
+      ds.union(1, 2);
+      ds.union(3, 4);
+      ds.union(2, 4);
+      expect(ds.size).toBe(n - 3);
+      expect(ds.sizeOf(1)).toBe(4);
+      expect(ds.sizeOf(2)).toBe(4);
+      expect(ds.sizeOf(3)).toBe(4);
+      expect(ds.sizeOf(4)).toBe(4);
+    });
   });
 
   test('integration test', () => {

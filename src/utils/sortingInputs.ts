@@ -1,6 +1,7 @@
 interface SortingInputsParams<T> {
   algorithm(input: Array<T>): Array<T>;
   test(testName: string, fn: unknown): void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   expect: any;
 }
 

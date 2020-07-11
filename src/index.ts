@@ -1,10 +1,14 @@
 // Algorithms
-import binarySearch from './algorithms/binarySearch';
+import {
+  binarySearch,
+  bisectLeft,
+  bisectRight,
+} from './algorithms/binarySearch';
 import breadthFirstSearch from './algorithms/breadthFirstSearch';
 import depthFirstSearch from './algorithms/depthFirstSearch';
 import heapSort from './algorithms/heapSort';
 import mergeSort from './algorithms/mergeSort';
-import quickSelect from './algorithms/quickSelect';
+import { quickSelect, quickSelectLargest } from './algorithms/quickSelect';
 import quickSort from './algorithms/quickSort';
 import topologicalSort from './algorithms/topologicalSort';
 
@@ -22,11 +26,14 @@ import Trie from './data-structures/Trie';
 export {
   // Algorithms
   binarySearch,
+  bisectLeft,
+  bisectRight,
   breadthFirstSearch,
   depthFirstSearch,
   heapSort,
   mergeSort,
   quickSelect,
+  quickSelectLargest,
   quickSort,
   topologicalSort,
   // Data Structures

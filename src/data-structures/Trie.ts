@@ -34,10 +34,8 @@ class Trie {
    */
   _modifyCountBy(str: string, difference: number): number {
     // TODO: Check that difference is a number;
-    if (!str) {
-      return 0;
-    }
     let curr = this._tree;
+
     for (let i = 0; i < str.length; i++) {
       const char = str[i];
       if (!Object.prototype.hasOwnProperty.call(curr, char)) {

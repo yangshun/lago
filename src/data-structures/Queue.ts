@@ -42,7 +42,7 @@ class Queue<T> {
     }
 
     const node = this._dummyHead.next as Node<T>;
-    const newFirst = node?.next as Node<T> | DummyTailNode;
+    const newFirst = node.next as Node<T> | DummyTailNode;
     this._dummyHead.next = newFirst;
     newFirst.prev = this._dummyHead;
     node.next = null;
@@ -67,7 +67,7 @@ class Queue<T> {
       return undefined;
     }
 
-    return (this._dummyHead?.next as Node<T>).value;
+    return (this._dummyHead.next as Node<T>).value;
   }
 
   /**
@@ -79,7 +79,7 @@ class Queue<T> {
       return undefined;
     }
 
-    return (this._dummyTail?.prev as Node<T>).value;
+    return (this._dummyTail.prev as Node<T>).value;
   }
 
   /**

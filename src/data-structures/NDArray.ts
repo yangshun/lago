@@ -7,6 +7,7 @@ class NDArray {
    * @param {*} defaultValue Default value to initialize each position of the array to.
    * @return {undefined}
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   static create(dimensions: Array<number>, defaultValue: any = 0): any {
     let value = defaultValue;
 

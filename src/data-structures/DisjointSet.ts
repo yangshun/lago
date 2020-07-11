@@ -83,6 +83,7 @@ class DisjointSet {
 
     this._setSizes[rootB] += this._setSizes[rootA];
     this._parents[rootA] = rootB;
+
     if (this._ranks[rootA] === this._ranks[rootB]) {
       ++this._ranks[rootB];
     }
