@@ -1,5 +1,4 @@
-import DoublyLinkedList from '../DoublyLinkedList';
-import Node from '../Node';
+import { DoublyLinkedList, Node } from '../../src';
 
 describe('DoublyLinkedList', () => {
   test('constructor()', () => {

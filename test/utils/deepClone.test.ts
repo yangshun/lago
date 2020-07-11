@@ -1,4 +1,4 @@
-import deepClone from '../deepClone';
+import { deepClone } from '../../src';
 
 describe('deepClone()', () => {
   test('primitives', () => {

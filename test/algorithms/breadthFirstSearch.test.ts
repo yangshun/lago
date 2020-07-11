@@ -1,4 +1,4 @@
-import breadthFirstSearch from '../breadthFirstSearch';
+import { breadthFirstSearch } from '../../src';
 
 describe('breadthFirstSearch', () => {
   test('empty graph', () => {

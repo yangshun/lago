@@ -1,4 +1,4 @@
-import Trie from '../Trie';
+import { Trie } from '../../src';
 
 function trieFactory() {
   const t = new Trie();

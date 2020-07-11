@@ -1,48 +1,49 @@
 {
-  "name": "Lago",
+  "name": "lago",
   "version": "0.0.2",
   "description": "Data structures and algorithms library for JavaScript.",
-  "main": "lib/index.js",
-  "scripts": {
-    "check-all": "yarn prettier && yarn lint && yarn tsc && yarn test",
-    "check-all:ci": "yarn prettier && yarn lint && yarn tsc && yarn run test:ci",
-    "lint": "eslint .",
-    "prettier": "prettier --config .prettierrc --write 'src/**/*.{js,ts}'",
-    "prettier:diff": "prettier --config .prettierrc --list-different 'src/**/*.{js,ts}'",
-    "test": "jest --coverage",
-    "test:ci": "jest --coverage --runInBand",
-    "start": "jest --coverage --watch"
-  },
-  "repository": "git+https://github.com/yangshun/lago.git",
-  "keywords": [
-    "algorithms",
-    "data",
-    "structures"
-  ],
   "author": "Yangshun Tay",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/yangshun/lago/issues"
   },
   "homepage": "https://github.com/yangshun/lago#readme",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "check-all": "yarn prettier && yarn lint && yarn tsc && yarn test",
+    "check-all:ci": "yarn prettier && yarn lint && yarn tsc && yarn run test:ci",
+    "prettier": "prettier --config .prettierrc --write '{src,test}/**/*.ts'",
+    "prettier:diff": "prettier --config .prettierrc --list-different '{src,test}/**/*.ts'",
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --coverage",
+    "test:ci": "tsdx test --coverage --runInBand",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build"
+  },
+  "peerDependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "module": "dist/mylib.esm.js",
   "devDependencies": {
-    "@babel/preset-env": "^7.10.4",
-    "@babel/preset-typescript": "^7.10.4",
-    "@types/jest": "^26.0.3",
-    "@types/lodash": "^4.14.157",
-    "@typescript-eslint/eslint-plugin": "^3.5.0",
-    "@typescript-eslint/parser": "^3.5.0",
-    "babel-jest": "^26.1.0",
-    "babel-plugin-transform-builtin-extend": "^1.1.2",
-    "eslint": "^7.4.0",
-    "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "jest": "^26.1.0",
-    "lodash": "^4.17.4",
-    "prettier": "^2.0.5",
-    "ts-jest": "^26.1.1",
+    "husky": "^4.2.5",
+    "lodash": "^4.17.19",
+    "tsdx": "^0.13.2",
+    "tslib": "^2.0.0",
     "typescript": "^3.9.6"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.157"
   }
 }

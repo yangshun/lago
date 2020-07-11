@@ -1,5 +1,5 @@
-import BinarySearchTree from '../BinarySearchTree';
-import nullthrows from '../../utils/nullthrows';
+import { BinarySearchTree } from '../../src';
+import nullthrows from '../../src/utils/nullthrows';
 
 describe('BinarySearchTree', () => {
   describe('insert()', () => {

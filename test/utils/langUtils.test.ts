@@ -1,4 +1,6 @@
-import {
+import { langUtils } from '../../src';
+
+const {
   isArray,
   isBoolean,
   isInteger,
@@ -7,7 +9,7 @@ import {
   isObject,
   isString,
   isUndefined,
-} from '../langUtils';
+} = langUtils;
 
 describe('langUtils', () => {
   test('isArray()', () => {

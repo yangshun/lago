@@ -1,4 +1,4 @@
-import Deque from '../Deque';
+import { Deque } from '../../src';
 
 describe('Deque', () => {
   test('enqueue()', () => {

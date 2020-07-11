@@ -1,4 +1,4 @@
-import BinaryTreeNode from '../BinaryTreeNode';
+import { BinaryTreeNode } from '../../src';
 
 describe('BinaryTreeNode', () => {
   test('constructor()', () => {

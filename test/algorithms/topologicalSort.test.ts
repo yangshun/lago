@@ -1,4 +1,4 @@
-import topologicalSort from '../topologicalSort';
+import { topologicalSort } from '../../src';
 
 describe('topologicalSort', () => {
   test('empty graph', () => {

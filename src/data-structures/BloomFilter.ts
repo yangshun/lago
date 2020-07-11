@@ -40,7 +40,7 @@ class BloomFilter<T> {
    * @param {*} item The item to be added.
    */
   add(item: T): void {
-    this._hashFunctions.forEach((hashFunction) => {
+    this._hashFunctions.forEach(hashFunction => {
       // the mod _size is needed to ensure we do not go out of bounds
       this._bits[hashFunction(item) % this._size] = true;
     });
@@ -55,7 +55,7 @@ class BloomFilter<T> {
   contains(item: T): boolean {
     // check if every bit at the location indicated by the hash function returns true
     return this._hashFunctions.every(
-      (hashFunction) => this._bits[hashFunction(item) % this._size],
+      hashFunction => this._bits[hashFunction(item) % this._size],
     );
   }
 

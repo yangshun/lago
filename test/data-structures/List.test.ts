@@ -1,5 +1,4 @@
-import List from '../List';
-import Node from '../Node';
+import { List, Node } from '../../src';
 
 function listFactory(length: number) {
   const list = new List();

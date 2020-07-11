@@ -25,7 +25,7 @@ class Counter<T> extends Map<T | string, number> {
       }
 
       super();
-      (items as Array<T>).forEach((item) => this.increment(item));
+      (items as Array<T>).forEach(item => this.increment(item));
       return;
     }
 

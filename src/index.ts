@@ -30,7 +30,7 @@ import Trie from './data-structures/Trie';
 
 // Utils
 import deepClone from './utils/deepClone';
-import langUtils from './utils/langUtils';
+import * as langUtils from './utils/langUtils';
 import nullthrows from './utils/nullthrows';
 import randomInt from './utils/randomInt';
 

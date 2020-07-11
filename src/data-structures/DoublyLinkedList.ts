@@ -142,7 +142,7 @@ class DoublyLinkedList<T> {
    */
   static fromArray<T>(arr: Array<T>): DoublyLinkedList<T> {
     const dll = new DoublyLinkedList<T>();
-    arr.forEach((el) => dll.push(el));
+    arr.forEach(el => dll.push(el));
     return dll;
   }
 

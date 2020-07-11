@@ -1,11 +1,28 @@
 {
+  "include": ["src", "types"],
   "compilerOptions": {
-    "outDir": "./lib",
-    "allowJs": true,
+    "module": "esnext",
+    "lib": ["dom", "esnext"],
+    "importHelpers": true,
+    "declaration": true,
+    "sourceMap": true,
+    "rootDir": "./src",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "paths": {
+      "*": ["src/*", "node_modules/*"]
+    },
+    "jsx": "react",
+    "esModuleInterop": true,
     "target": "es6",
+    "outDir": "dist",
 
     /* Strict Type-Checking Options */
-    "strict": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "strictBindCallApply": true,
@@ -13,20 +30,10 @@
     "noImplicitThis": true,
     "alwaysStrict": true,
 
-    /* Additional Checks */
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-
     /* Module Resolution Options */
-    "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
 
     /* Advanced Options */
     "resolveJsonModule": true
-  },
-  "include": ["./src/**/*"],
-  "exclude": ["node_modules", "**/__tests__/**/*", "**/lib/**/*"]
+  }
 }
