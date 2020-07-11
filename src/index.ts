@@ -13,15 +13,26 @@ import quickSort from './algorithms/quickSort';
 import topologicalSort from './algorithms/topologicalSort';
 
 // Data Structures
+import BinarySearchTree from './data-structures/BinarySearchTree';
+import BinaryTree from './data-structures/BinaryTree';
+import BinaryTreeNode from './data-structures/BinaryTreeNode';
+import BloomFilter from './data-structures/BloomFilter';
 import Counter from './data-structures/Counter';
 import Deque from './data-structures/Deque';
 import DisjointSet from './data-structures/DisjointSet';
+import DoublyLinkedList from './data-structures/DoublyLinkedList';
 import List from './data-structures/List';
 import NDArray from './data-structures/NDArray';
 import Node from './data-structures/Node';
 import Queue from './data-structures/Queue';
 import Stack from './data-structures/Stack';
 import Trie from './data-structures/Trie';
+
+// Utils
+import deepClone from './utils/deepClone';
+import langUtils from './utils/langUtils';
+import nullthrows from './utils/nullthrows';
+import randomInt from './utils/randomInt';
 
 export {
   // Algorithms
@@ -37,13 +48,23 @@ export {
   quickSort,
   topologicalSort,
   // Data Structures
+  BinarySearchTree,
+  BinaryTree,
+  BinaryTreeNode,
+  BloomFilter,
   Counter,
   Deque,
   DisjointSet,
+  DoublyLinkedList,
   List,
   NDArray,
   Node,
   Queue,
   Stack,
   Trie,
+  // Utils
+  deepClone,
+  langUtils,
+  nullthrows,
+  randomInt,
 };
