@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import Counter from '../Counter';
+import { Counter } from '../../src';
 
 describe('Counter', () => {
   describe('constructor()', () => {

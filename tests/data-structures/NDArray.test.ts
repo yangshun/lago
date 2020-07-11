@@ -1,4 +1,4 @@
-import NDArray from '../NDArray';
+import { NDArray } from '../../src';
 
 describe('NDArray', () => {
   test('one dimension', () => {

@@ -1,4 +1,4 @@
-import { binarySearch, bisectLeft, bisectRight } from '../binarySearch';
+import { binarySearch, bisectLeft, bisectRight } from '../../src';
 
 describe('binarySearch', () => {
   test('empty', () => {

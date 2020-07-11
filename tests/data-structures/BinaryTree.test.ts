@@ -1,6 +1,4 @@
-import BinaryTree from '../BinaryTree';
-import BinaryTreeNode from '../BinaryTreeNode';
-import nullthrows from '../../utils/nullthrows';
+import { BinaryTree, BinaryTreeNode, nullthrows } from '../../src';
 
 function createTree() {
   const tree = new BinaryTree('F');

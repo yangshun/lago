@@ -1,4 +1,4 @@
-import deepClone from '../utils/deepClone';
+import { deepClone } from '..';
 
 class NDArray {
   /**

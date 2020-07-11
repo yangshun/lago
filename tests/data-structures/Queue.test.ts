@@ -1,4 +1,4 @@
-import Queue from '../Queue';
+import { Queue } from '../../src';
 
 describe('Queue', () => {
   test('constructor', () => {

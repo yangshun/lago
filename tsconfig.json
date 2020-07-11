@@ -27,6 +27,5 @@
     /* Advanced Options */
     "resolveJsonModule": true
   },
-  "include": ["./src/**/*"],
-  "exclude": ["node_modules", "**/__tests__/**/*", "**/lib/**/*"]
+  "include": ["src"]
 }

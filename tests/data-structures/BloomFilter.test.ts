@@ -1,8 +1,10 @@
-import type { HashFunctions } from '../BloomFilter';
+import { BloomFilter } from '../../src';
 
-import BloomFilter from '../BloomFilter';
+interface ObjectWithValue {
+  value: number;
+}
 
-const OBJECT_HASH_FUNCTIONS: HashFunctions<Readonly<{ value: number }>> = [
+const OBJECT_HASH_FUNCTIONS: Array<(item: ObjectWithValue) => number> = [
   (x) => (25 * x.value + 13) % 31,
   (x) => (109 * x.value + 71) % 139,
   (x) => (677 * x.value + 241) % 859,

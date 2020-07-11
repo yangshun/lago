@@ -1,5 +1,5 @@
 import shuffle from 'lodash/shuffle';
-import { quickSelect, quickSelectLargest } from '../quickSelect';
+import { quickSelect, quickSelectLargest } from '../../src';
 
 describe('quickSelect', () => {
   test('empty', () => {

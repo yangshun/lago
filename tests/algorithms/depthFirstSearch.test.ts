@@ -1,4 +1,4 @@
-import depthFirstSearch from '../depthFirstSearch';
+import { depthFirstSearch } from '../../src';
 
 describe('depthFirstSearch', () => {
   test('empty graph', () => {

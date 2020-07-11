@@ -1,4 +1,4 @@
-import nullthrows from '../nullthrows';
+import { nullthrows } from '../../src';
 
 describe('nullthrows()', () => {
   test('throws for null values', () => {

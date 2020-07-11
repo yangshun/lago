@@ -1,4 +1,4 @@
-import DisjointSet from '../DisjointSet';
+import { DisjointSet } from '../../src';
 
 describe('DisjointSet', () => {
   test('constructor', () => {
