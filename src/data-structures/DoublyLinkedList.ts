@@ -1,9 +1,9 @@
 import Node, { DummyHeadNode, DummyTailNode, AbstractNode } from './Node';
 
 class DoublyLinkedList<T> {
-  private _dummyHead: DummyHeadNode;
+  protected _dummyHead: DummyHeadNode;
 
-  private _dummyTail: DummyTailNode;
+  protected _dummyTail: DummyTailNode;
 
   protected _length: number;
 
