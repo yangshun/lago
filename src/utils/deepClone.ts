@@ -15,7 +15,7 @@ export default function deepClone<T>(val: T): T {
 
   if (isObject(val)) {
     const objClone = {};
-    Object.keys(val).forEach((key) => {
+    Object.keys(val).forEach(key => {
       // @ts-expect-error: Hard to type this.
       objClone[key] = deepClone(val[key]);
     });

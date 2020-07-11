@@ -15,12 +15,12 @@ function topologicalSort(graph: Graph<string>): Array<string> {
   const order: Array<string> = [];
   const queue = new Queue<string>();
 
-  Object.keys(graph).forEach((node) => {
+  Object.keys(graph).forEach(node => {
     nodes.set(node, { in: 0, out: new Set(graph[node]) });
   });
 
-  Object.keys(graph).forEach((node) => {
-    graph[node].forEach((neighbor) => {
+  Object.keys(graph).forEach(node => {
+    graph[node].forEach(neighbor => {
       nullthrows(nodes.get(String(neighbor))).in += 1;
     });
   });
@@ -33,7 +33,7 @@ function topologicalSort(graph: Graph<string>): Array<string> {
 
   while (queue.length) {
     const node = queue.dequeue();
-    nullthrows(nodes.get(nullthrows(node))).out.forEach((neighbor) => {
+    nullthrows(nodes.get(nullthrows(node))).out.forEach(neighbor => {
       const neighborNode = nullthrows(nodes.get(String(neighbor)));
       neighborNode.in -= 1;
       if (neighborNode.in === 0) {

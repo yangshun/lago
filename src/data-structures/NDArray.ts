@@ -1,4 +1,4 @@
-import { deepClone } from '..';
+import deepClone from '../utils/deepClone';
 
 class NDArray {
   /**
@@ -15,7 +15,7 @@ class NDArray {
       /* eslint-disable no-loop-func */
       value = Array(dimensions[i])
         .fill(null)
-        .map((_) => deepClone(value));
+        .map(_ => deepClone(value));
     }
 
     return value;
