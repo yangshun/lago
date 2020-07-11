@@ -1,8 +1,19 @@
 {
+  "include": ["src"],
   "compilerOptions": {
+    /* tsdx default */
+    "module": "esnext",
+    "lib": ["dom", "esnext"],
+    "importHelpers": true,
+    "declaration": true,
+    "sourceMap": true,
+    "rootDir": "./src",
+    "baseUrl": "./",
+    "paths": {
+      "*": ["src/*", "node_modules/*"]
+    },
+    "jsx": "react",
     "outDir": "./lib",
-    "allowJs": true,
-    "target": "es6",
 
     /* Strict Type-Checking Options */
     "strict": true,
@@ -26,6 +37,5 @@
 
     /* Advanced Options */
     "resolveJsonModule": true
-  },
-  "include": ["src"]
+  }
 }

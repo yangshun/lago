@@ -3,6 +3,11 @@
   "version": "0.0.2",
   "description": "Data structures and algorithms library for JavaScript.",
   "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "src"
+  ],
   "scripts": {
     "check-all": "yarn prettier && yarn lint && yarn tsc && yarn test",
     "check-all:ci": "yarn prettier && yarn lint && yarn tsc && yarn run test:ci",
