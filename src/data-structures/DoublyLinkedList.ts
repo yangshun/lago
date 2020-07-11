@@ -1,12 +1,18 @@
-import Node from './Node';
+import Node, { DummyHeadNode, DummyTailNode, AbstractNode } from './Node';
 
-class DoublyLinkedList {
+class DoublyLinkedList<T> {
+  private _dummyHead: DummyHeadNode;
+
+  private _dummyTail: DummyTailNode;
+
+  protected _length: number;
+
   constructor() {
-    this._dummyHead = new Node(null);
-    this._dummyTail = new Node(null);
+    this._dummyHead = new DummyHeadNode();
+    this._dummyTail = new DummyTailNode();
     this._dummyHead.next = this._dummyTail;
     this._dummyTail.prev = this._dummyHead;
-    this.length = 0;
+    this._length = 0;
   }
 
   /**
@@ -14,15 +20,15 @@ class DoublyLinkedList {
    * @param {*} element
    * @return {number} The new length of the DoublyLinkedList.
    */
-  push(element) {
+  push(element: T): number {
     const newLastNode = new Node(element); // newLastNode is to be added.
-    const lastNode = this._dummyTail.prev;
+    const lastNode = this._dummyTail.prev as AbstractNode;
     newLastNode.prev = lastNode;
     newLastNode.next = this._dummyTail;
     lastNode.next = newLastNode;
     this._dummyTail.prev = newLastNode;
-    this.length++;
-    return this.length;
+    this._length++;
+    return this._length;
   }
 
   /**
@@ -30,32 +36,34 @@ class DoublyLinkedList {
    * @param {*} element
    * @return {number} The new length of the DoublyLinkedList.
    */
-  unshift(element) {
+  unshift(element: T): number {
     const newFirstNode = new Node(element); // newFirstNode is to be added.
-    const firstNode = this._dummyHead.next;
+    const firstNode = this._dummyHead.next as AbstractNode;
     newFirstNode.prev = this._dummyHead;
     newFirstNode.next = firstNode;
     firstNode.prev = newFirstNode;
     this._dummyHead.next = newFirstNode;
-    this.length++;
-    return this.length;
+    this._length++;
+    return this._length;
   }
 
   /**
    * Removes the element at the front of the DoublyLinkedList.
    * @return {*} The element at the front of the DoublyLinkedList.
    */
-  shift() {
+  shift(): T | undefined {
     if (this.isEmpty()) {
       return undefined;
     }
-    const firstNode = this._dummyHead.next; // firstNode is to be removed.
-    const newFirstNode = firstNode.next;
+
+    const firstNode = this._dummyHead.next as Node<T>; // firstNode is to be removed.
+    const newFirstNode = firstNode.next as AbstractNode;
     this._dummyHead.next = newFirstNode;
     newFirstNode.prev = this._dummyHead;
     firstNode.next = null;
     firstNode.prev = null;
-    this.length--;
+    this._length--;
+
     return firstNode.value;
   }
 
@@ -63,17 +71,19 @@ class DoublyLinkedList {
    * Removes the element at the back of the DoublyLinkedList.
    * @return {*} The element at the back of the DoublyLinkedList.
    */
-  pop() {
+  pop(): T | undefined {
     if (this.isEmpty()) {
       return undefined;
     }
-    const lastNode = this._dummyTail.prev; // lastNode is to be removed.
-    const newLastNode = lastNode.prev;
+
+    const lastNode = this._dummyTail.prev as Node<T>; // lastNode is to be removed.
+    const newLastNode = lastNode.prev as AbstractNode;
     this._dummyTail.prev = newLastNode;
     newLastNode.next = this._dummyTail;
     lastNode.next = null;
     lastNode.prev = null;
-    this.length--;
+    this._length--;
+
     return lastNode.value;
   }
 
@@ -81,53 +91,57 @@ class DoublyLinkedList {
    * Returns true if the DoublyLinkedList has no elements.
    * @return {boolean}
    */
-  isEmpty() {
-    return this.length === 0;
+  isEmpty(): boolean {
+    return this._length === 0;
   }
 
   /**
    * Returns the element at the front of the DoublyLinkedList.
    * @return {*} The element at the front of the DoublyLinkedList.
    */
-  front() {
+  front(): T | undefined {
     if (this.isEmpty()) {
       return undefined;
     }
-    return this._dummyHead.next.value;
+
+    return (this._dummyHead.next as Node<T>).value;
   }
 
   /**
    * Returns the element at the back of the DoublyLinkedList.
    * @return {*} The element at the back of the DoublyLinkedList.
    */
-  back() {
+  back(): T | undefined {
     if (this.isEmpty()) {
       return undefined;
     }
-    return this._dummyTail.prev.value;
+
+    return (this._dummyTail.prev as Node<T>).value;
   }
 
   /**
    * Converts the contents of the DoublyLinkedList into an array.
-   * @return {*[]} An array of elements.
+   * @return {Array<T>} An array of elements.
    */
-  toArray() {
+  toArray(): Array<T> {
     const arr = [];
-    let curr = this._dummyHead.next;
-    for (let i = 0; i < this.length; i++) {
+    let curr = this._dummyHead.next as Node<T>;
+
+    for (let i = 0; i < this._length; i++) {
       arr.push(curr.value);
-      curr = curr.next;
+      curr = curr.next as Node<T>;
     }
+
     return arr;
   }
 
   /**
    * Creates a DoublyLinkedList instance from an array of elements.
-   * @param {*[]} arr
+   * @param {Array<T>} arr
    * @return {DoublyLinkedList} A new DoublyLinkList instance containing the element.
    */
-  static fromArray(arr) {
-    const dll = new DoublyLinkedList();
+  static fromArray<T>(arr: Array<T>): DoublyLinkedList<T> {
+    const dll = new DoublyLinkedList<T>();
     arr.forEach((el) => dll.push(el));
     return dll;
   }
@@ -139,18 +153,27 @@ class DoublyLinkedList {
    * Intended for users who want to manage their own nodes directly without a wrapper class.
    * @return {Node} The internal head Node.
    */
-  headNode() {
+  headNode(): Node<T> | undefined {
     if (this.isEmpty()) {
       return undefined;
     }
-    const head = this._dummyHead.next;
-    const tail = this._dummyTail.prev;
+
+    const head = this._dummyHead.next as Node<T>;
+    const tail = this._dummyTail.prev as Node<T>;
     head.prev = null;
     tail.next = null;
     this._dummyHead.next = this._dummyTail;
     this._dummyTail.prev = this._dummyHead;
-    this.length = 0;
+    this._length = 0;
     return head;
+  }
+
+  /**
+   * Returns the number of elements in the DoublyLinkedList.
+   * @return {number} Number of elements in the DoublyLinkedList.
+   */
+  get length(): number {
+    return this._length;
   }
 }
 

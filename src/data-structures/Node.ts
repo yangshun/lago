@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-interface AbstractNode {
+export interface AbstractNode {
   next?: AbstractNode | null;
   prev?: AbstractNode | null;
 }

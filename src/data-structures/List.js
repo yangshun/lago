@@ -44,7 +44,7 @@ class List extends DoublyLinkedList {
     newNode.prev = prevNode;
     node.prev = newNode;
     newNode.next = node;
-    this.length++;
+    this._length++;
   }
 
   /**
@@ -64,7 +64,7 @@ class List extends DoublyLinkedList {
     nextNode.prev = prevNode;
     node.next = null;
     node.prev = null;
-    this.length--;
+    this._length--;
     return true;
   }
 

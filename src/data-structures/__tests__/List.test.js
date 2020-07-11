@@ -67,9 +67,9 @@ describe('List', () => {
         expect(traverseNodes(l, -100, true).value).toBe(100);
         expect(traverseNodes(l, -12, true).value).toBe(100);
         expect(traverseNodes(l, -11, true).value).toBe(100);
-        expect(traverseNodes(l, 10, true).value).toBe(null);
-        expect(traverseNodes(l, 11, true).value).toBe(null);
-        expect(traverseNodes(l, 100, true).value).toBe(null);
+        expect(traverseNodes(l, 10, true).value).toBe(undefined);
+        expect(traverseNodes(l, 11, true).value).toBe(undefined);
+        expect(traverseNodes(l, 100, true).value).toBe(undefined);
       });
     });
   });

@@ -145,11 +145,11 @@ describe('DoublyLinkedList', () => {
   describe('headNode()', () => {
     test('non-empty array', () => {
       const dll = DoublyLinkedList.fromArray([1, 2, 3, 4, 5, 6]);
-      const head = dll.headNode();
+      const head = dll.headNode() as Node<number>;
       expect(head).toBeTruthy();
       expect(head instanceof Node).toBeTruthy();
       expect(head.value).toBe(1);
-      expect(head.next.value).toBe(2);
+      expect((head.next as Node<number>).value).toBe(2);
     });
 
     test('empty array', () => {
