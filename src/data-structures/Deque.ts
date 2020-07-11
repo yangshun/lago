@@ -1,11 +1,11 @@
 import DoublyLinkedList from './DoublyLinkedList';
 
-class Deque extends DoublyLinkedList {
+class Deque<T> extends DoublyLinkedList<T> {
   /**
    * Adds an element to the back of the Deque.
    * @param {*} element The element to be queued to the back of the Deque.
    */
-  enqueue(element) {
+  enqueue(element: T): void {
     this.push(element);
   }
 
@@ -13,7 +13,7 @@ class Deque extends DoublyLinkedList {
    * Adds an element to the front of the Deque.
    * @param {*} element The element to be queued to the front of the Deque.
    */
-  enqueueFront(element) {
+  enqueueFront(element: T): void {
     this.unshift(element);
   }
 
@@ -21,7 +21,7 @@ class Deque extends DoublyLinkedList {
    * Removes the element at the front of the Deque.
    * @return {*} The element at the front of the Deque.
    */
-  dequeue() {
+  dequeue(): T | undefined {
     return this.shift();
   }
 
@@ -29,7 +29,7 @@ class Deque extends DoublyLinkedList {
    * Removes the element at the back of the Deque.
    * @return {*} The element at the back of the Deque.
    */
-  dequeueBack() {
+  dequeueBack(): T | undefined {
     return this.pop();
   }
 }
