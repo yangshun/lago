@@ -21,7 +21,6 @@ describe('Trie', () => {
   describe('insert()', () => {
     test('insertion with invalid parameters', () => {
       const t = new Trie();
-      expect(t.insert()).toBe(0);
       expect(t.insert('foobar', -1)).toBe(0);
       expect(t.insert('foobar', 0)).toBe(0);
       expect(t.size).toBe(0);
@@ -167,6 +166,7 @@ describe('Trie', () => {
     expect(t.shortestPrefix('pict')).toBe(null);
     expect(t.shortestPrefix('dict')).toBe(null);
     expect(t.shortestPrefix('dictionary')).toBe('dictionary');
+
     t.insert('diction');
     expect(t.shortestPrefix('dictionary')).toBe('diction');
   });
