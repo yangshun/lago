@@ -42,17 +42,18 @@ class BinaryTree<T> {
    */
   inOrder(): Array<T> {
     const arr: Array<T> = [];
-    function _inOrder(node: BinaryTreeNode<T> | null) {
+
+    function inOrderImpl(node: BinaryTreeNode<T> | null) {
       if (node == null) {
         return;
       }
 
-      _inOrder(node.left);
+      inOrderImpl(node.left);
       arr.push(node.value);
-      _inOrder(node.right);
+      inOrderImpl(node.right);
     }
 
-    _inOrder(this.root);
+    inOrderImpl(this.root);
     return arr;
   }
 
@@ -62,6 +63,7 @@ class BinaryTree<T> {
    */
   preOrder(): Array<T> {
     const arr: Array<T> = [];
+
     function preOrderImpl(node: BinaryTreeNode<T> | null) {
       if (!node) {
         return;
@@ -82,6 +84,7 @@ class BinaryTree<T> {
    */
   postOrder(): Array<T> {
     const arr: Array<T> = [];
+
     function postOrderImpl(node: BinaryTreeNode<T> | null) {
       if (!node) {
         return;

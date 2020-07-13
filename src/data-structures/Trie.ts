@@ -32,7 +32,7 @@ class Trie {
    * @param {number} difference
    * @return {number}
    */
-  _modifyCountBy(str: string, difference: number): number {
+  private _modifyCountBy(str: string, difference: number): number {
     // TODO: Check that difference is a number;
     let curr = this._tree;
 

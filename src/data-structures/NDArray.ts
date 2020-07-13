@@ -5,7 +5,7 @@ class NDArray {
    * Initializes an N-dimensional array.
    * @param {number[]} dimensions Dimensions of the array.
    * @param {*} defaultValue Default value to initialize each position of the array to.
-   * @return {undefined}
+   * @return {Array<any>}
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   static create(dimensions: Array<number>, defaultValue: any = 0): any {

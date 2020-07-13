@@ -49,7 +49,7 @@ class Stack<T> {
 
   /**
    * Returns the element at the top of the Stack.
-   * @return {*} The element at the top of the Stack.
+   * @return {T} The element at the top of the Stack.
    */
   peek(): T | undefined {
     if (this.isEmpty()) {
