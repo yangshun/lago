@@ -41,9 +41,7 @@
     "lodash": "^4.17.19",
     "tsdx": "^0.13.2",
     "tslib": "^2.0.0",
-    "typescript": "^3.9.6"
-  },
-  "dependencies": {
+    "typescript": "^3.9.6",
     "@types/lodash": "^4.14.157"
   }
 }
