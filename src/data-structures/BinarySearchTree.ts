@@ -43,6 +43,7 @@ class BinarySearchTree extends BinaryTree<number> {
   /**
    * Recursively search for a value in the BST
    * @param {number} value The value to search for.
+   * @param {*} node The current node.
    * @return {Boolean} True if value is found, false if not.
    */
   search(val: number): boolean {
