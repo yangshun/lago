@@ -18,8 +18,8 @@ class GraphNode<T> {
   }
 
   /**
-   * Set Adjacent node to current node.
-   * @param {GraphNode} node node to be set as adjacent of the current node
+   * Associate given node with another node as immediate neighbor.
+   * @param {GraphNode} node node to be set as adjacent of the current node.
    */
   setAdj(node: GraphNode<T>) {
     this.adjNodes.push(node);

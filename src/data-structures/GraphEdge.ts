@@ -8,6 +8,7 @@ class GraphEdge<T> {
   public weight: number;
 
   /**
+   * Initialize an Edge.
    * @param {GraphNode} nodeA start node
    * @param {GraphNode} nodeB end node
    * @param {number} weight weight of the edge A-B.
@@ -18,6 +19,10 @@ class GraphEdge<T> {
     this.weight = weight;
   }
 
+  /**
+   * Get Edge Key.
+   * @return {String} The key for given Edge.
+   */
   getKey() {
     return `${this.nodeA.value}_${this.nodeB.value}`;
   }
