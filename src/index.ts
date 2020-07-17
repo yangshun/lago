@@ -27,6 +27,9 @@ import Node from './data-structures/Node';
 import Queue from './data-structures/Queue';
 import Stack from './data-structures/Stack';
 import Trie from './data-structures/Trie';
+import Graph from './data-structures/Graph';
+import GraphNode from './data-structures/GraphNode';
+import GraphEdge from './data-structures/GraphEdge';
 
 // Utils
 import deepClone from './utils/deepClone';
@@ -56,6 +59,9 @@ export {
   Deque,
   DisjointSet,
   DoublyLinkedList,
+  Graph,
+  GraphNode,
+  GraphEdge,
   List,
   NDArray,
   Node,
