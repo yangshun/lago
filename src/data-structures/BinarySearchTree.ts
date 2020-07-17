@@ -117,6 +117,61 @@ class BinarySearchTree extends BinaryTree<number> {
 
     return getMaximumImpl(this.root);
   }
+
+  /**
+   * Recursively delete a given value from the tree.
+   * @param {number} value The value to delete.
+   * @param {BinaryTreeNode} node The current node.
+   * @return {BinaryTreeNode} The root node after deletion.
+   */
+  delete(val: number): BinaryTreeNode<number> | null {
+    function deleteImpl(
+      value: number,
+      node: BinaryTreeNode<number> | null,
+    ): BinaryTreeNode<number> | null {
+      if (!node) {
+        return null;
+      }
+
+      const nodeValue = node.value;
+      const { left } = node;
+      const { right } = node;
+      if (value < nodeValue) {
+        node.left = deleteImpl(value, left);
+        return node;
+      } else if (value > nodeValue) {
+        node.right = deleteImpl(value, right);
+        return node;
+      } else {
+        if (!left && !right) {
+          node = null;
+          return node;
+        }
+        if (!left) {
+          node = right;
+          return node;
+        } else if (!right) {
+          node = left;
+          return node;
+        }
+        const tempNode: BinaryTreeNode<number> = findMinNodeHelper(right);
+        node.value = tempNode.value;
+        node.right = deleteImpl(tempNode.value, right);
+        return node;
+      }
+    }
+    function findMinNodeHelper(
+      node: BinaryTreeNode<number>,
+    ): BinaryTreeNode<number> {
+      const { left } = node;
+      if (!left) {
+        return node;
+      } else {
+        return findMinNodeHelper(left);
+      }
+    }
+    return (this.root = deleteImpl(val, this.root));
+  }
 }
 
 export default BinarySearchTree;
