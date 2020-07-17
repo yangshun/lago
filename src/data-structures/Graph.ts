@@ -9,8 +9,8 @@ class Graph<T> {
   public isDirected: Boolean;
 
   /**
-   * Initialize a Graph with a boolean value for directed-ness.
-   * @param {Boolean} isDirected decide whether graph is directed or not.
+   * Initialize Graph with a boolean value for directed-ness.
+   * @param {Boolean} isDirected decides whether the graph is directed or not.
    */
   constructor(isDirected: Boolean = false) {
     this.nodes = {};
@@ -50,16 +50,16 @@ class Graph<T> {
   }
 
   /**
-   *Get all the nodes in the Graph
-   * @return {Array<GraphNodes<T>>} The Array consisting of nodes
+   * Get all the nodes in the Graph
+   * @return {Array} The Array consisting of nodes
    */
   getAllNodes(): Array<T> {
     return Object.values(this.nodes);
   }
 
   /**
-   *Get All the Edges in the graph
-   * @return {Array<GraphEdges<T>>} The Array consisting of all the edges in the graph
+   * Get All the Edges in the graph
+   * @return {Array} The Array consisting of all the edges in the graph
    */
   getAllEdges(): Array<T> {
     return Object.values(this.edges);
