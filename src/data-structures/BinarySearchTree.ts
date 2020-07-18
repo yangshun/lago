@@ -71,28 +71,29 @@ class BinarySearchTree extends BinaryTree<number> {
     return searchImpl(val, this.root);
   }
 
+  private _getMinimumNode(
+    node: BinaryTreeNode<number> | null,
+  ): BinaryTreeNode<number> | null {
+    if (!node) {
+      return null;
+    }
+
+    const { left } = node;
+    if (!left) {
+      return node;
+    }
+
+    return this._getMinimumNode(left);
+  }
+
   /**
    * Recursively get the minimum value in the tree.
    * @param {BinaryTreeNode} node The current node. Param is not required.
    * @return {*} The minimum value.
    */
   getMinimum(): number | null {
-    function getMinimumImpl(
-      node: BinaryTreeNode<number> | null,
-    ): number | null {
-      if (!node) {
-        return null;
-      }
-
-      const { left } = node;
-      if (!left) {
-        return node.value;
-      }
-
-      return getMinimumImpl(left);
-    }
-
-    return getMinimumImpl(this.root);
+    const minNode = this._getMinimumNode(this.root);
+    return minNode != null ? minNode.value : null;
   }
 
   /**
@@ -125,10 +126,10 @@ class BinarySearchTree extends BinaryTree<number> {
    * @return {BinaryTreeNode} The root node after deletion.
    */
   delete(val: number): BinaryTreeNode<number> | null {
-    function deleteImpl(
+    const deleteImpl = (
       value: number,
       node: BinaryTreeNode<number> | null,
-    ): BinaryTreeNode<number> | null {
+    ): BinaryTreeNode<number> | null => {
       if (!node) {
         return null;
       }
@@ -142,35 +143,31 @@ class BinarySearchTree extends BinaryTree<number> {
       } else if (value > nodeValue) {
         node.right = deleteImpl(value, right);
         return node;
-      } else {
-        if (!left && !right) {
-          node = null;
-          return node;
-        }
-        if (!left) {
-          node = right;
-          return node;
-        } else if (!right) {
-          node = left;
-          return node;
-        }
-        const tempNode: BinaryTreeNode<number> = findMinNodeHelper(right);
-        node.value = tempNode.value;
-        node.right = deleteImpl(tempNode.value, right);
-        return node;
       }
-    }
-    function findMinNodeHelper(
-      node: BinaryTreeNode<number>,
-    ): BinaryTreeNode<number> {
-      const { left } = node;
+
+      if (!left && !right) {
+        return null;
+      }
+
       if (!left) {
-        return node;
-      } else {
-        return findMinNodeHelper(left);
+        return right;
       }
-    }
-    return (this.root = deleteImpl(val, this.root));
+
+      if (!right) {
+        return left;
+      }
+
+      const tempNode: BinaryTreeNode<number> = this._getMinimumNode(
+        right,
+      ) as BinaryTreeNode<number>;
+      node.value = tempNode.value;
+      node.right = deleteImpl(tempNode.value, right);
+
+      return node;
+    };
+
+    this.root = deleteImpl(val, this.root);
+    return this.root;
   }
 }
 

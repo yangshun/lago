@@ -73,6 +73,7 @@ describe('BinarySearchTree', () => {
       tree.delete(20);
       expect(tree.inOrder()).toEqual([]);
     });
+
     test('delete root node from BST', () => {
       const tree = new BinarySearchTree(30);
       tree.insert(20);
@@ -81,10 +82,10 @@ describe('BinarySearchTree', () => {
       tree.insert(50);
       tree.insert(5);
       tree.insert(6);
-
       tree.delete(30);
       expect(tree.inOrder()).toEqual([5, 6, 10, 20, 40, 50]);
     });
+
     test('delete value from BST which does not exists', () => {
       const tree = new BinarySearchTree(20);
       tree.insert(10);
@@ -94,10 +95,10 @@ describe('BinarySearchTree', () => {
       tree.insert(70);
       tree.insert(5);
       tree.insert(6);
-
       tree.delete(100);
       expect(tree.inOrder()).toEqual([5, 6, 10, 20, 40, 50, 60, 70]);
     });
+
     test('deletes value from the BST', () => {
       const tree = new BinarySearchTree(50);
       tree.insert(20);
@@ -114,7 +115,6 @@ describe('BinarySearchTree', () => {
       tree.insert(80);
       tree.insert(70);
       tree.insert(100);
-
       tree.delete(100);
       expect(tree.inOrder()).toEqual([
         5,
@@ -132,6 +132,7 @@ describe('BinarySearchTree', () => {
         70,
         80,
       ]);
+
       tree.delete(10);
       expect(tree.inOrder()).toEqual([
         5,
@@ -148,6 +149,7 @@ describe('BinarySearchTree', () => {
         70,
         80,
       ]);
+
       tree.delete(80);
       expect(tree.inOrder()).toEqual([
         5,
@@ -163,6 +165,7 @@ describe('BinarySearchTree', () => {
         60,
         70,
       ]);
+
       tree.delete(20);
       expect(tree.inOrder()).toEqual([
         5,
@@ -177,14 +180,18 @@ describe('BinarySearchTree', () => {
         60,
         70,
       ]);
+
       tree.delete(15);
       tree.delete(60);
       expect(tree.inOrder()).toEqual([5, 12, 14, 30, 35, 40, 50, 55, 70]);
+
       tree.delete(35);
       tree.delete(12);
       expect(tree.inOrder()).toEqual([5, 14, 30, 40, 50, 55, 70]);
+
       tree.delete(30);
       expect(tree.inOrder()).toEqual([5, 14, 40, 50, 55, 70]);
+
       tree.delete(40);
       tree.delete(50);
       expect(tree.inOrder()).toEqual([5, 14, 55, 70]);
