@@ -9,9 +9,10 @@ describe('Graph', () => {
 
       expect(graph).toBeDefined();
       expect(graph.isDirected).toBe(false);
-      expect(graph.nodes).toEqual({});
+      expect(graph.getAllNodes().length).toEqual(0);
     });
   });
+
   describe('addNode()', () => {
     test('node should be added to graph', () => {
       const graph = new Graph();
@@ -23,6 +24,7 @@ describe('Graph', () => {
       expect(graph.getAllNodes().length).toEqual(2);
     });
   });
+
   describe('addEdge()', () => {
     test('edge should be added to the graph', () => {
       const graph = new Graph();
@@ -37,7 +39,7 @@ describe('Graph', () => {
 
       expect(nodeA.hasNeighbor(nodeB)).toBe(true);
       expect(nodeA.hasNeighbor(nodeC)).toBe(false);
-      expect(nodeA.getAllNeighbors()[0]).toEqual(nodeB);
+      expect(nodeA.neighbors[0]).toEqual(nodeB);
 
       expect(graph.getAllEdges()[0]).toEqual(edgeAB);
 
@@ -45,11 +47,12 @@ describe('Graph', () => {
       graph.addEdge(edgeBC);
 
       expect(nodeB.hasNeighbor(nodeC)).toBe(true);
-      expect(nodeB.getAllNeighbors()[1]).toBe(nodeC);
-      expect(nodeB.getAllNeighbors()[0]).toBe(nodeA);
+      expect(nodeB.neighbors[1]).toBe(nodeC);
+      expect(nodeB.neighbors[0]).toBe(nodeA);
 
       expect(graph.getAllEdges().length).toEqual(2);
     });
+
     test('should be undirected graph', () => {
       const graph = new Graph();
       const nodeA = new GraphNode(20);
@@ -63,8 +66,9 @@ describe('Graph', () => {
       expect(nodeA.hasNeighbor(nodeB)).toBe(true);
       expect(nodeB.hasNeighbor(nodeA)).toBe(true);
 
-      expect(nodeA.getAllNeighbors()[0]).toEqual(nodeB);
+      expect(nodeA.neighbors[0]).toEqual(nodeB);
     });
+
     test('should be directed graph', () => {
       const graph = new Graph(true);
       const nodeA = new GraphNode(20);
@@ -78,9 +82,10 @@ describe('Graph', () => {
       expect(nodeA.hasNeighbor(nodeB)).toBe(true);
       expect(nodeB.hasNeighbor(nodeA)).toBe(false);
 
-      expect(nodeA.getAllNeighbors()[0]).toEqual(nodeB);
-      expect(nodeB.getAllNeighbors().length).toEqual(0);
+      expect(nodeA.neighbors[0]).toEqual(nodeB);
+      expect(nodeB.neighbors.length).toEqual(0);
     });
+
     test('node should be added only once to the graph', () => {
       const graph = new Graph();
       const nodeA = new GraphNode(20);
@@ -93,6 +98,7 @@ describe('Graph', () => {
 
       expect(graph.getAllNodes().length).toEqual(2);
     });
+
     test('edge should be added only once to the graph', () => {
       const graph = new Graph();
       const nodeA = new GraphNode(20);
@@ -107,7 +113,8 @@ describe('Graph', () => {
       expect(edges[0]).toEqual(edgeAB);
     });
   });
-  describe('getAllnodes', () => {
+
+  describe('getAllNodes()', () => {
     test('get all nodes in the graph', () => {
       const graph = new Graph();
       const nodeA = new GraphNode(10);

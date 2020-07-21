@@ -1,20 +1,35 @@
 class GraphNode<T> {
-  public value: T;
+  private _value: T;
 
-  public adjNodes: any;
+  public _neighbors: Array<GraphNode<T>>;
 
   /**
    * Initialize Graph Node.
-   * @param {*} value The value to be stored in the graph node.
+   * @param {T} value The value to be stored in the graph node.
    */
   constructor(value: T) {
-    if (value === undefined) {
-      throw new TypeError("Node value can't be undefined");
-    } else if (!value) {
-      throw new Error("Node value can't be null");
+    if (value === undefined || value === null) {
+      throw new TypeError('Node value cannot be undefined or null');
     }
-    this.value = value;
-    this.adjNodes = new Array<GraphNode<T>>();
+
+    this._value = value;
+    this._neighbors = [];
+  }
+
+  get value(): T {
+    return this._value;
+  }
+
+  get key(): string {
+    return String(this._value);
+  }
+
+  /**
+   * Get all neighbors of the current graph node.
+   * @return {Array} All the nodes connected to given node.
+   */
+  get neighbors(): Array<GraphNode<T>> {
+    return this._neighbors;
   }
 
   /**
@@ -22,7 +37,7 @@ class GraphNode<T> {
    * @param {GraphNode} node node to be set as adjacent of the current node.
    */
   setAdj(node: GraphNode<T>) {
-    this.adjNodes.push(node);
+    this._neighbors.push(node);
   }
 
   /**
@@ -31,20 +46,7 @@ class GraphNode<T> {
    * @return {Boolean} True if given node is a neighbor, false if otherwise.
    */
   hasNeighbor(target: GraphNode<T>): Boolean {
-    const neighbors: Array<GraphNode<T>> = this.adjNodes;
-    const res = neighbors.find(node => node.value === target.value);
-    if (res) {
-      return true;
-    }
-    return false;
-  }
-
-  /**
-   * Get all neighbors of the current graph node.
-   * @return {Array} All the nodes connected to given node.
-   */
-  getAllNeighbors(): Array<T> {
-    return this.adjNodes;
+    return !!this._neighbors.find(node => node.value === target.value);
   }
 }
 

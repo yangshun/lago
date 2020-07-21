@@ -13,6 +13,7 @@ describe('GraphEdge', () => {
       expect(edgeAB.nodeA.value).toEqual('1');
       expect(edgeAB.nodeB.value).toEqual('2');
     });
+
     test('weighted edge', () => {
       const nodeA = new GraphNode('1');
       const nodeB = new GraphNode('2');
@@ -26,6 +27,7 @@ describe('GraphEdge', () => {
       expect(edgeAB.weight).toEqual(5);
     });
   });
+
   describe('getKey', () => {
     test('get the key of edge', () => {
       const nodeA = new GraphNode('A');

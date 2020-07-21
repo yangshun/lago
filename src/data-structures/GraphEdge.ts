@@ -23,7 +23,7 @@ class GraphEdge<T> {
    * Get Edge Key.
    * @return {String} The key for given Edge.
    */
-  getKey() {
+  getKey(): string {
     return `${this.nodeA.value}_${this.nodeB.value}`;
   }
 }

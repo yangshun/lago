@@ -9,35 +9,27 @@ describe('GraphNode', () => {
 
       expect(nodeA).toBeDefined();
       expect(nodeA.value).toBe(10);
-      expect(nodeA.getAllNeighbors()).toEqual([]);
+      expect(nodeA.neighbors).toEqual([]);
     });
+
     test('constructor() but with a string', () => {
       const nodeA = new GraphNode('YOLO');
 
       expect(nodeA).toBeDefined();
       expect(nodeA.value).toEqual('YOLO');
     });
-    test('throw error when initialise with undefined', () => {
-      let nodeA = undefined;
 
-      function createUndefinedVertex() {
-        nodeA = new GraphNode(undefined);
-      }
+    test('throw error when initialize with undefined or null', () => {
+      expect(() => {
+        new GraphNode(undefined);
+      }).toThrow();
 
-      expect(nodeA).toBe(undefined);
-      expect(createUndefinedVertex).toThrow();
-    });
-    test('throw an eror when initialised with null', () => {
-      let node = undefined;
-
-      function createNullVertex() {
-        node = new GraphNode(null);
-      }
-
-      expect(node).toBe(undefined);
-      expect(createNullVertex).toThrow();
+      expect(() => {
+        new GraphNode(null);
+      }).toThrow();
     });
   });
+
   describe('hasNeighbor', () => {
     test('should have neighbors when assigned an edge in a graph', () => {
       const nodeA = new GraphNode('A');
@@ -51,7 +43,8 @@ describe('GraphNode', () => {
       expect(nodeA.hasNeighbor(nodeB)).toBe(true);
     });
   });
-  describe('getAllNeighbors', () => {
+
+  describe('neighbors', () => {
     test('get all neighbors in the graph', () => {
       const nodeA = new GraphNode('A');
       const nodeB = new GraphNode('B');
@@ -64,7 +57,7 @@ describe('GraphNode', () => {
       graph.addEdge(edgeAB);
       graph.addEdge(edgeAC);
 
-      expect(nodeA.getAllNeighbors()).toEqual([nodeB, nodeC]);
+      expect(nodeA.neighbors).toEqual([nodeB, nodeC]);
     });
   });
 });
