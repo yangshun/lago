@@ -11,9 +11,27 @@ interface Comparer<T> {
   (a: T, b: T): number;
 }
 
+class Timestamped<T> {
+  private _value: T;
+  private _timestamp: number;
+
+  constructor(value: T, timestamp: number) {
+    this._value = value;
+    this._timestamp = timestamp;
+  }
+
+  public get value(): T {
+    return this._value;
+  }
+  public get timestamp(): number {
+    return this._timestamp;
+  }
+}
+
 class PriorityQueue<T> {
-  private _heap: Array<T> = [];
+  private _heap: Array<Timestamped<T>> = [];
   private _comparer: Comparer<T>;
+  private _nextTimestamp: number = 0;
 
   constructor(comparer: Comparer<T>) {
     this._comparer = comparer;
@@ -30,7 +48,7 @@ class PriorityQueue<T> {
    * Get the first item in the queue without removing it.
    */
   public peek(): T {
-    return this._heap[TOP];
+    return this._heap[TOP] && this._heap[TOP].value;
   }
 
   /**
@@ -39,7 +57,7 @@ class PriorityQueue<T> {
    */
   public enqueue(...values: Array<T>) {
     values.forEach(value => {
-      this._heap.push(value);
+      this._heap.push(new Timestamped(value, this._nextTimestamp++));
 
       // heapify up
       let index = this.size() - 1;
@@ -105,7 +123,10 @@ class PriorityQueue<T> {
    * @param j index of the second node
    */
   private _compareNodeAtIndex(i: number, j: number): number {
-    return this._comparer && this._comparer(this._heap[i], this._heap[j]);
+    return (
+      this._comparer(this._heap[i].value, this._heap[j].value) ||
+      this._heap[i].timestamp - this._heap[j].timestamp
+    );
   }
 }
 
