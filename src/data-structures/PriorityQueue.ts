@@ -7,7 +7,7 @@ const PARENT = (i: number) => ((i + 1) >>> 1) - 1;
 const LEFT = (i: number) => (i << 1) + 1;
 const RIGHT = (i: number) => (i + 1) << 1;
 
-interface Comparer<T> {
+interface Comparator<T> {
   (a: T, b: T): number;
 }
 
@@ -23,6 +23,7 @@ class Timestamped<T> {
   public get value(): T {
     return this._value;
   }
+
   public get timestamp(): number {
     return this._timestamp;
   }
@@ -30,11 +31,11 @@ class Timestamped<T> {
 
 class PriorityQueue<T> {
   private _heap: Array<Timestamped<T>> = [];
-  private _comparer: Comparer<T>;
+  private _comparator: Comparator<T>;
   private _nextTimestamp: number = 0;
 
-  constructor(comparer: Comparer<T>) {
-    this._comparer = comparer;
+  constructor(comparator: Comparator<T>) {
+    this._comparator = comparator;
   }
 
   /**
@@ -53,13 +54,13 @@ class PriorityQueue<T> {
 
   /**
    * Add items into the queue.
-   * @param values the list of items to be added
+   * @param values The list of items to be added.
    */
   public enqueue(...values: Array<T>) {
     values.forEach(value => {
       this._heap.push(new Timestamped(value, this._nextTimestamp++));
 
-      // heapify up
+      // Heapify up.
       let index = this.size() - 1;
       while (
         index > TOP &&
@@ -77,13 +78,16 @@ class PriorityQueue<T> {
   public dequeue(): T {
     const popped = this.peek();
     const bottom = this.size() - 1;
+
     if (bottom > TOP) {
       this._swapNodeAtIndex(bottom, TOP);
     }
+
     this._heap.pop();
 
-    // Start heapify down
+    // Start heapify-ing down.
     let current = TOP;
+
     while (true) {
       const parent = current;
       const left = LEFT(current);
@@ -97,7 +101,7 @@ class PriorityQueue<T> {
         current = right;
       }
 
-      // If the parent node is already max, stop heapifying
+      // If the parent node is already max, stop heapify-ing
       if (parent === current) {
         break;
       }
@@ -124,7 +128,7 @@ class PriorityQueue<T> {
    */
   private _compareNodeAtIndex(i: number, j: number): number {
     return (
-      this._comparer(this._heap[i].value, this._heap[j].value) ||
+      this._comparator(this._heap[i].value, this._heap[j].value) ||
       this._heap[i].timestamp - this._heap[j].timestamp
     );
   }

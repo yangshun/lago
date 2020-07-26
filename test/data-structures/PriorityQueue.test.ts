@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import PriorityQueue from '../../src/data-structures/PriorityQueue';
+import { PriorityQueue } from '../../src/';
 
 interface PriorityNode {
   label: string | number;
@@ -16,7 +16,7 @@ describe('PriorityQueue', () => {
   describe('constructor()', () => {
     test('empty queue', () => {
       const queue = new PriorityQueue<number>(numberAscending);
-      expect(queue).toBeTruthy();
+      expect(queue).toBeDefined();
     });
   });
 
@@ -33,7 +33,7 @@ describe('PriorityQueue', () => {
       expect(array).toEqual([0, 1, 2, 3, 4, 5, 5, 6]);
     });
 
-    test('number should be sorted decending', () => {
+    test('number should be sorted descending', () => {
       const queue = new PriorityQueue<number>(numberDescending);
       queue.enqueue(1, 5, 3, 2, 5, 4, 0, 6);
 
@@ -114,7 +114,7 @@ describe('PriorityQueue', () => {
             if (prev.priority > curr.priority) return false;
             if (prev.priority < curr.priority) return true;
 
-            // false when prev timestampe is larger (unstable sort)
+            // false when prev timestamp is larger (unstable sort)
             if (prev.label > curr.label) return false;
             return true;
           }),

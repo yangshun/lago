@@ -28,6 +28,7 @@ Data Structures and Algorithms library for JavaScript. Pretty much still WIP but
 - [Disjoint-set](src/data-structures/DisjointSet.ts)
 - [Counter](src/data-structures/Counter.ts)
 - [Graph (map-based)](src/data-structures/Graph.ts)
+- [Priority Queue](src/data-structures/PriorityQueue.ts)
 - AVL Tree (TODO)
 - Suffix Tree (TODO)
 - Segment Tree (TODO)

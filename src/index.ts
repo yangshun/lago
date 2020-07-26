@@ -25,6 +25,7 @@ import Graph from './data-structures/Graph';
 import List from './data-structures/List';
 import NDArray from './data-structures/NDArray';
 import Node from './data-structures/Node';
+import PriorityQueue from './data-structures/PriorityQueue';
 import Queue from './data-structures/Queue';
 import Stack from './data-structures/Stack';
 import Trie from './data-structures/Trie';
@@ -61,6 +62,7 @@ export {
   List,
   NDArray,
   Node,
+  PriorityQueue,
   Queue,
   Stack,
   Trie,
