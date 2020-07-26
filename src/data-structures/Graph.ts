@@ -1,80 +1,124 @@
-import GraphNode from './GraphNode';
-import GraphEdge from './GraphEdge';
-
-interface GraphNodes<T> {
-  [key: string]: GraphNode<T>;
-}
-
-interface GraphEdges<T> {
-  [key: string]: GraphEdge<T>;
-}
-
-class Graph<T> {
-  private _nodes: GraphNodes<T>;
-
-  private _edges: GraphEdges<T>;
-
-  public isDirected: Boolean;
+class Graph<T, V> {
+  private _nodes: Map<
+    T,
+    {
+      to: Map<T, V>;
+      // Maintain a set of incoming nodes so that removal of nodes is more convenient.
+      from: Set<T>;
+    }
+  >;
 
   /**
-   * Initialize Graph with a boolean value for directed-ness.
-   * @param {Boolean} isDirected decides whether the graph is directed or not.
+   * Initialize a Hash-based graph.
    */
-  constructor(isDirected: Boolean = false) {
-    this._nodes = {};
-    this._edges = {};
-    this.isDirected = isDirected;
+  constructor() {
+    this._nodes = new Map();
   }
 
   /**
-   * Add a Node to the Graph.
-   * @param {GraphNode<T>} newNode The node to be added to the Graph.
+   * Add a node to the graph.
+   * @param {T} value The value of the node to be added.
    */
-  addNode(newNode: GraphNode<T>) {
-    this._nodes[String(newNode.key)] = newNode;
+  addNode(value: T): void {
+    if (this._nodes.has(value)) {
+      return;
+    }
+
+    this._nodes.set(value, {
+      to: new Map<T, V>(),
+      from: new Set<T>(),
+    });
   }
 
   /**
-   * Add an Edge to the Graph
-   * @param {GraphEdge<T>} edge The Edge to be added to the graph.
+   * Removes a node from the graph.
+   * @param {T} value The node to be removed.
    */
-  addEdge(edge: GraphEdge<T>) {
-    const startNode = edge.nodeA;
-    const endNode = edge.nodeB;
+  removeNode(value: T): void {
+    const incoming = this._getIncomingNodes(value);
+    incoming.forEach(incomingNode => {
+      this.removeEdge(incomingNode, value);
+    });
 
-    if (!this._nodes[startNode.key]) {
-      this.addNode(startNode);
-    }
-
-    if (!this._nodes[endNode.key]) {
-      this.addNode(endNode);
-    }
-
-    if (!this._edges[edge.getKey()]) {
-      this._edges[edge.getKey()] = edge;
-    }
-
-    startNode.setAdj(endNode);
-
-    if (!this.isDirected) {
-      endNode.setAdj(startNode);
-    }
+    this._nodes.delete(value);
   }
 
   /**
-   * Get all the nodes in the Graph
-   * @return {Array<GraphNode<T>>} The Array consisting of nodes
+   * Get the number of nodes in the graph.
    */
-  getAllNodes(): Array<GraphNode<T>> {
-    return Object.values(this._nodes);
+  get size(): number {
+    return this._nodes.size;
   }
 
   /**
-   * Get All the Edges in the graph
-   * @return {Array<GraphEdge<T>>} The Array consisting of all the edges in the graph
+   * Add an edge to the graph.
+   * @param {T} valueA The first node of the edge.
+   * @param {T} valueB The second node of the edge.
+   * @param {V} weight The weight of the edge.
    */
-  getAllEdges(): Array<GraphEdge<T>> {
-    return Object.values(this._edges);
+  addEdge(valueA: T, valueB: T, weight: V): void {
+    this.addNode(valueA);
+    this.addNode(valueB);
+    const nodeA = this._nodes.get(valueA);
+    (nodeA?.to as Map<T, V>).set(valueB, weight);
+    (this._nodes.get(valueB)?.from as Set<T>).add(valueA);
+  }
+
+  /**
+   * Removes an edge from the graph.
+   * @param {T} valueA The first node of the edge.
+   * @param {T} valueB The second node of the edge.
+   */
+  removeEdge(valueA: T, valueB: T): void {
+    const nodeA = this._nodes.get(valueA)?.to;
+    if (nodeA == null) {
+      return;
+    }
+    nodeA.delete(valueB);
+
+    (this._nodes.get(valueB)?.from as Set<T>).delete(valueA);
+  }
+
+  /**
+   * Get weight of an edge.
+   * @param {T} valueA The first node of the edge.
+   * @param {T} valueB The second node of the edge.
+   */
+  getEdgeWeight(valueA: T, valueB: T): V | undefined {
+    const nodeA = this._nodes.get(valueA)?.to;
+    if (nodeA == null) {
+      return undefined;
+    }
+
+    return nodeA.get(valueB);
+  }
+
+  /**
+   * Test if there is an edge from node A to B.
+   * @param {T} valueA The first node of the edge.
+   * @param {T} valueB The second node of the edge.
+   */
+  isAdjacent(valueA: T, valueB: T): boolean {
+    const neighbors = this.getNeighbors(valueA);
+    return neighbors.includes(valueB);
+  }
+
+  /**
+   * Get the neighbors of a node.
+   * @param {T} value The value of the node.
+   */
+  getNeighbors(value: T): ReadonlyArray<T> {
+    const neighbors = this._nodes.get(value)?.to;
+    return Array.from(neighbors != null ? neighbors.keys() : []);
+  }
+
+  /**
+   * Get the nodes which has an edge to the node.
+   * @param {T} value The value of the node.
+   */
+  private _getIncomingNodes(value: T): ReadonlyArray<T> {
+    const incoming = this._nodes.get(value)?.from;
+    return Array.from(incoming != null ? incoming : []);
   }
 }
 

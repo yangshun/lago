@@ -27,10 +27,10 @@ Data Structures and Algorithms library for JavaScript. Pretty much still WIP but
 - [Bloom Filter](src/data-structures/BloomFilter.ts)
 - [Disjoint-set](src/data-structures/DisjointSet.ts)
 - [Counter](src/data-structures/Counter.ts)
+- [Graph (map-based)](src/data-structures/Graph.ts)
 - AVL Tree (TODO)
 - Suffix Tree (TODO)
 - Segment Tree (TODO)
-- Graphs (TODO)
 
 #### Algorithms
 

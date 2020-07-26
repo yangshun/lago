@@ -1,6 +1,4 @@
 import { Graph } from '../../src';
-import { GraphNode } from '../../src';
-import { GraphEdge } from '../../src';
 
 describe('Graph', () => {
   describe('constructor()', () => {
@@ -8,126 +6,180 @@ describe('Graph', () => {
       const graph = new Graph();
 
       expect(graph).toBeDefined();
-      expect(graph.isDirected).toBe(false);
-      expect(graph.getAllNodes().length).toEqual(0);
+      expect(graph.size).toBe(0);
     });
   });
 
   describe('addNode()', () => {
     test('node should be added to graph', () => {
       const graph = new Graph();
-      const nodeA = new GraphNode(20);
-      const nodeB = new GraphNode(30);
-      graph.addNode(nodeA);
-      graph.addNode(nodeB);
+      graph.addNode(1);
 
-      expect(graph.getAllNodes().length).toEqual(2);
+      expect(graph.size).toBe(1);
     });
   });
 
-  describe('addEdge()', () => {
-    test('edge should be added to the graph', () => {
+  describe('removeNode()', () => {
+    test('node should be removed from the graph', () => {
       const graph = new Graph();
-      const nodeA = new GraphNode(10);
-      const nodeB = new GraphNode(20);
-      const nodeC = new GraphNode(30);
-      const edgeAB = new GraphEdge(nodeA, nodeB);
+      graph.addNode(1);
+      expect(graph.size).toBe(1);
 
-      graph.addEdge(edgeAB);
+      graph.addNode(2);
+      expect(graph.size).toBe(2);
 
-      expect(edgeAB.getKey()).toEqual('10_20');
+      graph.removeNode(1);
+      expect(graph.size).toBe(1);
 
-      expect(nodeA.hasNeighbor(nodeB)).toBe(true);
-      expect(nodeA.hasNeighbor(nodeC)).toBe(false);
-      expect(nodeA.neighbors[0]).toEqual(nodeB);
-
-      expect(graph.getAllEdges()[0]).toEqual(edgeAB);
-
-      const edgeBC = new GraphEdge(nodeB, nodeC);
-      graph.addEdge(edgeBC);
-
-      expect(nodeB.hasNeighbor(nodeC)).toBe(true);
-      expect(nodeB.neighbors[1]).toBe(nodeC);
-      expect(nodeB.neighbors[0]).toBe(nodeA);
-
-      expect(graph.getAllEdges().length).toEqual(2);
+      graph.removeNode(2);
+      expect(graph.size).toBe(0);
     });
 
-    test('should be undirected graph', () => {
+    test('edge should be removed between connected nodes', () => {
       const graph = new Graph();
-      const nodeA = new GraphNode(20);
-      const nodeB = new GraphNode(30);
-      const edgeAB = new GraphEdge(nodeA, nodeB);
+      graph.addEdge(1, 2, 3);
+      graph.addEdge(2, 1, 3);
+      expect(graph.size).toBe(2);
 
-      graph.addEdge(edgeAB);
-
-      expect(graph.isDirected).toBe(false);
-
-      expect(nodeA.hasNeighbor(nodeB)).toBe(true);
-      expect(nodeB.hasNeighbor(nodeA)).toBe(true);
-
-      expect(nodeA.neighbors[0]).toEqual(nodeB);
+      graph.removeNode(1);
+      expect(graph.size).toBe(1);
+      expect(graph.getNeighbors(2)).toHaveLength(0);
     });
 
-    test('should be directed graph', () => {
-      const graph = new Graph(true);
-      const nodeA = new GraphNode(20);
-      const nodeB = new GraphNode(30);
-      const edgeAB = new GraphEdge(nodeA, nodeB);
-
-      graph.addEdge(edgeAB);
-
-      expect(graph.isDirected).toBe(true);
-
-      expect(nodeA.hasNeighbor(nodeB)).toBe(true);
-      expect(nodeB.hasNeighbor(nodeA)).toBe(false);
-
-      expect(nodeA.neighbors[0]).toEqual(nodeB);
-      expect(nodeB.neighbors.length).toEqual(0);
+    test.only('edge should be removed from the other node', () => {
+      const graph = new Graph();
+      graph.addEdge(1, 2, 3);
+      graph.removeNode(2);
+      expect(graph.size).toBe(1);
+      expect(graph.getNeighbors(1)).toHaveLength(0);
     });
 
-    test('node should be added only once to the graph', () => {
+    test('cyclic node', () => {
       const graph = new Graph();
-      const nodeA = new GraphNode(20);
-      const nodeB = new GraphNode(30);
-      const edgeAB = new GraphEdge(nodeA, nodeB);
-      graph.addNode(nodeA);
-      graph.addNode(nodeB);
+      graph.addEdge(1, 1, 3);
+      expect(graph.size).toBe(1);
 
-      graph.addEdge(edgeAB);
-
-      expect(graph.getAllNodes().length).toEqual(2);
-    });
-
-    test('edge should be added only once to the graph', () => {
-      const graph = new Graph();
-      const nodeA = new GraphNode(20);
-      const nodeB = new GraphNode(30);
-      const edgeAB = new GraphEdge(nodeA, nodeB);
-
-      graph.addEdge(edgeAB);
-      graph.addEdge(edgeAB);
-
-      const edges = graph.getAllEdges();
-      expect(edges.length).toEqual(1);
-      expect(edges[0]).toEqual(edgeAB);
+      graph.removeNode(1);
+      expect(graph.size).toBe(0);
+      expect(graph.getNeighbors(1)).toHaveLength(0);
     });
   });
 
-  describe('getAllNodes()', () => {
-    test('get all nodes in the graph', () => {
+  describe('edges', () => {
+    describe('addEdge()', () => {
+      test('connect different nodes', () => {
+        const graph = new Graph();
+        graph.addEdge(1, 2, 3);
+
+        expect(graph.size).toBe(2);
+        expect(graph.isAdjacent(1, 2)).toBe(true);
+        expect(graph.isAdjacent(2, 1)).toBe(false);
+        expect(graph.getEdgeWeight(1, 2)).toBe(3);
+      });
+
+      test('connect same node', () => {
+        const graph = new Graph();
+        graph.addEdge(1, 1, 2);
+
+        expect(graph.size).toBe(1);
+        expect(graph.isAdjacent(1, 1)).toBe(true);
+        expect(graph.getEdgeWeight(1, 1)).toBe(2);
+      });
+    });
+
+    describe('removeEdge()', () => {
+      test('remove edge between different nodes', () => {
+        const graph = new Graph();
+        graph.addEdge(1, 2, 3);
+        expect(graph.isAdjacent(1, 2)).toBe(true);
+        expect(graph.isAdjacent(2, 1)).toBe(false);
+        expect(graph.getEdgeWeight(1, 2)).toBe(3);
+
+        graph.removeEdge(1, 2);
+        expect(graph.isAdjacent(1, 2)).toBe(false);
+        expect(graph.isAdjacent(2, 1)).toBe(false);
+        expect(graph.size).toBe(2);
+        expect(graph.getEdgeWeight(1, 2)).toBeUndefined();
+        expect(graph.getNeighbors(1)).toHaveLength(0);
+        expect(graph.getNeighbors(2)).toHaveLength(0);
+      });
+
+      test('remove edge between bi-directional nodes', () => {
+        const graph = new Graph();
+        graph.addEdge(1, 2, 3);
+        graph.addEdge(2, 1, 4);
+        expect(graph.isAdjacent(1, 2)).toBe(true);
+        expect(graph.isAdjacent(2, 1)).toBe(true);
+        expect(graph.getEdgeWeight(1, 2)).toBe(3);
+        expect(graph.getEdgeWeight(2, 1)).toBe(4);
+
+        graph.removeEdge(1, 2);
+        expect(graph.isAdjacent(1, 2)).toBe(false);
+        expect(graph.isAdjacent(2, 1)).toBe(true);
+        expect(graph.size).toBe(2);
+        expect(graph.getEdgeWeight(1, 2)).toBeUndefined();
+        expect(graph.getEdgeWeight(2, 1)).toBe(4);
+        expect(graph.getNeighbors(1)).toHaveLength(0);
+        expect(graph.getNeighbors(2)).toHaveLength(1);
+      });
+
+      test('remove edge between same node', () => {
+        const graph = new Graph();
+        graph.addEdge(1, 1, 2);
+
+        expect(graph.size).toBe(1);
+        expect(graph.isAdjacent(1, 1)).toBe(true);
+
+        graph.removeEdge(1, 1);
+        expect(graph.isAdjacent(1, 1)).toBe(false);
+        expect(graph.size).toBe(1);
+      });
+
+      test('remove non-existent edge', () => {
+        const graph = new Graph();
+        expect(() => {
+          graph.removeEdge(1, 2);
+        }).not.toThrow();
+      });
+    });
+
+    describe('getEdgeWeight()', () => {
+      test('weight between connected nodes', () => {
+        const graph = new Graph();
+        graph.addEdge(1, 2, 3);
+
+        expect(graph.size).toBe(2);
+        expect(graph.getEdgeWeight(1, 2)).toBe(3);
+      });
+
+      test('weight between non-existent edges', () => {
+        const graph = new Graph();
+        graph.addEdge(1, 2, 3);
+
+        expect(graph.getEdgeWeight(1, 1)).toBeUndefined();
+      });
+
+      test('weight for non-existent nodes', () => {
+        const graph = new Graph();
+        expect(graph.getEdgeWeight(1, 2)).toBeUndefined();
+      });
+    });
+  });
+
+  describe('getNeighbors()', () => {
+    test('non-empty neighbors', () => {
       const graph = new Graph();
-      const nodeA = new GraphNode(10);
-      const nodeB = new GraphNode(20);
-      const nodeC = new GraphNode(30);
-      const nodeD = new GraphNode(40);
+      graph.addEdge(1, 2, 3);
+      expect(graph.getNeighbors(1)).toEqual(expect.arrayContaining([2]));
+    });
 
-      graph.addNode(nodeA);
-      graph.addNode(nodeB);
-      graph.addNode(nodeC);
-      graph.addNode(nodeD);
+    test('empty neighbors', () => {
+      const graph = new Graph();
+      graph.addNode(1);
+      expect(graph.getNeighbors(1)).toHaveLength(0);
 
-      expect(graph.getAllNodes()).toEqual([nodeA, nodeB, nodeC, nodeD]);
+      graph.addEdge(1, 2, 3);
+      expect(graph.getNeighbors(2)).toHaveLength(0);
     });
   });
 });
