@@ -19,28 +19,31 @@ class Graph<T, V> {
    * Add a node to the graph.
    * @param {T} value The value of the node to be added.
    */
-  addNode(value: T): void {
+  addNode(value: T): this {
     if (this._nodes.has(value)) {
-      return;
+      return this;
     }
 
     this._nodes.set(value, {
       to: new Map<T, V>(),
       from: new Set<T>(),
     });
+
+    return this;
   }
 
   /**
    * Removes a node from the graph.
    * @param {T} value The node to be removed.
    */
-  removeNode(value: T): void {
+  removeNode(value: T): this {
     const incoming = this._getIncomingNodes(value);
     incoming.forEach(incomingNode => {
       this.removeEdge(incomingNode, value);
     });
 
     this._nodes.delete(value);
+    return this;
   }
 
   /**
@@ -56,12 +59,13 @@ class Graph<T, V> {
    * @param {T} valueB The second node of the edge.
    * @param {V} weight The weight of the edge.
    */
-  addEdge(valueA: T, valueB: T, weight: V): void {
+  addEdge(valueA: T, valueB: T, weight: V): this {
     this.addNode(valueA);
     this.addNode(valueB);
     const nodeA = this._nodes.get(valueA);
     (nodeA?.to as Map<T, V>).set(valueB, weight);
     (this._nodes.get(valueB)?.from as Set<T>).add(valueA);
+    return this;
   }
 
   /**
@@ -69,14 +73,15 @@ class Graph<T, V> {
    * @param {T} valueA The first node of the edge.
    * @param {T} valueB The second node of the edge.
    */
-  removeEdge(valueA: T, valueB: T): void {
+  removeEdge(valueA: T, valueB: T): this {
     const nodeA = this._nodes.get(valueA)?.to;
     if (nodeA == null) {
-      return;
+      return this;
     }
     nodeA.delete(valueB);
 
     (this._nodes.get(valueB)?.from as Set<T>).delete(valueA);
+    return this;
   }
 
   /**
