@@ -119,10 +119,10 @@ class BinarySearchTree extends BinaryTree<number> {
     return this.root;
   }
 
-  protected _deleteImpl = (
+  protected _deleteImpl(
     value: number,
     node: BinaryTreeNode<number> | null,
-  ): BinaryTreeNode<number> | null => {
+  ): BinaryTreeNode<number> | null {
     if (!node) {
       return null;
     }
@@ -157,7 +157,7 @@ class BinarySearchTree extends BinaryTree<number> {
     node.right = this._deleteImpl(tempNode.value, right);
 
     return node;
-  };
+  }
 }
 
 export default BinarySearchTree;

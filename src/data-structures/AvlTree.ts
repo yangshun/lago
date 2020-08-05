@@ -16,35 +16,36 @@ class AvlTree extends BinarySearchTree {
     value: number,
     node: BinaryTreeNode<number> | null,
   ): BinaryTreeNode<number> | null => {
-    node = super._insertImpl(value, node);
+    node = super._deleteImpl(value, node);
     return node ? this._balance(node!) : node;
   };
 
   _balance(node: BinaryTreeNode<number>): BinaryTreeNode<number> {
     // Helper function to calculate the balance of the node
     const calcBalance = (node: BinaryTreeNode<number>): number =>
-      (node.left?.height() || 0) - (node.right?.height() || 0) + 1;
+      (node.left ? node.left!.height() + 1 : 0) -
+      (node.right ? node.right?.height() + 1 : 0);
 
     // Check for whether the node is out-of-balance
     const balance = calcBalance(node);
 
     if (balance > 1) {
       const leftBalance = calcBalance(node.left!);
-      if (leftBalance < 0) {
+      if (leftBalance > 0) {
         // LL case
         node = this._rotateRight(node);
-      } else {
+      } else if (leftBalance < 0) {
         // LR case
         node.left = this._rotateLeft(node.left!);
         node = this._rotateRight(node);
       }
     } else if (balance < -1) {
       const rightBalance = calcBalance(node.right!);
-      if (rightBalance < 0) {
+      if (rightBalance > 0) {
         // RL case
         node.right = this._rotateRight(node.right!);
         node = this._rotateLeft(node);
-      } else {
+      } else if (rightBalance < 0) {
         // RR case
         node = this._rotateLeft(node);
       }
