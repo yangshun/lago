@@ -14,6 +14,7 @@ import topologicalSort from './algorithms/topologicalSort';
 
 // Data Structures
 import BinarySearchTree from './data-structures/BinarySearchTree';
+import AvlTree from './data-structures/AvlTree';
 import BinaryTree from './data-structures/BinaryTree';
 import BinaryTreeNode from './data-structures/BinaryTreeNode';
 import BloomFilter from './data-structures/BloomFilter';
@@ -51,6 +52,7 @@ export {
   topologicalSort,
   // Data Structures
   BinarySearchTree,
+  AvlTree,
   BinaryTree,
   BinaryTreeNode,
   BloomFilter,
