@@ -5,39 +5,9 @@ class BinarySearchTree extends BinaryTree<number> {
   /**
    * Recursively insert a new value in the BST.
    * @param {number} value The value being inserted
-   * @param {BinaryTreeNode} node The current node. Param is not required.
-   * @return {void}
    */
   insert(val: number): void {
-    if (!this.root) {
-      this.root = new BinaryTreeNode(val);
-      return;
-    }
-
-    function insertImpl(value: number, node: BinaryTreeNode<number>) {
-      const nodeValue = node.value;
-
-      if (value < nodeValue) {
-        const { left } = node;
-        if (!left) {
-          node.left = new BinaryTreeNode(value);
-          return;
-        }
-
-        insertImpl(value, left);
-        return;
-      }
-
-      const { right } = node;
-      if (!right) {
-        node.right = new BinaryTreeNode(value);
-        return;
-      }
-
-      insertImpl(value, right);
-    }
-
-    insertImpl(val, this.root);
+    this.root = this._insertImpl(val, this.root);
   }
 
   /**
@@ -69,6 +39,25 @@ class BinarySearchTree extends BinaryTree<number> {
     }
 
     return searchImpl(val, this.root);
+  }
+
+  protected _insertImpl(
+    value: number,
+    node: BinaryTreeNode<number> | null,
+  ): BinaryTreeNode<number> {
+    if (!node) {
+      return new BinaryTreeNode(value);
+    }
+
+    // Normal BST insert
+    // NOTE: Duplicates are sent to the left
+    if (value <= node.value) {
+      node.left = this._insertImpl(value, node.left);
+    } else {
+      node.right = this._insertImpl(value, node.right);
+    }
+
+    return node;
   }
 
   private _getMinimumNode(
@@ -126,49 +115,49 @@ class BinarySearchTree extends BinaryTree<number> {
    * @return {BinaryTreeNode} The root node after deletion.
    */
   delete(val: number): BinaryTreeNode<number> | null {
-    const deleteImpl = (
-      value: number,
-      node: BinaryTreeNode<number> | null,
-    ): BinaryTreeNode<number> | null => {
-      if (!node) {
-        return null;
-      }
-
-      const nodeValue = node.value;
-      const { left } = node;
-      const { right } = node;
-      if (value < nodeValue) {
-        node.left = deleteImpl(value, left);
-        return node;
-      } else if (value > nodeValue) {
-        node.right = deleteImpl(value, right);
-        return node;
-      }
-
-      if (!left && !right) {
-        return null;
-      }
-
-      if (!left) {
-        return right;
-      }
-
-      if (!right) {
-        return left;
-      }
-
-      const tempNode: BinaryTreeNode<number> = this._getMinimumNode(
-        right,
-      ) as BinaryTreeNode<number>;
-      node.value = tempNode.value;
-      node.right = deleteImpl(tempNode.value, right);
-
-      return node;
-    };
-
-    this.root = deleteImpl(val, this.root);
+    this.root = this._deleteImpl(val, this.root);
     return this.root;
   }
+
+  protected _deleteImpl = (
+    value: number,
+    node: BinaryTreeNode<number> | null,
+  ): BinaryTreeNode<number> | null => {
+    if (!node) {
+      return null;
+    }
+
+    const nodeValue = node.value;
+    const { left } = node;
+    const { right } = node;
+    if (value < nodeValue) {
+      node.left = this._deleteImpl(value, left);
+      return node;
+    } else if (value > nodeValue) {
+      node.right = this._deleteImpl(value, right);
+      return node;
+    }
+
+    if (!left && !right) {
+      return null;
+    }
+
+    if (!left) {
+      return right;
+    }
+
+    if (!right) {
+      return left;
+    }
+
+    const tempNode: BinaryTreeNode<number> = this._getMinimumNode(
+      right,
+    ) as BinaryTreeNode<number>;
+    node.value = tempNode.value;
+    node.right = this._deleteImpl(tempNode.value, right);
+
+    return node;
+  };
 }
 
 export default BinarySearchTree;
