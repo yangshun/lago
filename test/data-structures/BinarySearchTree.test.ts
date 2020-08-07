@@ -1,7 +1,12 @@
 import { BinarySearchTree } from '../../src';
 import nullthrows from '../../src/utils/nullthrows';
 
-describe('BinarySearchTree', () => {
+export const binarySearchTreeTests = (
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  describe: any,
+  test: any,
+  /* eslint-enable @typescript-eslint/no-explicit-any */
+) => {
   describe('insert()', () => {
     test('if empty tree, value becomes root', () => {
       const tree = new BinarySearchTree();
@@ -197,4 +202,8 @@ describe('BinarySearchTree', () => {
       expect(tree.inOrder()).toEqual([5, 14, 55, 70]);
     });
   });
+};
+
+describe('BinarySearchTree', () => {
+  binarySearchTreeTests(describe, test);
 });

@@ -13,6 +13,7 @@ import quickSort from './algorithms/quickSort';
 import topologicalSort from './algorithms/topologicalSort';
 
 // Data Structures
+import AvlTree from './data-structures/AvlTree';
 import BinarySearchTree from './data-structures/BinarySearchTree';
 import BinaryTree from './data-structures/BinaryTree';
 import BinaryTreeNode from './data-structures/BinaryTreeNode';
@@ -50,6 +51,7 @@ export {
   quickSort,
   topologicalSort,
   // Data Structures
+  AvlTree,
   BinarySearchTree,
   BinaryTree,
   BinaryTreeNode,
