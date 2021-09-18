@@ -12,6 +12,14 @@
 
 Data Structures and Algorithms library for JavaScript. Pretty much still WIP but some are available for viewing.
 
+---
+
+<div align="center">
+  <h3>💡 Looking for high quality front end interview courses? <a href="https://www.educative.io/explore?search_string=interview&skills=javascript&aff=x23W">Educative</a> offers a ton of great courses to improve your interview game 💡</h3>
+</div>
+
+---
+
 ## Contents
 
 #### Data Structures
