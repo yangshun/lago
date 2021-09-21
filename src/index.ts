@@ -6,6 +6,7 @@ import {
 } from './algorithms/binarySearch';
 import breadthFirstSearch from './algorithms/breadthFirstSearch';
 import depthFirstSearch from './algorithms/depthFirstSearch';
+import dijkstraAlgorithm from './algorithms/dijkstraAlgorithm';
 import heapSort from './algorithms/heapSort';
 import mergeSort from './algorithms/mergeSort';
 import { quickSelect, quickSelectLargest } from './algorithms/quickSelect';
@@ -44,6 +45,7 @@ export {
   bisectRight,
   breadthFirstSearch,
   depthFirstSearch,
+  dijkstraAlgorithm,
   heapSort,
   mergeSort,
   quickSelect,
