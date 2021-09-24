@@ -51,7 +51,7 @@ Data Structures and Algorithms library for JavaScript. Pretty much still WIP but
 - [Topological Sort](src/algorithms/topologicalSort.ts)
 - [Breadth-first Search](src/algorithms/breadthFirstSearch.ts)
 - [Depth-first Search](src/algorithms/depthFirstSearch.ts)
-- Djikstra's Algorithm (TODO)
+- [Djikstra's Algorithm](src/algorithms/dijkstraAlgorithm.ts)
 - Bellman-Ford Algorithm (TODO)
 - Floyd Warshall Algorithm (TODO)
 
