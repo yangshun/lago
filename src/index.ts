@@ -7,6 +7,7 @@ import {
 import breadthFirstSearch from './algorithms/breadthFirstSearch';
 import depthFirstSearch from './algorithms/depthFirstSearch';
 import dijkstraAlgorithm from './algorithms/dijkstraAlgorithm';
+import floydWarshallAlgorithm from "./algorithms/floydWarshallAlgorithm.ts"
 import heapSort from './algorithms/heapSort';
 import mergeSort from './algorithms/mergeSort';
 import { quickSelect, quickSelectLargest } from './algorithms/quickSelect';
@@ -46,6 +47,7 @@ export {
   breadthFirstSearch,
   depthFirstSearch,
   dijkstraAlgorithm,
+  floydWarshallAlgorithm,
   heapSort,
   mergeSort,
   quickSelect,
