@@ -1,16 +1,16 @@
-import { floydWarshallAlgorithm } from "../../src";
-describe("Floyd Warhall ALgorithm", () => {
-  test("empty graph", () => {
+import { floydWarshallAlgorithm } from '../../src';
+describe('Floyd Warhall ALgorithm', () => {
+  test('empty graph', () => {
     const graph = {};
     const solution = {};
     expect(floydWarshallAlgorithm(graph)).toEqual(solution);
   });
-  test("single vertex graph", () => {
+  test('single vertex graph', () => {
     const graph = { A: {} };
     const solution = { A: { A: 0 } };
     expect(floydWarshallAlgorithm(graph)).toEqual(solution);
   });
-  test("multiple vertex graph with a disconnected vertex", () => {
+  test('multiple vertex graph with a disconnected vertex', () => {
     const graph = {
       A: { B: 3 },
       B: { C: 3 },
@@ -25,7 +25,7 @@ describe("Floyd Warhall ALgorithm", () => {
     };
     expect(floydWarshallAlgorithm(graph)).toEqual(solution);
   });
-  test("multiple vertex directed graph with positive weights", () => {
+  test('multiple vertex directed graph with positive weights', () => {
     const graph = {
       A: { D: 1, B: 8 },
       B: { C: 1 },
@@ -40,7 +40,7 @@ describe("Floyd Warhall ALgorithm", () => {
     };
     expect(floydWarshallAlgorithm(graph)).toEqual(solution);
   });
-  test("multiple vertex directed graph with positive and negative weights", () => {
+  test('multiple vertex directed graph with positive and negative weights', () => {
     const graph = {
       A: { C: -2 },
       B: { A: 4, C: 3 },
