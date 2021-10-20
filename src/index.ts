@@ -1,4 +1,5 @@
 // Algorithms
+import bellmanFord from './algorithms/bellmanFord';
 import {
   binarySearch,
   bisectLeft,
@@ -41,6 +42,7 @@ import randomInt from './utils/randomInt';
 
 export {
   // Algorithms
+  bellmanFord,
   binarySearch,
   bisectLeft,
   bisectRight,
