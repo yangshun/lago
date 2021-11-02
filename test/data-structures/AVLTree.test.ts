@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { AvlTree, BinaryTreeNode } from '../../src';
+import { AVLTree, BinaryTreeNode } from '../../src';
 
 import { binarySearchTreeTests } from './BinarySearchTree.test';
 
@@ -12,7 +12,7 @@ describe('AvtTree', () => {
   describe('self-balancing', () => {
     describe('insert', () => {
       test('LL rotation', () => {
-        const tree = new AvlTree();
+        const tree = new AVLTree();
         tree.insert(10);
         tree.insert(9);
         tree.insert(8);
@@ -23,7 +23,7 @@ describe('AvtTree', () => {
       });
 
       test('LR rotation', () => {
-        const tree = new AvlTree();
+        const tree = new AVLTree();
         tree.insert(10);
         tree.insert(8);
         tree.insert(9);
@@ -34,7 +34,7 @@ describe('AvtTree', () => {
       });
 
       test('RR rotation', () => {
-        const tree = new AvlTree();
+        const tree = new AVLTree();
         tree.insert(8);
         tree.insert(9);
         tree.insert(10);
@@ -45,7 +45,7 @@ describe('AvtTree', () => {
       });
 
       test('RL rotation', () => {
-        const tree = new AvlTree();
+        const tree = new AVLTree();
         tree.insert(8);
         tree.insert(10);
         tree.insert(9);
@@ -58,7 +58,7 @@ describe('AvtTree', () => {
 
     describe('delete', () => {
       test('LL rotation', () => {
-        const tree = new AvlTree();
+        const tree = new AVLTree();
         tree.insert(5);
         tree.insert(3);
         tree.insert(8);
@@ -73,7 +73,7 @@ describe('AvtTree', () => {
       });
 
       test('LR rotation', () => {
-        const tree = new AvlTree();
+        const tree = new AVLTree();
         tree.insert(100);
         tree.insert(200);
         tree.insert(10);
@@ -114,7 +114,7 @@ describe('AvtTree', () => {
         assertAvl(node.right);
       };
 
-      const tree = new AvlTree();
+      const tree = new AVLTree();
 
       // Build a tree of 100 random numbers, assert the tree is AVL tree
       _.times(100, () => {

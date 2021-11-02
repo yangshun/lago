@@ -175,7 +175,7 @@ class Trie {
     }
 
     function traverse(node: TrieNode, chars: string) {
-      Object.keys(node).forEach(char => {
+      Object.keys(node).forEach((char) => {
         if (char === TERMINATING_CHAR) {
           results[chars] = node[char] as number;
           return;
@@ -198,7 +198,7 @@ class Trie {
   countStringsStartingWith(prefix: string): number {
     const results = this.stringsStartingWith(prefix);
     const total = Object.keys(results)
-      .map(key => results[key])
+      .map((key) => results[key])
       .reduce((a, b) => a + b, 0);
 
     return total;

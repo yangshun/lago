@@ -2,9 +2,9 @@ import BinaryTreeNode from './BinaryTreeNode';
 import BinarySearchTree from './BinarySearchTree';
 
 /**
- * An implementation of AvlTree based on BinarySearchTrees
+ * An implementation of AVL tree based on BinarySearchTree.
  */
-class AvlTree extends BinarySearchTree {
+class AVLTree extends BinarySearchTree {
   protected _insertImpl(
     value: number,
     node: BinaryTreeNode<number> | null,
@@ -75,4 +75,4 @@ class AvlTree extends BinarySearchTree {
   }
 }
 
-export default AvlTree;
+export default AVLTree;

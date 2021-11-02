@@ -92,7 +92,7 @@ describe('PriorityQueue', () => {
     test('random generated test x10', () => {
       _.times(10, () => {
         const queue = new PriorityQueue<PriorityNode>(priorityNodeAscending);
-        _.times(1000, time =>
+        _.times(1000, (time) =>
           queue.enqueue({
             label: time, // used as the tiebreaker when priority is tied
             priority: Math.floor(Math.random() * 3), // only 3 tiers of priority

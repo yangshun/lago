@@ -57,7 +57,7 @@ class PriorityQueue<T> {
    * @param values The list of items to be added.
    */
   public enqueue(...values: Array<T>) {
-    values.forEach(value => {
+    values.forEach((value) => {
       this._heap.push(new Timestamped(value, this._nextTimestamp++));
 
       // Heapify up.

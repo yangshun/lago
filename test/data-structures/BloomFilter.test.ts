@@ -5,11 +5,11 @@ interface ObjectWithValue {
 }
 
 const OBJECT_HASH_FUNCTIONS: Array<(item: ObjectWithValue) => number> = [
-  x => (25 * x.value + 13) % 31,
-  x => (109 * x.value + 71) % 139,
-  x => (677 * x.value + 241) % 859,
-  x => (547 * x.value + 383) % 997,
-  x => (173 * x.value + 149) % 499,
+  (x) => (25 * x.value + 13) % 31,
+  (x) => (109 * x.value + 71) % 139,
+  (x) => (677 * x.value + 241) % 859,
+  (x) => (547 * x.value + 383) % 997,
+  (x) => (173 * x.value + 149) % 499,
 ];
 
 describe('BloomFilter', () => {

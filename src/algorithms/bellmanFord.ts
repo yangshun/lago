@@ -9,7 +9,7 @@ type Graph = Record<string, Record<string, Weight>>;
  * In the case of negative weight cycles, if target is defined, then negative infinity and empty array path will be returned,
  * else, all distances from A will be returned with negative infinity.
  *
- * @param {Graph} graph Vertex with its fields being the neighboring vertices and value being the weight from vertex to neighbouring vertices
+ * @param {Graph} graph Vertex with its fields being the neighboring vertices and value being the weight from vertex to neighboring vertices
  * @param {Vertex} source Starting vertex in graph
  * @param {Vertex} target Ending vertex in graph
  * @return {Record<string, number> | [number, Array<Vertex>]} An object mapping of the distance from the source vertex or an array containing the distance
@@ -36,8 +36,8 @@ function bellmanFord(
   // requires only n - 1 iteration
   for (let i = 0; i < vertices.length - 1; i++) {
     for (let startVertex of vertices) {
-      const neighbours = graph[startVertex];
-      for (let endVertex in neighbours) {
+      const neighbors = graph[startVertex];
+      for (let endVertex in neighbors) {
         const weight = graph[startVertex][endVertex];
         // relaxation
         if (distances[startVertex] + weight < distances[endVertex]) {
@@ -50,8 +50,8 @@ function bellmanFord(
 
   // checks for any negative weight cycles. If true returns all distances as -Infinity as a sign negative weight cycles
   for (let startVertex of vertices) {
-    const neighbours = graph[startVertex];
-    for (let endVertex in neighbours) {
+    const neighbors = graph[startVertex];
+    for (let endVertex in neighbors) {
       const weight = graph[startVertex][endVertex];
       // if relaxation occurs here, negative weight cycles detected
       if (distances[startVertex] + weight < distances[endVertex]) {

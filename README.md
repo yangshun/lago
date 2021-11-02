@@ -37,9 +37,9 @@ Data Structures and Algorithms library for JavaScript. Pretty much still WIP but
 - [Counter](src/data-structures/Counter.ts)
 - [Graph (map-based)](src/data-structures/Graph.ts)
 - [Priority Queue](src/data-structures/PriorityQueue.ts)
-- AVL Tree (TODO)
-- Suffix Tree (TODO)
-- Segment Tree (TODO)
+- [AVL Tree](src/data-structures/AVLTree.ts)
+- Suffix Tree (Help Wanted!)
+- Segment Tree (Help Wanted!)
 
 #### Algorithms
 
@@ -51,9 +51,9 @@ Data Structures and Algorithms library for JavaScript. Pretty much still WIP but
 - [Topological Sort](src/algorithms/topologicalSort.ts)
 - [Breadth-first Search](src/algorithms/breadthFirstSearch.ts)
 - [Depth-first Search](src/algorithms/depthFirstSearch.ts)
-- [Djikstra's Algorithm](src/algorithms/dijkstraAlgorithm.ts)
-- [Floyd Warshall Algorithm](src/algorithms/floydWarshallAlgorithm.ts)
-- Bellman-Ford Algorithm (TODO)
+- [Djikstra's Algorithm](src/algorithms/dijkstra.ts)
+- [Floyd Warshall Algorithm](src/algorithms/floydWarshall.ts)
+- [Bellman-Ford Algorithm](src/algorithms/bellmanFord.ts)
 
 ## Development
 

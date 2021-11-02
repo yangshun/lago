@@ -7,8 +7,8 @@ import {
 } from './algorithms/binarySearch';
 import breadthFirstSearch from './algorithms/breadthFirstSearch';
 import depthFirstSearch from './algorithms/depthFirstSearch';
-import dijkstraAlgorithm from './algorithms/dijkstraAlgorithm';
-import floydWarshallAlgorithm from './algorithms/floydWarshallAlgorithm';
+import dijkstra from './algorithms/dijkstra';
+import floydWarshall from './algorithms/floydWarshall';
 import heapSort from './algorithms/heapSort';
 import mergeSort from './algorithms/mergeSort';
 import { quickSelect, quickSelectLargest } from './algorithms/quickSelect';
@@ -16,7 +16,7 @@ import quickSort from './algorithms/quickSort';
 import topologicalSort from './algorithms/topologicalSort';
 
 // Data Structures
-import AvlTree from './data-structures/AvlTree';
+import AVLTree from './data-structures/AVLTree';
 import BinarySearchTree from './data-structures/BinarySearchTree';
 import BinaryTree from './data-structures/BinaryTree';
 import BinaryTreeNode from './data-structures/BinaryTreeNode';
@@ -48,8 +48,8 @@ export {
   bisectRight,
   breadthFirstSearch,
   depthFirstSearch,
-  dijkstraAlgorithm,
-  floydWarshallAlgorithm,
+  dijkstra,
+  floydWarshall,
   heapSort,
   mergeSort,
   quickSelect,
@@ -57,7 +57,7 @@ export {
   quickSort,
   topologicalSort,
   // Data Structures
-  AvlTree,
+  AVLTree,
   BinarySearchTree,
   BinaryTree,
   BinaryTreeNode,

@@ -6,7 +6,7 @@ interface DirectedWeightedGraph {
 }
 /**
  * Performs Dijkstra's Algorithm on a graph; giving the path form source to destination with the smallest cost
- * @param {DirectedWeightedGraph} graph mapping of vertex to each neighbouring vertex and corresponding weights
+ * @param {DirectedWeightedGraph} graph mapping of vertex to each neighboring vertex and corresponding weights
  * @param {Vertex} source starting point in graph
  * @param {Vertex} destination ending point in graph
  * @returns {Array<Vertex>} the path from source to destination with the least cost
@@ -20,7 +20,7 @@ function dijkstraAlgorithm(
   if (graph[source] === undefined || graph[destination] === undefined)
     return [];
 
-  let currentVertex: Vertex = (null as any) as Vertex;
+  let currentVertex: Vertex = null as any as Vertex;
   const verticesToVisit = new PriorityQueue<Vertex>(
     (a, b) => graph[currentVertex][b] - graph[currentVertex][a],
   );

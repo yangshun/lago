@@ -38,7 +38,7 @@ class Graph<T, V> {
    */
   removeNode(value: T): this {
     const incoming = this._getIncomingNodes(value);
-    incoming.forEach(incomingNode => {
+    incoming.forEach((incomingNode) => {
       this.removeEdge(incomingNode, value);
     });
 

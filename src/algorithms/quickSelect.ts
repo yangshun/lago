@@ -15,7 +15,7 @@ function quickSelect(arr: Array<number>, k: number): number | null {
   const lower: Array<number> = [];
   const higher: Array<number> = [];
 
-  arr.forEach(num => {
+  arr.forEach((num) => {
     if (num < pivot) {
       lower.push(num);
     } else if (num > pivot) {

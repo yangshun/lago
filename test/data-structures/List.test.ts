@@ -111,16 +111,7 @@ describe('List', () => {
     // TODO: Test extreme indices on empty list
     const list = listFactory(10);
     expect(list.toArray()).toEqual([
-      100,
-      200,
-      300,
-      400,
-      500,
-      600,
-      700,
-      800,
-      900,
-      1000,
+      100, 200, 300, 400, 500, 600, 700, 800, 900, 1000,
     ]);
     expect(list.get(-100)).toBe(undefined);
     expect(list.get(-11)).toBe(undefined);

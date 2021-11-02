@@ -20,8 +20,8 @@
   "scripts": {
     "check-all": "yarn prettier && yarn lint && yarn tsc && yarn test",
     "check-all:ci": "yarn prettier && yarn lint && yarn tsc && yarn run test:ci",
-    "prettier": "prettier --config .prettierrc --write '{src,test}/**/*.ts'",
-    "prettier:diff": "prettier --config .prettierrc --list-different '{src,test}/**/*.ts'",
+    "prettier": "prettier --write {src,test}/**/*.ts",
+    "prettier:diff": "prettier --list-different {src,test}/**/*.ts",
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test --coverage",
@@ -37,11 +37,12 @@
   },
   "module": "dist/mylib.esm.js",
   "devDependencies": {
+    "@types/lodash": "^4.14.157",
     "husky": "^4.2.5",
     "lodash": "^4.17.19",
+    "prettier": "^2.4.1",
     "tsdx": "^0.13.2",
     "tslib": "^2.0.0",
-    "typescript": "^3.9.6",
-    "@types/lodash": "^4.14.157"
+    "typescript": "^3.9.6"
   }
 }
