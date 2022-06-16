@@ -10,7 +10,7 @@
 
 ![Build Status Badge](https://circleci.com/gh/yangshun/lago/tree/master.svg?style=shield&circle-token=e360bef41a5f3f6a9c914241f388c93aa7ae6bf8)
 
-Data Structures and Algorithms library for JavaScript. Pretty much still WIP but some are available for viewing.
+Data Structures and Algorithms implemenations in JavaScript.
 
 ---
 
