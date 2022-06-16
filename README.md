@@ -38,6 +38,7 @@ Data Structures and Algorithms library for JavaScript. Pretty much still WIP but
 - [Graph (map-based)](src/data-structures/Graph.ts)
 - [Priority Queue](src/data-structures/PriorityQueue.ts)
 - [AVL Tree](src/data-structures/AVLTree.ts)
+- [Heap](src/data-structures/Heap.ts)
 - Suffix Tree (Help Wanted!)
 - Segment Tree (Help Wanted!)
 
