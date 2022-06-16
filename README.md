@@ -38,6 +38,7 @@ Data Structures and Algorithms implemenations in JavaScript.
 - [Graph (map-based)](src/data-structures/Graph.ts)
 - [Priority Queue](src/data-structures/PriorityQueue.ts)
 - [AVL Tree](src/data-structures/AVLTree.ts)
+- [Heap](src/data-structures/Heap.ts)
 - Suffix Tree (Help Wanted!)
 - Segment Tree (Help Wanted!)
 
