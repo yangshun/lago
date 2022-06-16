@@ -26,6 +26,7 @@ import Deque from './data-structures/Deque';
 import DisjointSet from './data-structures/DisjointSet';
 import DoublyLinkedList from './data-structures/DoublyLinkedList';
 import Graph from './data-structures/Graph';
+import Heap from './data-structures/Heap';
 import List from './data-structures/List';
 import NDArray from './data-structures/NDArray';
 import Node from './data-structures/Node';
@@ -67,6 +68,7 @@ export {
   DisjointSet,
   DoublyLinkedList,
   Graph,
+  Heap,
   List,
   NDArray,
   Node,
