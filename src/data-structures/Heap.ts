@@ -45,10 +45,7 @@ export default class Heap {
   extract(): number | null {
     if (this.isEmpty()) return null;
 
-    [this.heap[0], this.heap[this.size - 1]] = [
-      this.heap[this.size - 1],
-      this.heap[0],
-    ];
+    this.swap(0, this.size - 1);
     const result = this.heap.pop()!;
     this.heapifyDown();
     return result;
