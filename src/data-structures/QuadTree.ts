@@ -6,11 +6,6 @@ export interface AbstractQuad {
 }
 
 export class Quad implements AbstractQuad {
-  public left: number;
-  public top: number;
-  public right: number;
-  public bottom: number;
-
   constructor(left: number, top: number, right?: number, bottom?: number) {
     const l = left;
     const t = top;
@@ -24,14 +19,45 @@ export class Quad implements AbstractQuad {
   }
 
   intersects(op: Quad): Boolean {
-    return !(
-      (
-        op.right < this.left || // too far left
-        op.bottom < this.top || // too far up
-        this.right < op.right || // too far right
-        this.bottom < op.top
-      ) // too far down
+    return (
+      this.left <= op.right && // not too far left
+      this.top <= op.bottom && // not too far up
+      op.left <= this.right && // not too far right
+      op.top <= this.bottom // not too far down
     );
+  }
+
+  distance(op: Quad) {
+    if (this.intersects(op)) {
+      return 0;
+    }
+
+    // Horizontal (closest edges)
+    const closestX = Math.min(
+      Math.abs(this.left - op.right),
+      Math.abs(this.right - op.left),
+    );
+    if (
+      (this.top >= op.top && this.top <= op.bottom) ||
+      (op.top >= this.top && op.top <= this.bottom)
+    ) {
+      return closestX;
+    }
+
+    // Vertical (closest edges)
+    const closestY = Math.min(
+      Math.abs(this.top - op.bottom),
+      Math.abs(this.bottom - op.top),
+    );
+    if (
+      (this.left >= op.left && this.left <= op.right) ||
+      (op.left >= this.left && op.left <= this.right)
+    ) {
+      return closestY;
+    }
+
+    // Diagonal (closest corner)
+    return Math.sqrt(closestX ** 2 + closestY ** 2);
   }
 }
 
@@ -52,13 +78,13 @@ export class QuadNode<T> extends Quad {
 }
 
 class QuadTree<T> {
-  public bounds: Quad;
-  public values: Set<QuadNode<T>>;
-  public subdivisions: Array<QuadTree<T>> | undefined = undefined;
+  bounds: Quad;
+  values: Set<QuadNode<T>>;
+  subdivisions: Array<QuadTree<T>> | undefined = undefined;
 
-  public SIZE_LIMIT = 8;
-  public DEPTH_LIMIT = 8;
-  public depth = 0;
+  SIZE_LIMIT = 8;
+  DEPTH_LIMIT = 8;
+  depth = 0;
 
   /**
    * Create a QuadTree that covers an spatial area.
@@ -72,15 +98,15 @@ class QuadTree<T> {
     this.values = new Set<QuadNode<T>>();
   }
 
-  public setDepth(depth: number) {
+  setDepth(depth: number) {
     this.depth = depth;
   }
 
-  public setSizeLimit(size: number) {
+  setSizeLimit(size: number) {
     this.SIZE_LIMIT = size;
   }
 
-  public setDepthLimit(depth: number) {
+  setDepthLimit(depth: number) {
     this.DEPTH_LIMIT = depth;
   }
 
@@ -100,14 +126,46 @@ class QuadTree<T> {
     ];
 
     // Copy configurations
-    this.subdivisions.forEach(quad => {
+    this.subdivisions.forEach((quad) => {
       quad.setDepth(this.depth + 1);
       quad.setSizeLimit(this.SIZE_LIMIT);
       quad.setDepthLimit(this.DEPTH_LIMIT);
     });
 
     // Move values
-    this.values.forEach(node => this.add(node));
+    this.values.forEach((node) => this.insert(node));
+    this.values.clear();
+  }
+
+  /**
+   * Insert value with positional data.
+   * @param {QuadTree<T> | T} nodeOrValue
+   * @param {number?} left
+   * @param {number?} top
+   * @param {number?} right
+   * @param {number?} bottom
+   * @return Boolean
+   */
+  insert(
+    nodeOrValue: QuadNode<T> | T,
+    left?: number,
+    top?: number,
+    right?: number,
+    bottom?: number,
+  ): Boolean {
+    if (nodeOrValue instanceof QuadNode) {
+      // QuadNode
+      return this._insertImpl(nodeOrValue as QuadNode);
+    }
+
+    if (left !== undefined && top !== undefined) {
+      // convenience QuadNode creation
+      return this._insertImpl(
+        new QuadNode(nodeOrValue, left, top, right, bottom)
+      );
+    }
+
+    throw Error('value needs positional data to insert');
   }
 
   /**
@@ -120,6 +178,15 @@ class QuadTree<T> {
       return false;
     }
 
+    if (this.subdivisions) {
+      return this.subdivisions.reduce(
+        (added: Boolean, quad) => added || quad.insert(node),
+        false,
+      );
+    }
+
+    this.values.add(node);
+
     if (
       !this.subdivisions &&
       this.depth < this.DEPTH_LIMIT &&
@@ -128,56 +195,93 @@ class QuadTree<T> {
       this._subdivide();
     }
 
-    if (this.subdivisions) {
-      return this.subdivisions.reduce(
-        (added: Boolean, quad) => added || quad.add(node),
-        false,
-      );
-    }
-
-    this.values.add(node);
-
     return true;
   }
 
-  /**
-   * Insert value with positional data.
-   * @param {QuadTree<T>} node
-   * @return Boolean
-   */
-  public insert(node: QuadNode<T>): Boolean {
-    return this._insertImpl(node);
+  query(
+    quadOrLeft: Quad | number,
+    top?: number,
+    right?: number,
+    bottom?: number,
+  ): Array<QuadNode<T>> {
+    if (quadOrLeft instanceof Quad) {
+      return this._queryImpl(quadOrLeft);
+    }
+
+    return this._queryImpl(new Quad(quadOrLeft, top, right, bottom));
   }
 
-  /**
-   * #todo fix this overload
-   *
-   * public insert(node: QuadNode<T>): Boolean;
-   * public insert(value: T, left: number, top: number, right?: number, bottom?: number): Boolean;
-   * public insert(nodeOrValue: QuadNode<T>|T, left?: number, top?: number, right?: number, bottom?: number): Boolean {
-   *   if (left !== undefined && top !== undefined) {
-   *     // convenience QuadNode creation
-   *     return this._insertImpl(new QuadNode(nodeOrValue, left, right, top, bottom));
-   *   }
-
-   *   // QuadNode
-   *   return this._insertImpl(nodeOrValue);
-   * }
-   */
-
-  public get(range: Quad): Array<QuadNode<T>> {
+  protected _queryImpl(range: Quad) {
     if (!this.bounds.intersects(range)) {
       return [];
     }
 
     if (this.subdivisions) {
       return this.subdivisions.reduce(
-        (ret, quad) => [...ret, ...quad.get(range)],
+        (ret, quad) => [...ret, ...quad.query(range)],
         [] as Array<QuadNode<T>>,
       );
     }
 
-    return Array.from(this.values).filter(value => value.intersects(range));
+    return Array.from(this.values).filter((value) => value.intersects(range));
+  }
+
+  closest(pointOrX: Quad | number, yOrCount: number, count?: number): QuadNode | Array<QuadNode> | null {
+    const point = pointOrX instanceof Quad ? pointOrX : new Quad(pointOrX, yOrCount);
+    const limit = (pointOrX instanceof Quad ? yOrCount : count) ?? 1;
+
+    let closest = [];
+    let closestDist = Infinity;
+
+    function insertInOrder(value, dist) {
+      const item = { ...value, dist };
+
+      if (closest.length < limit) {
+        closest.push(item);
+        closest.sort((a, b) => a.dist - b.dist);
+
+        closestDist = closest[closest.length - 1].dist;
+        return;
+      }
+
+      for (let i = 0; i < limit; i++) {
+        if (dist < closest[i].dist) {
+          closest.splice(i, 0, item);
+          break;
+        }
+      }
+
+      closestDist = closest[closest.length - 1].dist;
+    }
+
+    function _closestImpl(node) {
+      if (node.subdivisions) {
+        node.subdivisions.forEach((sub) => {
+          if (point.distance(sub.bounds) < closestDist) {
+            _closestImpl(sub);
+          }
+        });
+
+        return;
+      }
+
+      node.values.forEach((val) => {
+        const dist = point.distance(val);
+        if (dist < closestDist) {
+          insertInOrder(val, dist);
+        }
+      });
+    }
+
+    _closestImpl(this);
+
+    // If no count specified, return just an object
+    const returnOne = (pointOrX instanceof Quad ? yOrCount : count) === undefined;
+    if (returnOne) {
+      return closest[0] ?? null;
+    }
+
+    return closest.slice(0, limit);
   }
 }
 
