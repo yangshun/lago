@@ -32,6 +32,8 @@ import NDArray from './data-structures/NDArray';
 import Node from './data-structures/Node';
 import PriorityQueue from './data-structures/PriorityQueue';
 import Queue from './data-structures/Queue';
+import SegmentTree from './data-structures/SegmentTree';
+import SegmentTreeNode from './data-structures/SegmentTreeNode';
 import Stack from './data-structures/Stack';
 import Trie from './data-structures/Trie';
 
@@ -74,6 +76,8 @@ export {
   Node,
   PriorityQueue,
   Queue,
+  SegmentTree,
+  SegmentTreeNode,
   Stack,
   Trie,
   // Utils
