@@ -31,6 +31,7 @@ import List from './data-structures/List';
 import NDArray from './data-structures/NDArray';
 import Node from './data-structures/Node';
 import PriorityQueue from './data-structures/PriorityQueue';
+import QuadTree from './data-structures/QuadTree';
 import Queue from './data-structures/Queue';
 import Stack from './data-structures/Stack';
 import Trie from './data-structures/Trie';
@@ -73,6 +74,7 @@ export {
   NDArray,
   Node,
   PriorityQueue,
+  QuadTree,
   Queue,
   Stack,
   Trie,
