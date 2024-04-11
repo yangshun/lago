@@ -52,8 +52,8 @@ Data Structures and Algorithms implemenations in JavaScript.
 - [Topological Sort](src/algorithms/topologicalSort.ts)
 - [Breadth-first Search](src/algorithms/breadthFirstSearch.ts)
 - [Depth-first Search](src/algorithms/depthFirstSearch.ts)
-- [Djikstra's Algorithm](src/algorithms/dijkstra.ts)
-- [Floyd Warshall Algorithm](src/algorithms/floydWarshall.ts)
+- [Dijkstra's Algorithm](src/algorithms/dijkstra.ts)
+- [Floyd-Warshall Algorithm](src/algorithms/floydWarshall.ts)
 - [Bellman-Ford Algorithm](src/algorithms/bellmanFord.ts)
 
 ## Development
