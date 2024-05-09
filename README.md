@@ -8,21 +8,19 @@
   </p>
 </div>
 
-![Build Status Badge](https://circleci.com/gh/yangshun/lago/tree/master.svg?style=shield&circle-token=e360bef41a5f3f6a9c914241f388c93aa7ae6bf8)
-
-Data Structures and Algorithms implemenations in JavaScript.
-
 ---
 
 <div align="center">
-  <h3>💡 Looking for high quality front end interview courses? <a href="https://www.educative.io/explore?search_string=interview&skills=javascript&aff=x23W">Educative</a> offers a ton of great courses to improve your interview game 💡</h3>
+  <h3>💡 Practice implementing Data Structures and Algorithms in JavaScript for free on <a href="https://www.greatfrontend.com/focus-areas/data-structures-algorithms">GreatFrontEnd</a> 💡</h3>
 </div>
 
 ---
 
 ## Contents
 
-#### Data Structures
+Common Data Structures and Algorithms implementations in JavaScript.
+
+### Data Structures
 
 - [List](src/data-structures/List.ts)
 - [Stack](src/data-structures/Stack.ts)
@@ -42,7 +40,7 @@ Data Structures and Algorithms implemenations in JavaScript.
 - Suffix Tree (Help Wanted!)
 - Segment Tree (Help Wanted!)
 
-#### Algorithms
+### Algorithms
 
 - [Binary Search](src/algorithms/binarySearch.ts)
 - [Quickselect](src/algorithms/quickSelect.ts)
